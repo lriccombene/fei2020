@@ -8,7 +8,7 @@ use yii\db\Migration;
  *
  * - `{{%consultor}}`
  */
-class m200514_211029_create_empresa_table extends Migration
+class m200516_142700_create_empresa_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -23,8 +23,6 @@ class m200514_211029_create_empresa_table extends Migration
             'razon_social' => $this->string(),
             'contacto' => $this->string(),
             'referente' => $this->string(),
-            'title' => $this->string(),
-            'body' => $this->text(),
         ]);
 
         // creates index for column `id_consultor`

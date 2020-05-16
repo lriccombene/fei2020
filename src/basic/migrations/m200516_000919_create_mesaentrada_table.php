@@ -3,21 +3,21 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `{{%mesadeentrada}}`.
+ * Handles the creation of table `{{%mesaentrada}}`.
  * Has foreign keys to the tables:
  *
  * - `{{%categoria}}`
  * - `{{%tipotramite}}`
  * - `{{%empresa}}`
  */
-class m200515_203650_create_mesadeentrada_table extends Migration
+class m200516_000919_create_mesaentrada_table extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('{{%mesadeentrada}}', [
+        $this->createTable('{{%mesaentrada}}', [
             'id' => $this->primaryKey(),
             'fec' => $this->date()->notNull(),
             'fec_ingreso' => $this->date(),
@@ -29,15 +29,15 @@ class m200515_203650_create_mesadeentrada_table extends Migration
 
         // creates index for column `id_categoria`
         $this->createIndex(
-            '{{%idx-mesadeentrada-id_categoria}}',
-            '{{%mesadeentrada}}',
+            '{{%idx-mesaentrada-id_categoria}}',
+            '{{%mesaentrada}}',
             'id_categoria'
         );
 
         // add foreign key for table `{{%categoria}}`
         $this->addForeignKey(
-            '{{%fk-mesadeentrada-id_categoria}}',
-            '{{%mesadeentrada}}',
+            '{{%fk-mesaentrada-id_categoria}}',
+            '{{%mesaentrada}}',
             'id_categoria',
             '{{%categoria}}',
             'id',
@@ -46,15 +46,15 @@ class m200515_203650_create_mesadeentrada_table extends Migration
 
         // creates index for column `id_tramite`
         $this->createIndex(
-            '{{%idx-mesadeentrada-id_tramite}}',
-            '{{%mesadeentrada}}',
+            '{{%idx-mesaentrada-id_tramite}}',
+            '{{%mesaentrada}}',
             'id_tramite'
         );
 
         // add foreign key for table `{{%tipotramite}}`
         $this->addForeignKey(
-            '{{%fk-mesadeentrada-id_tramite}}',
-            '{{%mesadeentrada}}',
+            '{{%fk-mesaentrada-id_tramite}}',
+            '{{%mesaentrada}}',
             'id_tramite',
             '{{%tipotramite}}',
             'id',
@@ -63,15 +63,15 @@ class m200515_203650_create_mesadeentrada_table extends Migration
 
         // creates index for column `id_empresa`
         $this->createIndex(
-            '{{%idx-mesadeentrada-id_empresa}}',
-            '{{%mesadeentrada}}',
+            '{{%idx-mesaentrada-id_empresa}}',
+            '{{%mesaentrada}}',
             'id_empresa'
         );
 
         // add foreign key for table `{{%empresa}}`
         $this->addForeignKey(
-            '{{%fk-mesadeentrada-id_empresa}}',
-            '{{%mesadeentrada}}',
+            '{{%fk-mesaentrada-id_empresa}}',
+            '{{%mesaentrada}}',
             'id_empresa',
             '{{%empresa}}',
             'id',
@@ -86,40 +86,40 @@ class m200515_203650_create_mesadeentrada_table extends Migration
     {
         // drops foreign key for table `{{%categoria}}`
         $this->dropForeignKey(
-            '{{%fk-mesadeentrada-id_categoria}}',
-            '{{%mesadeentrada}}'
+            '{{%fk-mesaentrada-id_categoria}}',
+            '{{%mesaentrada}}'
         );
 
         // drops index for column `id_categoria`
         $this->dropIndex(
-            '{{%idx-mesadeentrada-id_categoria}}',
-            '{{%mesadeentrada}}'
+            '{{%idx-mesaentrada-id_categoria}}',
+            '{{%mesaentrada}}'
         );
 
         // drops foreign key for table `{{%tipotramite}}`
         $this->dropForeignKey(
-            '{{%fk-mesadeentrada-id_tramite}}',
-            '{{%mesadeentrada}}'
+            '{{%fk-mesaentrada-id_tramite}}',
+            '{{%mesaentrada}}'
         );
 
         // drops index for column `id_tramite`
         $this->dropIndex(
-            '{{%idx-mesadeentrada-id_tramite}}',
-            '{{%mesadeentrada}}'
+            '{{%idx-mesaentrada-id_tramite}}',
+            '{{%mesaentrada}}'
         );
 
         // drops foreign key for table `{{%empresa}}`
         $this->dropForeignKey(
-            '{{%fk-mesadeentrada-id_empresa}}',
-            '{{%mesadeentrada}}'
+            '{{%fk-mesaentrada-id_empresa}}',
+            '{{%mesaentrada}}'
         );
 
         // drops index for column `id_empresa`
         $this->dropIndex(
-            '{{%idx-mesadeentrada-id_empresa}}',
-            '{{%mesadeentrada}}'
+            '{{%idx-mesaentrada-id_empresa}}',
+            '{{%mesaentrada}}'
         );
 
-        $this->dropTable('{{%mesadeentrada}}');
+        $this->dropTable('{{%mesaentrada}}');
     }
 }
