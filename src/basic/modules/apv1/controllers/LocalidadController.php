@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class LocalidadController extends ActiveController
 {
-    public $modelClass ="app\models\Localidad";
+    public $modelClass ="app\modules\apv1\models\Localidad";
 
 }

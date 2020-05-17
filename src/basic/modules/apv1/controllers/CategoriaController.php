@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class CategoriaController extends ActiveController
 {
-    public $modelClass ="app\models\Categoria";
+    public $modelClass ="app\modules\apv1\models\Categoria";
 
 }

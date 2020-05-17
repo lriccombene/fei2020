@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class ActasinspeccionController extends ActiveController
 {
-    public $modelClass ="app\models\Actasinspeccion";
+    public $modelClass ="app\modules\apv1\models\Actasinspeccion";
 
 }

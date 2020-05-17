@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class ConsultorController extends ActiveController
 {
-    public $modelClass ="app\models\Consultor";
+    public $modelClass ="app\modules\apv1\models\Consultor";
 
 }

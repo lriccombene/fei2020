@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class AreaController extends ActiveController
 {
-    public $modelClass ="app\models\Area";
+    public $modelClass ="app\modules\apv1\models\Area";
 
 }

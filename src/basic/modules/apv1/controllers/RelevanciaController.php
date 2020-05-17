@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class RelevanciaController extends ActiveController
 {
-    public $modelClass ="app\models\Relevancia";
+    public $modelClass ="app\modules\apv1\models\Relevancia";
 
 }

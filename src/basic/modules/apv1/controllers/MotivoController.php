@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class MotivoController extends ActiveController
 {
-    public $modelClass ="app\models\Motivo";
+    public $modelClass ="app\modules\apv1\models\Motivo";
 
 }

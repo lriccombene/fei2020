@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class DictamenestecnicosController extends ActiveController
 {
-    public $modelClass ="app\models\Dictamenestecnicos";
+    public $modelClass ="app\modules\apv1\models\Dictamenestecnicos";
 
 }

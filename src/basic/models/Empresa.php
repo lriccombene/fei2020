@@ -14,6 +14,9 @@ use Yii;
  * @property string|null $razon_social
  * @property string|null $contacto
  * @property string|null $referente
+ *
+ * @property Actasinspeccion[] $actasinspeccions
+ * @property Consultor $consultor
  */
 class Empresa extends \yii\db\ActiveRecord
 {
@@ -34,6 +37,7 @@ class Empresa extends \yii\db\ActiveRecord
             [['nombre', 'id_consultor'], 'required'],
             [['id_consultor'], 'integer'],
             [['nombre', 'descripcion', 'razon_social', 'contacto', 'referente'], 'string', 'max' => 255],
+            [['id_consultor'], 'exist', 'skipOnError' => true, 'targetClass' => Consultor::className(), 'targetAttribute' => ['id_consultor' => 'id']],
         ];
     }
 
@@ -51,6 +55,26 @@ class Empresa extends \yii\db\ActiveRecord
             'contacto' => 'Contacto',
             'referente' => 'Referente',
         ];
+    }
+
+    /**
+     * Gets query for [[Actasinspeccions]].
+     *
+     * @return \yii\db\ActiveQuery|ActasinspeccionQuery
+     */
+    public function getActasinspeccions()
+    {
+        return $this->hasMany(Actasinspeccion::className(), ['id_empresa' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Consultor]].
+     *
+     * @return \yii\db\ActiveQuery|ConsultorQuery
+     */
+    public function getConsultor()
+    {
+        return $this->hasOne(Consultor::className(), ['id' => 'id_consultor']);
     }
 
     /**

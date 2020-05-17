@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class NotassalidaController extends ActiveController
 {
-    public $modelClass ="app\models\Notassalida";
+    public $modelClass ="app\modules\apv1\models\Notassalida";
 
 }

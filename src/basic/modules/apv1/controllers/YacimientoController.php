@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class YacimientoController extends ActiveController
 {
-    public $modelClass ="app\models\Yacimiento";
+    public $modelClass ="app\modules\apv1\models\Yacimiento";
 
 }

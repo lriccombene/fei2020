@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class TipodictamenController extends ActiveController
 {
-    public $modelClass ="app\models\Tipodictamen";
+    public $modelClass ="app\modules\apv1\models\Tipodictamen";
 
 }

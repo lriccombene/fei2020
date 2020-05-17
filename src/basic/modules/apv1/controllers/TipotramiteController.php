@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class TipotramiteController extends ActiveController
 {
-    public $modelClass ="app\models\Tipotramite";
+    public $modelClass ="app\modules\apv1\models\Tipotramite";
 
 }

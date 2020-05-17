@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class EnviosdocumentacionController extends ActiveController
 {
-    public $modelClass ="app\models\Enviosdocumentacion";
+    public $modelClass ="app\modules\apv1\models\Enviosdocumentacion";
 
 }

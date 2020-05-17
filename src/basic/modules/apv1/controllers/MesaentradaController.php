@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class MesaentradaController extends ActiveController
 {
-    public $modelClass ="app\models\Mesaentrada";
+    public $modelClass ="app\modules\apv1\models\Mesaentrada";
 
 }

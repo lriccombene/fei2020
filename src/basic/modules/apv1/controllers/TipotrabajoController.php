@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class TipotrabajoController extends ActiveController
 {
-    public $modelClass ="app\models\Tipotrabajo";
+    public $modelClass ="app\modules\apv1\models\Tipotrabajo";
 
 }

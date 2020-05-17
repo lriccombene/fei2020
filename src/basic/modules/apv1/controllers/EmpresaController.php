@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class EmpresaController extends ActiveController
 {
-    public $modelClass ="app\models\Empresa";
+    public $modelClass ="app\modules\apv1\models\Empresa";
 
 }

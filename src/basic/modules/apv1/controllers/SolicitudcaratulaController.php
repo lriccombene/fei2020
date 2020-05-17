@@ -9,6 +9,6 @@ use yii\rest\ActiveController;
  */
 class SolicitudcaratulaController extends ActiveController
 {
-    public $modelClass ="app\models\Solicitudcaratula";
+    public $modelClass ="app\modules\apv1\models\Solicitudcaratula";
 
 }
