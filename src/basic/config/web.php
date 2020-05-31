@@ -14,7 +14,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'Z8nsh5WGO1eIML8xESC51bq5Ljg0WF2g',
+            'cookieValidationKey' => 'zmSgebsjBJucynP-Zq5wbIMgUdO10M5o',
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ]
@@ -46,16 +46,19 @@ $config = [
             ],
         ],
         'db' => $db,
-        
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'class' => 'yii\rest\UrlRule',
-                'controller' => 'apv1/categoria','apv1/usuario','apv1/tipotramite','apv1/yacimiento','apv1/consultor','apv1/localidad','apv1/motivo','apv1/area','apv1/actasinspeccion','apv1/mesaentrada'
+                'rules' => [
+                    'class' => 'yii\rest\UrlRule',
+                    'pluralize' => false,
+                    'controller' => ['apv1/categoria','apv1/usuario','apv1/tipotramite','apv1/yacimiento','apv1/consultor','apv1/localidad','apv1/motivo','apv1/area','apv1/actasinspeccion','apv1/mesaentrada'],
+                ],
             ],
         ],
-        
+
     ],
     'modules' => [
         'apv1' => [
@@ -72,15 +75,18 @@ if (YII_ENV_DEV) {
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => [ ($_ENV['PRODUCCION'] ? '127.0.0.1' : '*')],
     ];
-
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+
+        //'allowedIPs' => ['127.0.0.1', '::1', '*'],
         'allowedIPs' => [ ($_ENV['PRODUCCION'] ? '127.0.0.1' : '*')],
     ];
 }
 
 return $config;
+
+

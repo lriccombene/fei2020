@@ -3,11 +3,11 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[Dictamenestecnicos]].
+ * This is the ActiveQuery class for [[Dictamentecnico]].
  *
- * @see Dictamenestecnicos
+ * @see Dictamentecnico
  */
-class DictamenestecnicosQuery extends \yii\db\ActiveQuery
+class DictamentecnicoQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class DictamenestecnicosQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return Dictamenestecnicos[]|array
+     * @return Dictamentecnico[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class DictamenestecnicosQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return Dictamenestecnicos|array|null
+     * @return Dictamentecnico|array|null
      */
     public function one($db = null)
     {

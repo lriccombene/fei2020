@@ -2,7 +2,7 @@
 
 namespace app\modules\apv1\models;
 
-class Dictamenestecnicos extends \app\models\Dictamenestecnicos
+class Dictamentecnico extends \app\models\Dictamentecnico
 {
     public function fields (){
         return ['fec','nro','id_categoria','id_empresa','id_area','id_tipotrabajo','detalle','longitud','latitud'];

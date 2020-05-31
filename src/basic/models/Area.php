@@ -12,7 +12,7 @@ use Yii;
  * @property string|null $descripcion
  *
  * @property Actasinspecion[] $actasinspecions
- * @property Dictamenestecnicos[] $dictamenestecnicos
+ * @property Dictamentecnico[] $dictamenestecnicos
  */
 class Area extends \yii\db\ActiveRecord
 {
@@ -58,13 +58,13 @@ class Area extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Dictamenestecnicos]].
+     * Gets query for [[Dictamentecnico]].
      *
-     * @return \yii\db\ActiveQuery|DictamenestecnicosQuery
+     * @return \yii\db\ActiveQuery|DictamentecnicoQuery
      */
     public function getDictamenestecnicos()
     {
-        return $this->hasMany(Dictamenestecnicos::className(), ['id_area' => 'id']);
+        return $this->hasMany(Dictamentecnico::className(), ['id_area' => 'id']);
     }
 
     /**

@@ -7,8 +7,8 @@ use yii\rest\ActiveController;
 /**
  * Default controller for the `apv1` module
  */
-class DictamenestecnicosController extends ActiveController
+class DictamentecnicoController extends ActiveController
 {
-    public $modelClass ="app\modules\apv1\models\Dictamenestecnicos";
+    public $modelClass ="app\modules\apv1\models\Dictamentecnico";
 
 }
