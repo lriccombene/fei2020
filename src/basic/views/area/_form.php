@@ -29,7 +29,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
  
     <h1>Descripcion : </h1>
     <input v-bind:placeholder="descripcion_hint" v-model="descripcion"  maxlength ='true' v-if="mostrar"> <br>
-    <button @click="agregarArea" class = 'btn btn-success' >Agregar Area</button><br>
+    <button @click="agregarArea" class = 'btn btn-success' @key.enter="agregarArea" >Agregar Area</button><br>
     </div>
     <?php ActiveForm::end(); ?>
 
