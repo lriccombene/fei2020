@@ -36,9 +36,9 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             <input v-bind:placeholder="descripcion_hint" v-model="descripcion"  maxlength ='true' v-if="mostrar"> <br>
             
             <h1>consultor : </h1>
-            <select v-model="consultores" v-if="mostrar">
-                <option disabled value="">Seleccione un elemento</option>
-                <option v-for="consultor in consultores"> >{{consultor.nombre}}</option>
+            <select v-model="consultores" v-if="mostrar" >
+                <option disabled value="">Seleccione un consultor</option>
+                <option v-for="consultor in consultores"> {{consultor.nombre}}</option>
              </select>
            
             <h1>telefono : </h1>
@@ -46,15 +46,15 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 
 
             <h1>razon social : </h1>
-            <input v-bind:placeholder="razon_social" v-model="razon_social"  maxlength ='true' v-if="mostrar"> <br>
+            <input v-bind:placeholder="razon_social_hint" v-model="razon_social"  maxlength ='true' v-if="mostrar"> <br>
 
             <h1>contacto : </h1>
-            <input v-bind:placeholder="contacto" v-model="contacto"  maxlength ='true' v-if="mostrar"> <br>
+            <input v-bind:placeholder="contacto_hint" v-model="contacto"  maxlength ='true' v-if="mostrar"> <br>
 
             <h1>referente : </h1>
-            <input v-bind:placeholder="contacto" v-model="contacto"  maxlength ='true' v-if="mostrar"> <br>
+            <input v-bind:placeholder="referente_hint" v-model="referente"  maxlength ='true' v-if="mostrar"> <br>
 
-            <button @click="agregarConsultor" class = 'btn btn-success' >Agregar consultor</button><br>
+            <button @click="agregarEmpresa" class = 'btn btn-success' >Agregar empresa</button><br>
         </div>
 
 
@@ -76,9 +76,9 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             contacto: '',
             contacto_hint:"ingrese contacto",
             referente: '',
-            contacto_hint:"ingrese referente",
+            referente_hint:"ingrese referente",
             mostrar: true,
-
+            consultor_hint:"seleccione consultor",
             consultores:[
                 {id:"1",nombre:'test6661'},
                 {id:"2",nombre:'test6662'},
@@ -86,7 +86,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 
           
         },
-        agregarConsultor(){
+        agregarEmpresa(){
                this.nombre = ""
                this.descripcion = ""
 
