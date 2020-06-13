@@ -11,9 +11,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 ?>
 
 <div class="area-form " >
-
-
-    <form  id="app"   method="post">
+    <form  id="app"   @submit.prevent="submitForm"   action="http://127.0.0.1:8000/apv1/area/create"   method="post">
 
 
     <div class="container-fluid">
@@ -22,9 +20,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             <label for="nombre">Nombre :</label>
 		</div>
 		<div class="col-md-8">
-
-            <input v-bind:placeholder="nombre_hint" id="nombre" v-model="nombre" type="text" name="nombre" required >
-            
+            <input v-bind:placeholder="nombre_hint" id="nombre" v-model="nombre" type="text" name="nombre" required>
 		</div>
 	</div>
     <div class="row">
@@ -49,12 +45,21 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
   var app = new Vue({
                     el:'#app',
                     data:{
-                      nombre: '<?php  echo ($model->nombre); ?>',
+                      nombre:null,
                       nombre_hint: 'ingrerse nombre',
                       descripcion:null,
                       descripcion_hint: 'ingrerse descripcion',
-                    }
-                   
+                    },
+                    computed:{
+                      
+                    },
+                    methods:{
+                      submitForm(){
+                        //esto lo dejo como valdiar los datos en mi proyecto no lo utilizaria asi 
+                        //queda a esperas que lleguemos a consumir la API
+                        alert('submited: ' + this.nombre + ' ' + this.descripcion )
+                      }
+                    } 
                   })
 
 </script>

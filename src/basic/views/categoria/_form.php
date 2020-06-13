@@ -10,45 +10,51 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                       ['position'=>View::POS_HEAD]);
 ?>
 
-<div class="categoria-form">
+<div class="area-form " >
 
-    <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+    <form  id="app"   method="post">
 
-    <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
-        <div id="app">
-            <h1>Nombre : </h1>
-            <input v-bind:placeholder="nombre_hint" v-model="nombre" maxlength ='true' v-if="mostrar"> <br>
-        
-            <h1>Descripcion : </h1>
-            <input v-bind:placeholder="descripcion_hint" v-model="descripcion"  maxlength ='true' v-if="mostrar"> <br>
-            <button @click="agregarCategoria" class = 'btn btn-success' >Agregar Categoria</button><br>
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+            <label for="nombre">Nombre :</label>
+		</div>
+		<div class="col-md-8">
+
+            <input v-bind:placeholder="nombre_hint" id="nombre" v-model="nombre" type="text" name="nombre" required >
+            
+		</div>
+	</div>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="Descripcion">Descripcion :</label>
         </div>
-    <?php ActiveForm::end(); ?>
+        <div class="col-md-8">
+            <input v-bind:placeholder="descripcion_hint"  id="descripcion" v-model="descripcion" type="text" name="descripcion">
+        </div>
+	</div>
+
+    <div class="row">
+		<div class="col-md-2">
+            <input type="submit" value="Enviar" class="btn btn-success">
+        </div>
+    </div>
+
+    </form>
 </div>
 
 <script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            nombre: '',
-            nombre_hint: 'ingrerse nombre',
-            descripcion: '',
-            descripcion_hint:"ingrese descripcion",
-            mostrar: true,
-          
-        },
-        agregarCategoria(){
-               this.nombre = ""
-               this.descripcion = ""
-            }
+  var app = new Vue({
+                    el:'#app',
+                    data:{
+                      nombre: '<?php  echo ($model->nombre); ?>',
+                      nombre_hint: 'ingrerse nombre',
+                      descripcion:null,
+                      descripcion_hint: 'ingrerse descripcion',
+                    }
+                   
+                  })
 
-
-        
-    })
 </script>
