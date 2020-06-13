@@ -70,10 +70,6 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </select>
         </div>
 	</div>
-
-
-
-
     <div class="row">
 		<div class="col-md-2">
             <input type="submit" value="Enviar" class="btn btn-success">
