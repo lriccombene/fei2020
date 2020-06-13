@@ -3,96 +3,112 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
-
+/* @var $this yii\web\View */
+/* @var $model app\models\Area */
+/* @var $form yii\widgets\ActiveForm */
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                       ['position'=>View::POS_HEAD]);
 ?>
 
-<div class="empresa-form">
+<div class="area-form " >
 
-    <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+    <form  id="app"   method="post">
 
-    <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'id_consultor')->textInput() ?>
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+            <label for="nombre">Nombre :</label>
+		</div>
+		<div class="col-md-8">
+            <input v-bind:placeholder="nombre_hint" id="nombre" v-model="nombre" type="text" name="nombre" required >
+		</div>
+	</div>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="descripcion">Descripcion :</label>
+        </div>
+        <div class="col-md-8">
+            <input v-bind:placeholder="descripcion_hint"  id="descripcion" v-model="descripcion" type="text" name="descripcion" >
+        </div>
+	</div>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="razon_social">Razon Social :</label>
+        </div>
+        <div class="col-md-8">
+            <input v-bind:placeholder="razon_social_hint"  id="razon_social" v-model="razon_social" type="text" name="razon_social" required>
+        </div>
+	</div>
 
-    <?= $form->field($model, 'razon_social')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="contacto">Contacto :</label>
+        </div>
+        <div class="col-md-8">
+            <input v-bind:placeholder="contacto_hint"  id="contacto" v-model="contacto" type="text" name="contacto" required>
+        </div>
+	</div>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="referente">Referente :</label>
+        </div>
+        <div class="col-md-8">
+            <input v-bind:placeholder="referente_hint"  id="referente" v-model="referente" type="text" name="referente" required>
+        </div>
+	</div>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="consultor">Consultor :</label>
+        </div>
+        <div class="col-md-8">
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.id">
+                {{ option.nombre }}
+            </option>
+        </select>
+        </div>
+	</div>
 
-    <?= $form->field($model, 'contacto')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'referente')->textInput(['maxlength' => true]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+
+    <div class="row">
+		<div class="col-md-2">
+            <input type="submit" value="Enviar" class="btn btn-success">
+        </div>
     </div>
 
-    <div id="app">
-            <h1>Nombre : </h1>
-            <input v-bind:placeholder="nombre_hint" v-model="nombre" maxlength ='true' v-if="mostrar"> <br>
-        
-            <h1>descripcion : </h1>
-            <input v-bind:placeholder="descripcion_hint" v-model="descripcion"  maxlength ='true' v-if="mostrar"> <br>
-            
-            <h1>consultor : </h1>
-            <select v-model="consultores" v-if="mostrar" >
-                <option disabled value="">Seleccione un consultor</option>
-                <option v-for="consultor in consultores"> {{consultor.nombre}}</option>
-             </select>
-           
-            <h1>telefono : </h1>
-            <input v-bind:placeholder="telefono_hint" v-model="telefono"  maxlength ='true' v-if="mostrar"> <br>
-
-
-            <h1>razon social : </h1>
-            <input v-bind:placeholder="razon_social_hint" v-model="razon_social"  maxlength ='true' v-if="mostrar"> <br>
-
-            <h1>contacto : </h1>
-            <input v-bind:placeholder="contacto_hint" v-model="contacto"  maxlength ='true' v-if="mostrar"> <br>
-
-            <h1>referente : </h1>
-            <input v-bind:placeholder="referente_hint" v-model="referente"  maxlength ='true' v-if="mostrar"> <br>
-
-            <button @click="agregarEmpresa" class = 'btn btn-success' >Agregar empresa</button><br>
-        </div>
-
-
-    <?php ActiveForm::end(); ?>
-
+    </form>
 </div>
+
 <script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            nombre: '',
-            nombre_hint: 'ingrerse nombre',
-            descripcion: '',
-            descripcion_hint:"ingrese descripcion",
-            telefono: '',
-            telefono_hint:"ingrese telefono",
-            razon_social: '',
-            razon_social_hint:"ingrese razon social",
-            contacto: '',
-            contacto_hint:"ingrese contacto",
-            referente: '',
-            referente_hint:"ingrese referente",
-            mostrar: true,
-            consultor_hint:"seleccione consultor",
-            consultores:[
-                {id:"1",nombre:'test6661'},
-                {id:"2",nombre:'test6662'},
-                      ]
+  var app = new Vue({
+                    el:'#app',
+                    data:{
+                      nombre: '<?php  echo ($model->nombre); ?>',
+                      nombre_hint: 'ingrerse nombre',
+                      descripcion:'<?php  echo ($model->descripcion); ?>',
+                      descripcion_hint: 'ingrerse descripcion',
+                      razon_social:'<?php  echo ($model->razon_social); ?>',
+                      razon_social_hint: 'ingrerse razon social',
+                      contacto:'<?php  echo ($model->contacto); ?>',
+                      contacto_hint: 'ingrerse Contacto',
+                      contacto:'<?php  echo ($model->contacto); ?>',
+                      contacto_hint: 'ingrerse Contacto',
+                      referente:'<?php  echo ($model->contacto); ?>',
+                      referente_hint: 'ingrerse Referente',
+                      selected: '4',
+                      options: [
+                                { id: '4', nombre: 'Ines' },
+                                { id: '5', nombre: 'Tatiana' },
+                                { id: '10', nombre: 'Walter' }
+                               ]
+                    }
+                   
+                  })
 
-          
-        },
-        agregarEmpresa(){
-               this.nombre = ""
-               this.descripcion = ""
-
-            }
-
-
-        
-    })
 </script>
+
+
