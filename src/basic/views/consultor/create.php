@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Consultor */
 
-$this->title = 'Create Consultor';
-$this->params['breadcrumbs'][] = ['label' => 'Consultors', 'url' => ['index']];
+$this->title = 'Crear Consultor';
+$this->params['breadcrumbs'][] = ['label' => 'Consultores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="consultor-create">
