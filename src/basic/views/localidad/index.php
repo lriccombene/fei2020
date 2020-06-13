@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\LocalidadSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Localidads';
+$this->title = 'Localidades';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="localidad-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Localidad', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Localidad', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

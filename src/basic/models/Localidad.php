@@ -11,7 +11,7 @@ use Yii;
  * @property string $nombre
  * @property string|null $descripcion
  *
- * @property Actasinspecion[] $actasinspecions
+ * @property Actasinspeccion[] $actasinspeccions
  */
 class Localidad extends \yii\db\ActiveRecord
 {
@@ -47,13 +47,13 @@ class Localidad extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Actasinspecions]].
+     * Gets query for [[Actasinspeccions]].
      *
-     * @return \yii\db\ActiveQuery|ActasinspecionQuery
+     * @return \yii\db\ActiveQuery|ActasinspeccionQuery
      */
-    public function getActasinspecions()
+    public function getActasinspeccions()
     {
-        return $this->hasMany(Actasinspecion::className(), ['id_localidad' => 'id']);
+        return $this->hasMany(Actasinspeccion::className(), ['id_localidad' => 'id']);
     }
 
     /**

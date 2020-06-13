@@ -10,9 +10,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LocolidadController implements the CRUD actions for Localidad model.
+ * LocalidadController implements the CRUD actions for Localidad model.
  */
-class LocolidadController extends Controller
+class LocalidadController extends Controller
 {
     /**
      * {@inheritdoc}
