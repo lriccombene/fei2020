@@ -51,7 +51,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                     data:{
                       nombre: '<?php  echo ($model->nombre); ?>',
                       nombre_hint: 'ingrerse nombre',
-                      descripcion:null,
+                      descripcion:'<?php  echo ($model->descripcion); ?>',
                       descripcion_hint: 'ingrerse descripcion',
                     }
                    
