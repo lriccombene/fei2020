@@ -12,48 +12,49 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 
 <div class="area-form">
 
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
 
 
-    <div id="app">
-    <h1>Nombre : </h1>
-    <input v-bind:placeholder="nombre_hint" v-model="nombre" maxlength ='true' v-if="mostrar"> <br>
- 
-    <h1>Descripcion : </h1>
-    <input v-bind:placeholder="descripcion_hint" v-model="descripcion"  maxlength ='true' v-if="mostrar"> <br>
-    <button @click="agregarArea" class = 'btn btn-success' @key.enter="agregarArea" >Agregar Area</button><br>
-    </div>
-    <?php ActiveForm::end(); ?>
+<form  id="app"   @submit="checkForm"   action="http://127.0.0.1:8000/apv1/area/create"   method="post">
 
+  <p v-if="errors.length">
+    <b>Por favor, corrija el(los) siguiente(s) error(es):</b>
+    <ul>
+      <li v-for="error in errors">{{ errors }}</li>
+    </ul>
+  </p>
 
-</div>
+  <p>
+    <label for="nombre">Nombre</label>
+    <input id="nombre" v-model="nombre" type="text" name="nombre">
+  </p>
+
+  <p>
+    <label for="Descripcion">Descripcion</label>
+    <input  id="descripcion" v-model="descripcion" type="text" name="descripcion">
+  </p>
+  <p>
+    <input type="submit" value="Enviar">
+  </p>
+
+</form>
 
 
 <script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            nombre: '',
-            nombre_hint: 'ingrerse nombre',
-            descripcion: '',
-            descripcion_hint:"ingrese descripcion",
-            mostrar: true,
-          
-        },
-            agregarArea(){
-               this.nombre = ""
-               this.descripcion = ""
-            }
+  var app = new Vue({
+                    el:'#app',
+                    data:{
+                    errors:[],
+                    nombre:null,
+                    descripcion:null,
+                    },
+  methods:{
+    checkForm:function(e) {
+      if(this.descripcion && this.nombre) return true;
+        this.errors = [];
+      if(!this.nombre) this.errors.push("Nombre es requerdio.");
+      e.preventDefault();
+    }
+  }
+})
 
-
-        
-    })
 </script>
