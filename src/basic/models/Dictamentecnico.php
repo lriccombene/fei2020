@@ -21,9 +21,9 @@ use Yii;
  * @property int|null $latitud
  *
  * @property Area $area
- * @property Categorium $categoria
+ * @property Categoria $categoria
  * @property Empresa $empresa
- * @property Tipodictaman $tipodictamen
+ * @property Tipodictamen $tipodictamen
  * @property Tipotrabajo $tipotrabajo
  * @property Yacimiento $yacimiento
  */
@@ -48,9 +48,9 @@ class Dictamentecnico extends \yii\db\ActiveRecord
             [['nro', 'id_categoria', 'id_empresa', 'id_area', 'id_yacimiento', 'id_tipodictamen', 'id_tipotrabajo', 'longitud', 'latitud'], 'integer'],
             [['detalle'], 'string'],
             [['id_area'], 'exist', 'skipOnError' => true, 'targetClass' => Area::className(), 'targetAttribute' => ['id_area' => 'id']],
-            [['id_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categorium::className(), 'targetAttribute' => ['id_categoria' => 'id']],
+            [['id_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::className(), 'targetAttribute' => ['id_categoria' => 'id']],
             [['id_empresa'], 'exist', 'skipOnError' => true, 'targetClass' => Empresa::className(), 'targetAttribute' => ['id_empresa' => 'id']],
-            [['id_tipodictamen'], 'exist', 'skipOnError' => true, 'targetClass' => Tipodictaman::className(), 'targetAttribute' => ['id_tipodictamen' => 'id']],
+            [['id_tipodictamen'], 'exist', 'skipOnError' => true, 'targetClass' => Tipodictamen::className(), 'targetAttribute' => ['id_tipodictamen' => 'id']],
             [['id_tipotrabajo'], 'exist', 'skipOnError' => true, 'targetClass' => Tipotrabajo::className(), 'targetAttribute' => ['id_tipotrabajo' => 'id']],
             [['id_yacimiento'], 'exist', 'skipOnError' => true, 'targetClass' => Yacimiento::className(), 'targetAttribute' => ['id_yacimiento' => 'id']],
         ];
@@ -90,11 +90,11 @@ class Dictamentecnico extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Categoria]].
      *
-     * @return \yii\db\ActiveQuery|CategoriumQuery
+     * @return \yii\db\ActiveQuery|CategoriaQuery
      */
     public function getCategoria()
     {
-        return $this->hasOne(Categorium::className(), ['id' => 'id_categoria']);
+        return $this->hasOne(Categoria::className(), ['id' => 'id_categoria']);
     }
 
     /**
@@ -110,11 +110,11 @@ class Dictamentecnico extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Tipodictamen]].
      *
-     * @return \yii\db\ActiveQuery|TipodictamanQuery
+     * @return \yii\db\ActiveQuery|TipodictamenQuery
      */
     public function getTipodictamen()
     {
-        return $this->hasOne(Tipodictaman::className(), ['id' => 'id_tipodictamen']);
+        return $this->hasOne(Tipodictamen::className(), ['id' => 'id_tipodictamen']);
     }
 
     /**

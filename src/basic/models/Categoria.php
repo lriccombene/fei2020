@@ -11,9 +11,9 @@ use Yii;
  * @property string $nombre
  * @property string|null $descripcion
  *
- * @property Actasinspecion[] $actasinspecions
- * @property Dictamentecnico[] $dictamenestecnicos
- * @property Mesadeentrada[] $mesadeentradas
+ * @property Actasinspeccion[] $actasinspeccions
+ * @property Dictamentecnico[] $dictamentecnicos
+ * @property Mesaentrada[] $mesaentradas
  * @property Notassalida[] $notassalidas
  */
 class Categoria extends \yii\db\ActiveRecord
@@ -50,33 +50,33 @@ class Categoria extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Actasinspecions]].
+     * Gets query for [[Actasinspeccions]].
      *
-     * @return \yii\db\ActiveQuery|ActasinspecionQuery
+     * @return \yii\db\ActiveQuery|ActasinspeccionQuery
      */
-    public function getActasinspecions()
+    public function getActasinspeccions()
     {
-        return $this->hasMany(Actasinspecion::className(), ['id_categoria' => 'id']);
+        return $this->hasMany(Actasinspeccion::className(), ['id_categoria' => 'id']);
     }
 
     /**
-     * Gets query for [[Dictamentecnico]].
+     * Gets query for [[Dictamentecnicos]].
      *
      * @return \yii\db\ActiveQuery|DictamentecnicoQuery
      */
-    public function getDictamenestecnicos()
+    public function getDictamentecnicos()
     {
         return $this->hasMany(Dictamentecnico::className(), ['id_categoria' => 'id']);
     }
 
     /**
-     * Gets query for [[Mesadeentradas]].
+     * Gets query for [[Mesaentradas]].
      *
-     * @return \yii\db\ActiveQuery|MesadeentradaQuery
+     * @return \yii\db\ActiveQuery|MesaentradaQuery
      */
-    public function getMesadeentradas()
+    public function getMesaentradas()
     {
-        return $this->hasMany(Mesadeentrada::className(), ['id_categoria' => 'id']);
+        return $this->hasMany(Mesaentrada::className(), ['id_categoria' => 'id']);
     }
 
     /**

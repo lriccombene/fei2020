@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Categoria;
+use app\models\Dictamentecnico;
 
 /**
- * CategoriaSearch represents the model behind the search form of `app\models\Categoria`.
+ * DictamentecnicoSearch represents the model behind the search form of `app\models\Dictamentecnico`.
  */
-class CategoriaSearch extends Categoria
+class DictamentecnicoSearch extends Dictamentecnico
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class CategoriaSearch extends Categoria
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['nombre', 'descripcion'], 'safe'],
+            [['id', 'nro', 'id_categoria', 'id_empresa', 'id_area', 'id_yacimiento', 'id_tipodictamen', 'id_tipotrabajo', 'longitud', 'latitud'], 'integer'],
+            [['fec', 'detalle'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CategoriaSearch extends Categoria
      */
     public function search($params)
     {
-        $query = Categoria::find();
+        $query = Dictamentecnico::find();
 
         // add conditions that should always apply here
 
@@ -59,10 +59,19 @@ class CategoriaSearch extends Categoria
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'fec' => $this->fec,
+            'nro' => $this->nro,
+            'id_categoria' => $this->id_categoria,
+            'id_empresa' => $this->id_empresa,
+            'id_area' => $this->id_area,
+            'id_yacimiento' => $this->id_yacimiento,
+            'id_tipodictamen' => $this->id_tipodictamen,
+            'id_tipotrabajo' => $this->id_tipotrabajo,
+            'longitud' => $this->longitud,
+            'latitud' => $this->latitud,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre])
-            ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
+        $query->andFilterWhere(['like', 'detalle', $this->detalle]);
 
         return $dataProvider;
     }

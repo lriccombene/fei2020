@@ -5,12 +5,48 @@ use yii\widgets\ActiveForm;
 use yii\web\View;
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                       ['position'=>View::POS_HEAD]);
+
 /* @var $this yii\web\View */
-/* @var $model app\models\Actasinspeccion */
+/* @var $model app\models\Dictamentecnico */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="actasinspeccion-form">
+<div class="dictamentecnico-form">
+
+    <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'fec')->textInput() ?>
+
+    <?= $form->field($model, 'nro')->textInput() ?>
+
+    <?= $form->field($model, 'id_categoria')->textInput() ?>
+
+    <?= $form->field($model, 'id_empresa')->textInput() ?>
+
+    <?= $form->field($model, 'id_area')->textInput() ?>
+
+    <?= $form->field($model, 'id_yacimiento')->textInput() ?>
+
+    <?= $form->field($model, 'id_tipodictamen')->textInput() ?>
+
+    <?= $form->field($model, 'id_tipotrabajo')->textInput() ?>
+
+    <?= $form->field($model, 'detalle')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'longitud')->textInput() ?>
+
+    <?= $form->field($model, 'latitud')->textInput() ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+
+
+
+
 
 
     <form  id="app"   method="post">
@@ -35,37 +71,13 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             <input v-bind:placeholder="fec_hint"  id="fec" v-model="fec" type="date" name="fec">
         </div>
 	</div>
-    <div class="row">
-		<div class="col-md-2">
-            <label for="localidad">Localidad :</label>
-        </div>
-        <div class="col-md-8">
-        <select v-model="selected" required >
-            <option v-for="option in localidades" v-bind:value="option.id">
-                {{ option.nombre }}
-            </option>
-        </select>
-        </div>
-	</div>
-    <div class="row">
+      <div class="row">
 		<div class="col-md-2">
             <label for="categoria">Categoria :</label>
         </div>
         <div class="col-md-8">
         <select v-model="selected_categoria" required >
             <option v-for="option in categorias" v-bind:value="option.id">
-                {{ option.nombre }}
-            </option>
-        </select>
-        </div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
-            <label for="motivo">Motivo :</label>
-        </div>
-       <div class="col-md-8">
-        <select v-model="selected_motivo" required >
-            <option v-for="option in motivos" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
@@ -85,7 +97,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 	</div>
     <div class="row">
 		<div class="col-md-2">
-            <label for="motivo">Motivo :</label>
+            <label for="area">Area :</label>
         </div>
        <div class="col-md-8">
         <select v-model="selected_area" required >
@@ -95,6 +107,51 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </select>
         </div>
 	</div>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="yacimiento">Yacimiento :</label>
+        </div>
+       <div class="col-md-8">
+        <select v-model="selected_yacimiento" required >
+            <option v-for="option in yacimientos" v-bind:value="option.id">
+                {{ option.nombre }}
+            </option>
+        </select>
+        </div>
+	</div>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="tipodictamen">Tipo dictamen:</label>
+        </div>
+       <div class="col-md-8">
+        <select v-model="selected_tipodictamen" required >
+            <option v-for="option in tipodictamenes" v-bind:value="option.id">
+                {{ option.nombre }}
+            </option>
+        </select>
+        </div>
+	</div>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="tipotrabajo">Tipo trabajo:</label>
+        </div>
+       <div class="col-md-8">
+        <select v-model="selected_tipotrabajo" required >
+            <option v-for="option in tipotrabajos" v-bind:value="option.id">
+                {{ option.nombre }}
+            </option>
+        </select>
+        </div>
+	</div>
+    <div class="row">
+		<div class="col-md-2">
+            <label for="detalle">Detalle :</label>
+        </div>
+        <div class="col-md-8">
+            <input v-bind:placeholder="detalle_hint"  id="detalle" v-model="detalle" type="text" name="detalle">
+        </div>
+	</div>
+
     <div class="row">
 		<div class="col-md-2">
             <label for="latitud">Latitud :</label>
@@ -130,23 +187,11 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                         nro_hint: 'ingrerse nro',
                         fec:'<?php  echo ($model->fec); ?>',
                         fec_hint: 'ingrerse fec',
-                        selected: '<?php  echo ($model->id_localidad); ?>',
-                        localidades: [
-                                { id: '1', nombre: 'Localidad1' },
-                                { id: '2', nombre: 'Localidad2' },
-                                { id: '3', nombre: 'Localidad3' }
-                               ],
                         selected_categoria: '<?php  echo ($model->id_categoria); ?>',
                         categorias: [
                                 { id: '1', nombre: 'categoria1' },
                                 { id: '2', nombre: 'categoria2' },
                                 { id: '3', nombre: 'categoria3' }
-                               ],
-                        selected_motivo: '<?php  echo ($model->id_motivo); ?>',
-                        motivos: [
-                                { id: '1', nombre: 'motivo1' },
-                                { id: '2', nombre: 'motivo2' },
-                                { id: '3', nombre: 'motivo3' }
                                ],
                         selected_empresa: '<?php  echo ($model->id_empresa); ?>',
                         empresas: [
@@ -160,6 +205,26 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                                 { id: '2', nombre: 'area2' },
                                 { id: '3', nombre: 'area3' }
                                ],
+                        selected_yacimiento: '<?php  echo ($model->id_yacimiento); ?>',
+                        yacimientos: [
+                                { id: '1', nombre: 'yacimiento1' },
+                                { id: '2', nombre: 'yacicmiento2' },
+                                { id: '3', nombre: 'yacimiento3' }
+                               ],
+                        selected_tipodictamen: '<?php  echo ($model->id_tipodictamen); ?>',
+                        tipodictamenes: [
+                                { id: '1', nombre: 'tipodictamen1' },
+                                { id: '2', nombre: 'tipodictamen2' },
+                                { id: '3', nombre: 'tipodictamen3' }
+                               ],
+                        selected_tipotrabajo: '<?php  echo ($model->id_tipotrabajo); ?>',
+                        tipotrabajos: [
+                                { id: '1', nombre: 'tipotrabajo1' },
+                                { id: '2', nombre: 'tipotrabajo2' },
+                                { id: '3', nombre: 'tipotrabajo3' }
+                               ], 
+                        detalle: '<?php  echo ($model->detalle); ?>',
+                        detalle_hint: 'ingrerse detalle',
                         longitud: '<?php  echo ($model->longitud); ?>',
                         longitud_hint: 'ingrerse longitud',
                         latitud: '<?php  echo ($model->latitud); ?>',
