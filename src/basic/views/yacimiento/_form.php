@@ -5,13 +5,15 @@ use yii\widgets\ActiveForm;
 use yii\web\View;
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                       ['position'=>View::POS_HEAD]);
+
 /* @var $this yii\web\View */
-/* @var $model app\models\Tipotramite */
+/* @var $model app\models\Yacimiento */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="tipotramite-form">
+<div class="yacimiento-form">
 
+   
 
 <form  id="app"   method="post">
 
