@@ -46,7 +46,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             <label for="email">Email :</label>
         </div>
         <div class="col-md-8">
-            <input v-bind:placeholder="email_hint"  id="email" v-model="email" type="text" name="email" required>
+            <input v-bind:placeholder="email_hint"  id="email" v-model="email" type="email" name="email" required>
         </div>
 	</div>
 
