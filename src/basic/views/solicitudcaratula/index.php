@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\SolicitudcaratulaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Solicitudcaratulas';
+$this->title = 'Solicitud de caratulas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="solicitudcaratula-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Solicitudcaratula', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Solicitud de caratula', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

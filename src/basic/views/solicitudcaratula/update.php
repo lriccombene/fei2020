@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Solicitudcaratula */
 
-$this->title = 'Update Solicitudcaratula: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Solicitudcaratulas', 'url' => ['index']];
+$this->title = 'Actualizar Solicitud de Caratula: ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Solicitud de Caratulas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
