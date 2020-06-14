@@ -10,10 +10,10 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Area */
+/* @var $model app\models\Categoria */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Area', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Categoria', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
