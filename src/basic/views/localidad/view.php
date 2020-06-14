@@ -2,6 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\web\View;
+
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
+                      ['position'=>View::POS_HEAD]);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Localidad */
@@ -36,3 +40,33 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+</div>
+   <div id="app">
+
+        <table id="w0" class="table table-striped table-bordered detail-view">
+            <tbody>
+                <tr><th>ID</th><td>1</td></tr>
+                <tr><th>Nombre</th><td>{{nombre}}</td></tr>
+                <tr><th>Descripcion</th><td>{{descripcion}}</td></tr>
+            </tbody>
+        </table>
+    </div>
+<script>
+
+
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            id:1,
+            nombre: '<?php  echo ($model->nombre); ?>',
+            descripcion:'<?php  echo ($model->descripcion); ?>', 
+            mostrar: true,
+          
+        }
+       
+
+        
+    })
+</script>

@@ -61,16 +61,11 @@ $this->params['breadcrumbs'][] = $this->title;
         el: '#app',
         data: {
             id:1,
-            nombre: 'Area 1',
-            descripcion: 'Descripcion del Area 1',
+            nombre: '<?php  echo ($model->nombre); ?>',
+            descripcion:'<?php  echo ($model->descripcion); ?>', 
             mostrar: true,
           
-        },
-        agregarArea(){
-               this.nombre = ""
-               this.descripcion = ""
         }
-
 
         
     })

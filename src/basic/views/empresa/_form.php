@@ -38,7 +38,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             <label for="razon_social">Razon Social :</label>
         </div>
         <div class="col-md-8">
-            <input v-bind:placeholder="razon_social_hint"  id="razon_social" v-model="razon_social" type="text" name="razon_social" required>
+            <input v-bind:placeholder="razon_social_hint"  id="razon_social" v-model="razon_social" type="text" name="razon_social" >
         </div>
 	</div>
 
@@ -47,7 +47,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             <label for="contacto">Contacto :</label>
         </div>
         <div class="col-md-8">
-            <input v-bind:placeholder="contacto_hint"  id="contacto" v-model="contacto" type="text" name="contacto" required>
+            <input v-bind:placeholder="contacto_hint"  id="contacto" v-model="contacto" type="text" name="contacto" >
         </div>
 	</div>
     <div class="row">
@@ -55,7 +55,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             <label for="referente">Referente :</label>
         </div>
         <div class="col-md-8">
-            <input v-bind:placeholder="referente_hint"  id="referente" v-model="referente" type="text" name="referente" required>
+            <input v-bind:placeholder="referente_hint"  id="referente" v-model="referente" type="text" name="referente" >
         </div>
 	</div>
     <div class="row">
@@ -63,7 +63,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             <label for="consultor">Consultor :</label>
         </div>
         <div class="col-md-8">
-        <select v-model="selected">
+        <select v-model="selected" required >
             <option v-for="option in options" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
@@ -84,17 +84,17 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                     el:'#app',
                     data:{
                       nombre: '<?php  echo ($model->nombre); ?>',
-                      nombre_hint: 'ingrerse nombre',
+                      nombre_hint: 'ingrese nombre',
                       descripcion:'<?php  echo ($model->descripcion); ?>',
-                      descripcion_hint: 'ingrerse descripcion',
+                      descripcion_hint: 'ingrese descripcion',
                       razon_social:'<?php  echo ($model->razon_social); ?>',
-                      razon_social_hint: 'ingrerse razon social',
+                      razon_social_hint: 'ingrese razon social',
                       contacto:'<?php  echo ($model->contacto); ?>',
-                      contacto_hint: 'ingrerse Contacto',
+                      contacto_hint: 'ingrese Contacto',
                       contacto:'<?php  echo ($model->contacto); ?>',
-                      contacto_hint: 'ingrerse Contacto',
+                      contacto_hint: 'ingrese Contacto',
                       referente:'<?php  echo ($model->contacto); ?>',
-                      referente_hint: 'ingrerse Referente',
+                      referente_hint: 'ingrese Referente',
                       selected: '4',
                       options: [
                                 { id: '4', nombre: 'Ines' },
