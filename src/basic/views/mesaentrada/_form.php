@@ -81,7 +81,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 <div class="col-md-8">
                     <textarea v-bind:placeholder="descripcion_hint"  id="descripcion" v-model="descripcion" type="text" name="descripcion"></textarea>
                 </div>
-        </div>
+            </div>
     </form>
 </div>
 
