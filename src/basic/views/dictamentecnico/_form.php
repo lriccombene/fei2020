@@ -12,44 +12,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 ?>
 
 <div class="dictamentecnico-form">
-
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'fec')->textInput() ?>
-
-    <?= $form->field($model, 'nro')->textInput() ?>
-
-    <?= $form->field($model, 'id_categoria')->textInput() ?>
-
-    <?= $form->field($model, 'id_empresa')->textInput() ?>
-
-    <?= $form->field($model, 'id_area')->textInput() ?>
-
-    <?= $form->field($model, 'id_yacimiento')->textInput() ?>
-
-    <?= $form->field($model, 'id_tipodictamen')->textInput() ?>
-
-    <?= $form->field($model, 'id_tipotrabajo')->textInput() ?>
-
-    <?= $form->field($model, 'detalle')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'longitud')->textInput() ?>
-
-    <?= $form->field($model, 'latitud')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
-
-
-
-
-
-
-    <form  id="app"   method="post">
+  <form  id="app"   method="post">
 
 
     <div class="container-fluid">
