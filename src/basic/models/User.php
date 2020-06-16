@@ -5,6 +5,7 @@ namespace app\models;
 class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
     public $id;
+    public $id_rol;
     public $username;
     public $password;
     public $authKey;
@@ -73,6 +74,10 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public function getId()
     {
         return $this->id;
+    }
+    public function getId_rol()
+    {
+        return $this->id_rol;
     }
 
     /**

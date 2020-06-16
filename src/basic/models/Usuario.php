@@ -7,55 +7,71 @@ use Yii;
 /**
  * This is the model class for table "usuario".
  *
- * @property int $id
  * @property string $username
- * @property string|null $nombre
- * @property string|null $apellido
- * @property int|null $edad
+ * @property string $name
+ * @property string|null $password
+ * @property string|null $authKey
+ * @property string|null $accessToken
+ * @property int $id
+ * @property int $id_rol
  */
-class Usuario extends \yii\db\ActiveRecord
+class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
-    /**
-     * {@inheritdoc}
-     */
+    
     public static function tableName()
     {
         return 'usuario';
     }
-
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
-            [['username'], 'required'],
-            [['nombre', 'apellido'], 'string'],
-            [['edad'], 'integer'],
-            [['username'], 'string', 'max' => 255],
+            [['username', 'name'], 'required'],
+            [['username', 'name','id_rol'], 'string', 'max' => 80],
+            [['password'], 'string', 'max' => 255],
         ];
     }
-
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'username' => 'Username',
-            'nombre' => 'Nombre',
-            'apellido' => 'Apellido',
-            'edad' => 'Edad',
+            'username' => 'Nombre de usuaruio',
+            'name' => 'Nombre',
+            'password' => 'Clave',
+            'id' => 'Identificador',
+            'id_rol' => 'Rol',
         ];
     }
-
-    /**
-     * {@inheritdoc}
-     * @return UsuarioQuery the active query used by this AR class.
-     */
-    public static function find()
+    public static function findIdentity($id)
     {
-        return new UsuarioQuery(get_called_class());
+        return self::findOne($id);
+    }
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return self::findOne(['accessToken'=>$token]);
+    }
+    public static function findByUsername($username)
+    {
+        return self::findOne(['username'=>$username]);
+    }
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getAuthKey()
+    {
+        return $this->authKey;
+    }
+    public function validateAuthKey($authKey)
+    {
+        return $this->authKey === $authKey;
+    }
+
+    public function validatePassword($password)
+    {
+        return password_verify($password,$this->password);
+    }
+
+    public function getId_rol()
+    {
+        return $this->id_rol;
     }
 }

@@ -26,8 +26,19 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+
+<div> <?php 
+         $banderita=FALSE;
+         if(Yii::$app->user->id==5){
+            $banderita=TRUE;
+         }
+    ?></div>
+
 <div class="wrap">
     <?php
+   
+
+
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
@@ -39,6 +50,12 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Actas de Inspeccion', 'url' => ['/actasinspeccion/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Dictamen Tecnico', 'url' => ['/dictamentecnico/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Env. Documentacion', 'url' => ['/enviosdocumentacion/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Mesa de Entrada', 'url' => ['/mesaentrada/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Notas Salida', 'url' => ['/notassalida/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Solid. Caratula', 'url' => ['/solicitudcaratula/index'],'visible'=>!Yii::$app->user->isGuest],
             ['label' => 'Parametros', 'items' => [
                 ['label'=> 'Area', 'url' => ['/area/index']],
                 ['label'=> 'Categoria', 'url' => ['/categoria/index']],
@@ -51,10 +68,8 @@ AppAsset::register($this);
                 ['label'=> 'Tipo trabajo', 'url' => ['/tipotrabajo/index']],
                 ['label'=> 'Tipo tramite', 'url' => ['/tipotramite/index']],
                 ['label'=> 'Yacimiento', 'url' => ['/yacimiento/index']],
-                
-                ]
+            ] ,'visible'=> $banderita],
 
-            ] ,
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
