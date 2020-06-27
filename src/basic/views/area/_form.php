@@ -18,6 +18,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 		</div>
 		<div class="col-md-8">
           <input v-bind:placeholder="nombre_hint" id="nombre" v-model="nombre" type="text" name="nombre" required >
+          <span class="text-danger" v-if="errors.nombre" >{{errors.nombre}}</span>
 		</div>
 	</div>
     <div class="row">
@@ -26,6 +27,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
       </div>
       <div class="col-md-8">
               <input v-bind:placeholder="descripcion_hint"  id="descripcion" v-model="descripcion" type="text" name="descripcion">
+              <span class="text-danger" v-if="errors.descripcion" >{{errors.descripcion}}</span>
       </div>
 	  </div>
 
@@ -49,8 +51,16 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                       descripcion:'<?php  echo ($model->descripcion); ?>',
                       descripcion_hint: 'ingrerse descripcion',
                       id:'<?php  echo ($model->id); ?>',
+                      errors: {},
                     },  // define methods under the `methods` object
                     methods: {
+                      normalizeErrors: function(errors){
+                            var allErrors = {};
+                            for(var i = 0 ; i < errors.length; i++ ){
+                                allErrors[errors[i].field] = errors[i].message;
+                            }
+                            return allErrors;
+                      },
                       addArea: function(){
                            var self = this;
                            const params = new URLSearchParams();
@@ -65,8 +75,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                               })
                               .catch(function (error) {
                                   // handle error
-                                  console.log(error);
-
+                                  console.log(error.response.data);
+                                  self.errors = self.normalizeErrors(error.response.data);
                               })
                               .then(function () {
                                   // always executed

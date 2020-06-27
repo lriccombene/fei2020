@@ -92,11 +92,19 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                     data:{
                         areas:[],
                         area: {},
-                      id:'',
+                        id:'',
+                        currentPage:1,
+                        pagination:{},
+                        filters:{},
                     },
                     mounted(){
                         this.getAreas();
                         
+                    },
+                    watch:{
+                        currentPage:function(){
+                            this.getAreas();
+                        }
                     },
                     // define methods under the `methods` object
                     methods: {
