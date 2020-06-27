@@ -75,11 +75,6 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     {
         return $this->id;
     }
-    public function getId_rol()
-    {
-        return $this->id_rol;
-    }
-
     /**
      * {@inheritdoc}
      */
