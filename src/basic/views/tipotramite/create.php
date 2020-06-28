@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tipotramite */
 
-$this->title = 'Crear Tipotramite';
-$this->params['breadcrumbs'][] = ['label' => 'Tipo tramite', 'url' => ['index']];
+$this->title = 'Create Tipotramite';
+$this->params['breadcrumbs'][] = ['label' => 'Tipotramites', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tipotramite-create">

@@ -10,6 +10,8 @@ use Yii;
  * @property int $id
  * @property string $nombre
  * @property string|null $descripcion
+ *
+ * @property Dictamentecnico[] $dictamentecnicos
  */
 class Tipodictamen extends \yii\db\ActiveRecord
 {
@@ -42,6 +44,16 @@ class Tipodictamen extends \yii\db\ActiveRecord
             'nombre' => 'Nombre',
             'descripcion' => 'Descripcion',
         ];
+    }
+
+    /**
+     * Gets query for [[Dictamentecnicos]].
+     *
+     * @return \yii\db\ActiveQuery|DictamentecnicoQuery
+     */
+    public function getDictamentecnicos()
+    {
+        return $this->hasMany(Dictamentecnico::className(), ['id_tipodictamen' => 'id']);
     }
 
     /**
