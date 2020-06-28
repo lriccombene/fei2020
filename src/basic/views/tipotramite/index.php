@@ -90,7 +90,6 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                <button v-on:click ="deleteTipotramite(tipotramite.id)" type ="button" class="btn btn-danger">Borrar</button>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
