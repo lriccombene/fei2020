@@ -160,7 +160,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                 .then(function (response) {
                                     // handle success
                                     console.log(response.data);
-                                    self.getCategoriass();
+                                    self.getCategorias();
 
                                 })
                                 .catch(function (error) {
