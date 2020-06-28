@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+Yii::$app->params['boostrap']=3;
 
 
 /* @var $this yii\web\View */
@@ -16,6 +17,15 @@ $this->params['breadcrumbs'][] = $this->title;
 use yii\web\View;
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
+/*
+$this->registerCssFile("//unpkg.com/bootstrap/dist/css/bootstrap.min.css",['position'=>$this::POS_HEAD]);
+$this->registerCssFile("//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css",['position'=>$this::POS_HEAD]);
+//$this->registerCssFile("//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver",['position'=>$this::POS_HEAD]);
+
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>$this::POS_HEAD]);
+$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js",['position'=>$this::POS_HEAD]);
+//$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js",['position'=>$this::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]); */
 
 ?>
 <div class="area-index">
@@ -31,8 +41,17 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 
 <div id='app'>
     <div class="container-fluid">
+
         <div class="row">
             <div class="col-md-12">
+         <!--    <b-pagination
+            v-model="currentPage"
+            :total-rows.number="pagination.total"
+            :per-page.number="pagination.perPage"
+            aria-controls="my-table"
+            ></b-pagination> -->
+
+                <p class="mt-3">Current Page: {{ currentPage }}</p>
                 <table class="table">
                     <thead>
                         <tr>
@@ -54,6 +73,20 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                             <th>
 
                             </th>
+                        </tr>
+                        <tr>
+                            <td >
+                                <input v-on:change="getAreas()" class="form-control" v-model="filter.id">
+                            </td>
+                            <td>
+                                <input v-on:change="getAreas()" class="form-control" v-model="filter.nombre">
+                            </td>
+                            <td>
+                                <input v-on:change="getAreas()" class="form-control" v-model="filter.descripcion">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,9 +126,9 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         areas:[],
                         area: {},
                         id:'',
-                        currentPage:1,
+                        currentPage: 1,
                         pagination:{},
-                        filters:{},
+                        filter:{},
                     },
                     mounted(){
                         this.getAreas();
@@ -103,17 +136,26 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                     },
                     watch:{
                         currentPage:function(){
-                            this.getAreas();
+                           // this.getAreas();
                         }
                     },
                     // define methods under the `methods` object
                     methods: {
                         getAreas:function(){
                             var self=this;
-                            axios.get('/apv1/area')
+                            const params = new URLSearchParams();
+                           params.append('nombre', self.filter.nombre);
+                           params.append('descripcion', self.filter.descripcion);
+
+
+                            axios.get('/apv1/area?page='+self.currentPage,{params:params})
                                 .then(function (response) {
                                     // handle success
                                     console.log(response.data);
+                                    self.pagination.total = response.headers['x-pagination-total-count'];
+                                    self.pagination.totalPages = response.headers['x-pagination-page-count'];
+                                    self.pagination.perPage = response.headers['x-pagination-per-page'];
+                                    
                                     self.areas=response.data;
 
                                 })

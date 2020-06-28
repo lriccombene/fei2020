@@ -88,7 +88,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         const params = new URLSearchParams();
                            params.append('nombre', self.nombre);
                            params.append('descripcion', self.descripcion);
-                           alert(params);
+                          // alert(params);
                            axios.patch('/apv1/area'+'/'+id,params)
                               .then(function (response) {
                                   // handle success
