@@ -123,7 +123,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
       <div class="col-md-2"> 
               
              <button v-if="!id"  v-on:click="addActas()"  type ="button"  class="btn btn-success">Enviar</button>
-              <button v-if="id" v-on:click ="editArea(id)" type ="button" class="btn btn-warning" >Actualizar</button>
+              <button v-if="id" v-on:click ="editActas(id)" type ="button" class="btn btn-warning" >Actualizar</button>
               
           </div>
       </div>
@@ -288,6 +288,36 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                   // handle error
                                   console.log(error.response.data);
                                   self.errors = self.normalizeErrors(error.response.data);
+                              })
+                              .then(function () {
+                                  // always executed
+                              });
+                      },
+                      editActas:function(id){
+                        
+                        var self = this;
+                        const params = new URLSearchParams();
+                        params.append('nro', self.nro);
+                           params.append('fec', self.fec);
+                           params.append('id_localidad', self.selected_localidad);
+                           params.append('id_categoria', self.selected_categoria);
+                           params.append('id_motivo', self.selected_motivo);
+                           params.append('id_empresa', self.selected_empresa);
+                           params.append('id_area', self.selected_area);
+                           params.append('latitud', self.latitud);
+                           params.append('longitud', self.longitud);
+                          // alert(params);
+                           axios.patch('/apv1/actasinspeccion'+'/'+id,params)
+                              .then(function (response) {
+                                  // handle success
+                                  console.log(response.data);
+                                  alert('Los datos fueron actualizados');
+
+                              })
+                              .catch(function (error) {
+                                  // handle error
+                                  console.log(error);
+
                               })
                               .then(function () {
                                   // always executed
