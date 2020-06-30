@@ -65,10 +65,10 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                 Descripcion
                             </th>
                             <th>
-                                
+
                             </th>
                             <th>
-                         
+
                             </th>
                             <th>
 
@@ -132,7 +132,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                     },
                     mounted(){
                         this.getAreas();
-                        
+
                     },
                     watch:{
                         currentPage:function(){
@@ -148,14 +148,13 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                            params.append('descripcion', self.filter.descripcion);
 
 
-                            axios.get('/apv1/area?page='+self.currentPage,{params:params})
+                            axios.get('/apv1/area?page='+self.currentPage,{params:self.filter})
                                 .then(function (response) {
                                     // handle success
                                     console.log(response.data);
                                     self.pagination.total = response.headers['x-pagination-total-count'];
                                     self.pagination.totalPages = response.headers['x-pagination-page-count'];
                                     self.pagination.perPage = response.headers['x-pagination-per-page'];
-                                    
                                     self.areas=response.data;
 
                                 })
@@ -191,8 +190,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 
                         }
 
-                      
+
                       }
-                    
+
                   })
 </script>
