@@ -135,7 +135,7 @@ var app = new Vue({
                        params.append('descripcion', self.filter.descripcion);
 
 
-                        axios.get('/apv1/motivo/?page='+self.currentPage,{params:params})
+                        axios.get('/apv1/motivo/?page='+self.currentPage,{params:self.filter})
                             .then(function (response) {
                                 // handle success
                                 console.log(response.data);
