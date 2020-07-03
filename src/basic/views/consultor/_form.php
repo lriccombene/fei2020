@@ -6,15 +6,15 @@ use yii\web\View;
 /* @var $this yii\web\View */
 /* @var $model app\models\Area */
 /* @var $form yii\widgets\ActiveForm */
-$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
-                      ['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 ?>
 
 <div class="area-form " >
 
 
-    <form  id="app"   method="post">
-
+<form  >
+ <div id="app" >
 
     <div class="container-fluid">
 	<div class="row">
@@ -65,26 +65,81 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
             <input type="submit" value="Enviar" class="btn btn-success">
         </div>
     </div>
-
-    </form>
+  </div>
+</form>
 </div>
 
 <script>
   var app = new Vue({
                     el:'#app',
                     data:{
-                      nombre: '<?php  echo ($model->nombre); ?>',
-                      nombre_hint: 'ingrerse nombre',
-                      apellido:'<?php  echo ($model->apellido); ?>',
-                      apellido_hint: 'ingrerse apellido',
-                      telefono:'<?php  echo ($model->telefono); ?>',
-                      telefono_hint: 'ingrerse telefono',
-                      email:'<?php  echo ($model->email); ?>',
-                      email_hint: 'ingrerse email',
-                      domicilio:'<?php  echo ($model->domicilio); ?>',
-                      domicilio_hint: 'ingrerse domicilio'
-                    }
-                   
-                  })
+                        id:'',
+                        nombre: '<?php  echo ($model->nombre); ?>',
+                        nombre_hint: 'ingrerse nombre',
+                        apellido:'<?php  echo ($model->apellido); ?>',
+                        apellido_hint: 'ingrerse apellido',
+                        telefono:'<?php  echo ($model->telefono); ?>',
+                        telefono_hint: 'ingrerse telefono',
+                        email:'<?php  echo ($model->email); ?>',
+                        email_hint: 'ingrerse email',
+                        domicilio:'<?php  echo ($model->domicilio); ?>',
+                        domicilio_hint: 'ingrerse domicilio'
+                        errors: {},
 
+                    },  // define methods under the `methods` object
+                    methods: {
+                      normalizeErrors: function(errors){
+                            var allErrors = {};
+                            for(var i = 0 ; i < errors.length; i++ ){
+                                allErrors[errors[i].field] = errors[i].message;
+                            }
+                            return allErrors;
+                      },
+                      addArea: function(){
+                           var self = this;
+                           const params = new URLSearchParams();
+                           params.append('nombre', self.nombre);
+                           params.append('descripcion', self.descripcion);
+                           axios.post('/apv1/area',params)
+                              .then(function (response) {
+                                  // handle success
+                                  console.log(response.data);
+                                  alert('Los datos fueron guardados');
+
+                              })
+                              .catch(function (error) {
+                                  // handle error
+                                  console.log(error.response.data);
+                                  self.errors = self.normalizeErrors(error.response.data);
+                              })
+                              .then(function () {
+                                  // always executed
+                              });
+                      },
+                      editArea:function(id){
+                        
+                        var self = this;
+                        const params = new URLSearchParams();
+                           params.append('nombre', self.nombre);
+                           params.append('descripcion', self.descripcion);
+                          // alert(params);
+                           axios.patch('/apv1/area'+'/'+id,params)
+                              .then(function (response) {
+                                  // handle success
+                                  console.log(response.data);
+                                  alert('Los datos fueron actualizados');
+
+                              })
+                              .catch(function (error) {
+                                  // handle error
+                                  console.log(error);
+
+                              })
+                              .then(function () {
+                                  // always executed
+                              });
+                      }
+
+                    }
+                  })
 </script>

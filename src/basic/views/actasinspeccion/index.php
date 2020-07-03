@@ -23,27 +23,6 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'nro',
-            'fec',
-            'id_localidad',
-            'id_categoria',
-            //'id_motivo',
-            //'id_empresa',
-            //'id_area',
-            //'latitud',
-            //'longitud',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
 
 <div id='app'>
     <div class="container-fluid">

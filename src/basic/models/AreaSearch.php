@@ -14,13 +14,6 @@ class AreaSearch extends Area
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
-        return [
-            [['id'], 'integer'],
-            [['nombre', 'descripcion'], 'safe'],
-        ];
-    }
 
     /**
      * {@inheritdoc}
@@ -48,7 +41,7 @@ class AreaSearch extends Area
             'query' => $query,
         ]);
 
-        $this->load($params);
+        $this->load($params,'');
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails

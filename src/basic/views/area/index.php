@@ -21,7 +21,6 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 $this->registerCssFile("//unpkg.com/bootstrap/dist/css/bootstrap.min.css",['position'=>$this::POS_HEAD]);
 $this->registerCssFile("//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css",['position'=>$this::POS_HEAD]);
 //$this->registerCssFile("//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver",['position'=>$this::POS_HEAD]);
-
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>$this::POS_HEAD]);
 $this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js",['position'=>$this::POS_HEAD]);
 //$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js",['position'=>$this::POS_HEAD]);
@@ -65,10 +64,10 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                 Descripcion
                             </th>
                             <th>
-                                
+
                             </th>
                             <th>
-                         
+
                             </th>
                             <th>
 
@@ -132,7 +131,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                     },
                     mounted(){
                         this.getAreas();
-                        
+
                     },
                     watch:{
                         currentPage:function(){
@@ -148,14 +147,13 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                            params.append('descripcion', self.filter.descripcion);
 
 
-                            axios.get('/apv1/area?page='+self.currentPage,{params:params})
+                            axios.get('/apv1/area?page='+self.currentPage,{params:self.filter})
                                 .then(function (response) {
                                     // handle success
                                     console.log(response.data);
                                     self.pagination.total = response.headers['x-pagination-total-count'];
                                     self.pagination.totalPages = response.headers['x-pagination-page-count'];
                                     self.pagination.perPage = response.headers['x-pagination-per-page'];
-                                    
                                     self.areas=response.data;
 
                                 })
@@ -191,8 +189,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 
                         }
 
-                      
+
                       }
-                    
+
                   })
 </script>
