@@ -75,7 +75,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(tipotramite,key) of tipodictamenes" v-bind:key="tipotramite.id">
+                        <tr v-for="(tipotramite,key) of tipotramites" v-bind:key="tipotramite.id">
                             <td scope="row">{{tipotramite.id}} </td>
                             <td>
                                 {{tipotramite.nombre}}
@@ -107,7 +107,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
   var app = new Vue({
                     el:'#app',
                     data:{
-                        tipodictamenes:[],
+                        tipotramites:[],
                         tipotramite: {},
                         id:'',
                         currentPage: 1,
@@ -129,14 +129,14 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                             const params = new URLSearchParams();
                             params.append('nombre', self.filter.nombre);
                             params.append('descripcion', self.filter.descripcion);
-                            axios.get('/apv1/tipotramite?page='+self.currentPage,{params:params})
+                            axios.get('/apv1/tipotramite?page='+self.currentPage,{params:self.filter})
                                 .then(function (response) {
                                     // handle success
                                     console.log(response.data);
                                     self.pagination.total = response.headers['x-pagination-total-count'];
                                     self.pagination.totalPages = response.headers['x-pagination-page-count'];
                                     self.pagination.perPage = response.headers['x-pagination-per-page'];
-                                    self.tipodictamenes=response.data;
+                                    self.tipotramites=response.data;
                                 })
                                 .catch(function (error) {
                                     // handle error

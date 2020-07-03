@@ -61,13 +61,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     </tr>
                     <tr>
                         <td >
-                            <input v-on:change="getMotivos()" class="form-control" v-model="filter.id">
+                            <input v-on:change="getRelevancias()" class="form-control" v-model="filter.id">
                         </td>
                         <td>
-                            <input v-on:change="getMotivos()" class="form-control" v-model="filter.nombre">
+                            <input v-on:change="getRelevancias()" class="form-control" v-model="filter.nombre">
                         </td>
                         <td>
-                            <input v-on:change="getMotivos()" class="form-control" v-model="filter.descripcion">
+                            <input v-on:change="getRelevancias()" class="form-control" v-model="filter.descripcion">
                         </td>
                         <td></td>
                         <td></td>
@@ -116,17 +116,17 @@ var app = new Vue({
                     filter:{},
                 },
                 mounted(){
-                    this.getMotivos();
+                    this.getRelevancias();
                     
                 },
                 watch:{
                     currentPage:function(){
-                        this.getMotivos();
+                        this.getRelevancias();
                     }
                 },
                 // define methods under the `methods` object
                 methods: {
-                    getMotivos:function(){
+                    getRelevancias:function(){
                         var self=this;
                         const params = new URLSearchParams();
                        params.append('nombre', self.filter.nombre);
@@ -159,7 +159,7 @@ var app = new Vue({
                             .then(function (response) {
                                 // handle success
                                 console.log(response.data);
-                                self.getMotivos();
+                                self.getRelevancias();
 
                             })
                             .catch(function (error) {
