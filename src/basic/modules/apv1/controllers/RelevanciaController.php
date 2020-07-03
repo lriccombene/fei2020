@@ -1,7 +1,9 @@
 <?php
 
 namespace app\modules\apv1\controllers;
-
+use app\modules\apv1\models\Relevancia;
+use app\modules\apv1\models\RelevanciaSearch;
+use Yii;
 use yii\rest\ActiveController;
 
 /**
@@ -10,5 +12,19 @@ use yii\rest\ActiveController;
 class RelevanciaController extends ActiveController
 {
     public $modelClass ="app\modules\apv1\models\Relevancia";
+    
+    public function actions()
+    {
+        $actions = parent::actions();
+        $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
+//        $actions['index']['dataFilter'] = ['class'=>ActiveDataFilter::class,'searchModel' => Post::class];
+        return $actions;
+    }
 
+    public function prepareDataProvider()
+    {
+        $searchModel = new Relevancia();
+        $dataProvider =  $searchModel->search(Yii::$app->request->queryParams);
+        return $dataProvider;
+    }
 }
