@@ -29,4 +29,8 @@ class AreaController extends ActiveController
         return $dataProvider;
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b1aacd707b33896fad740b35829584e49cf776d8

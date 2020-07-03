@@ -11,7 +11,7 @@ services:
             - 4000:3386
     volumes:
             - ./mysqldata:/var/lib/mysql:delegated
-    
+
   myadmin:
     image: phpmyadmin/phpmyadmin
     environment:
@@ -33,9 +33,9 @@ services:
       DB_HOST: db
       PHP_ENABLE_XDEBUG: 1
       PHP_USER_ID: 1000
+      PRODUCCION: 0
 
 
-    ports:  
+    ports:
       - 8000:80
 
-      
