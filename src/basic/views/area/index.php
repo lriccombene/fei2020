@@ -146,7 +146,6 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                            params.append('nombre', self.filter.nombre);
                            params.append('descripcion', self.filter.descripcion);
 
-
                             axios.get('/apv1/area?page='+self.currentPage,{params:self.filter})
                                 .then(function (response) {
                                     // handle success

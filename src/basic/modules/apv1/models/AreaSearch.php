@@ -74,8 +74,8 @@ class AreaSearch extends \app\modules\apv1\models\Area
 
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->title])
-            ->andFilterWhere(['like', 'descripcion', $this->body]);
+        $query->andFilterWhere(['like', 'nombre', $this->nombre])
+            ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
 
         return $dataProvider;
     }

@@ -4,12 +4,12 @@ namespace app\modules\apv1\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Categoria;
+use app\models\Actasinspeccion;
 
 /**
  * PostSearch represents the model behind the search form of `app\models\Post`.
  */
-class CategoriaSearch extends \app\modules\apv1\models\Categoria
+class ActasinspeccionSearch extends \app\modules\apv1\models\Actasinspeccion
 {
 
     public function fields()
@@ -51,8 +51,8 @@ class CategoriaSearch extends \app\modules\apv1\models\Categoria
      */
     public function search($params)
     {
-        $query = Categoria::find();
-//        $query->joinWith('comments');
+        $query = Actasinspeccion::find();
+        $query->joinWith('localidad');
 
         // add conditions that should always apply here
 
@@ -61,7 +61,7 @@ class CategoriaSearch extends \app\modules\apv1\models\Categoria
         ]);
 
         $this->load($params,'');
-
+       
 //        if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -74,9 +74,14 @@ class CategoriaSearch extends \app\modules\apv1\models\Categoria
 
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->title])
-            ->andFilterWhere(['like', 'descripcion', $this->body]);
+        $query->andFilterWhere(['like', 'nro', $this->nro])
+            ->andFilterWhere(['like', 'fec', $this->fec]);
+    
+        $query->andFilterWhere(['like','localidad.nombre',$this->id_localidad]);
+
 
         return $dataProvider;
     }
 }
+
+

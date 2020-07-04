@@ -134,13 +134,15 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                     // define methods under the `methods` object
                     methods: {
                         getActas:function(){
+                            
                             var self=this;
                             const params = new URLSearchParams();
                            params.append('nro', self.filter.nro);
                            params.append('fec', self.filter.fec);
+                          // params.append('id_localidad', self.filter.id_localidad);
 
 
-                            axios.get('/apv1/actasinspeccion?page='+self.currentPage,{params:params})
+                            axios.get('/apv1/actasinspeccion?page='+self.currentPage,{params:self.filter})
                                 .then(function (response) {
                                     // handle success
                                     console.log(response.data);

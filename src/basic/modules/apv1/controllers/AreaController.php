@@ -28,9 +28,4 @@ class AreaController extends ActiveController
         $dataProvider =  $searchModel->search(Yii::$app->request->queryParams);
         return $dataProvider;
     }
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b1aacd707b33896fad740b35829584e49cf776d8
