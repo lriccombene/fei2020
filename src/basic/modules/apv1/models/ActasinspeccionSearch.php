@@ -2,15 +2,15 @@
 
 namespace app\modules\apv1\models;
 
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Actasinspeccion;
 
 /**
  * PostSearch represents the model behind the search form of `app\models\Post`.
  */
 class ActasinspeccionSearch extends \app\modules\apv1\models\Actasinspeccion
 {
+
+    public $localidad;
 
     public function fields()
     {
@@ -25,13 +25,13 @@ class ActasinspeccionSearch extends \app\modules\apv1\models\Actasinspeccion
     /**
      * {@inheritdoc}
      */
-//    public function rules()
-//    {
-//        return [
-////            [['id', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-//            [['id','title', 'body','comments'], 'safe'],
-//        ];
-//    }
+    public function rules()
+    {
+        return [
+            [['id', ], 'integer'],
+            [['localidad', 'fec','nro'], 'safe'],
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -77,10 +77,8 @@ class ActasinspeccionSearch extends \app\modules\apv1\models\Actasinspeccion
             'latitud' => $this->latitud,
             'longitud' => $this->longitud,
         ]);
-        $query->andFilterWhere(['like','localidad.nombre',$this->id_localidad]);
+        $query->andFilterWhere(['like','localidad.nombre',$this->localidad]);
 
         return $dataProvider;
     }
 }
-
-

@@ -71,7 +71,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                 <input v-on:change="getActas()" class="form-control" v-model="filter.fec">
                             </td>
                             <td>
-                                <input v-on:change="getActas()" class="form-control" v-model="filter.id_localidad">
+                                <input v-on:change="getActas()" class="form-control" v-model="filter.localidad">
                             </td>
                             <td></td>
                             <td></td>
@@ -139,7 +139,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                             const params = new URLSearchParams();
                            params.append('nro', self.filter.nro);
                            params.append('fec', self.filter.fec);
-                           params.append('id_localidad', self.filter.id_localidad);
+                           params.append('localidad', self.filter.localidad);
 
 
                             axios.get('/apv1/actasinspeccion?page='+self.currentPage,{params:self.filter})

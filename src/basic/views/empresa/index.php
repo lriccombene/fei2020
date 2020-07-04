@@ -6,6 +6,9 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EmpresaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+use yii\web\View;
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 
 $this->title = 'Empresas';
 $this->params['breadcrumbs'][] = $this->title;
@@ -20,23 +23,171 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'nombre',
-            'descripcion',
-            'id_consultor',
-            'razon_social',
-            //'contacto',
-            //'referente',
+    <div id='app'>
+    <div class="container-fluid">
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+        <div class="row">
+            <div class="col-md-12">
+         <!--    <b-pagination
+            v-model="currentPage"
+            :total-rows.number="pagination.total"
+            :per-page.number="pagination.perPage"
+            aria-controls="my-table"
+            ></b-pagination> -->
+
+                <p class="mt-3">Current Page: {{ currentPage }}</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th>
+                            id
+                            </th>
+                            <th>
+                            nombre
+                            </th>
+                            <th>
+                            descripcion
+                            </th>
+                            <th>
+                            consultor
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                         
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                        <tr>
+                        <td></td>
+                            <td>
+                                <input v-on:change="getEmpresas()" class="form-control" v-model="filter.nro">
+                            </td>
+                            <td>
+                                <input v-on:change="getEmpresas()" class="form-control" v-model="filter.fec">
+                            </td>
+                            <td>
+                                <input v-on:change="getEmpresas()" class="form-control" v-model="filter.consultor">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(empresa,key) of empresas" v-bind:key="empresa.id">
+                        <td scope="row">{{empresa.id}} </td>
+                            <td>
+                                {{empresa.nombre}}
+                            </td>
+                            <td>
+                                {{empresa.descripcion}}
+                            </td>
+                            <td>
+                                {{empresa.consultor.nombre}}
+                            </td>
+                            <td>
+                               <button v-on:click ="edit(empresa.id)" type ="button" class="btn btn-warning">Editor</button>
+                            </td>
+                            <td>
+                               <button v-on:click ="delete(empresa.id)" type ="button" class="btn btn-danger">Borrar</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
 </div>
+
+
+
+</div>
+
+<script>
+  var app = new Vue({
+                    el:'#app',
+                    data:{
+                        empresas:[],
+                        empresa: {},
+                        id:'',
+                        currentPage: 1,
+                        pagination:{},
+                        filter:{},
+                    },
+                    mounted(){
+                        this.getEmpresas();
+                        
+                    },
+                    watch:{
+                        currentPage:function(){
+                           // this.getAreas();
+                        }
+                    },
+                    // define methods under the `methods` object
+                    methods: {
+                        getEmpresas:function(){
+                            
+                            var self=this;
+                            const params = new URLSearchParams();
+                           params.append('nombre', self.filter.nro);
+                           params.append('descripcion', self.filter.fec);
+                           params.append('consultor', self.filter.localidad);
+
+
+                            axios.get('/apv1/empresa?page='+self.currentPage,{params:self.filter})
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    self.pagination.total = response.headers['x-pagination-total-count'];
+                                    self.pagination.totalPages = response.headers['x-pagination-page-count'];
+                                    self.pagination.perPage = response.headers['x-pagination-per-page'];
+                                    
+                                    self.empresas=response.data;
+
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        delete:function(id){
+                            var self=this;
+                            axios.delete('/apv1/empresa/'+id)
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    self.getEmpresas();
+
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        edit:function(key){
+                            window.location.href = '/empresa/update?id='+key;
+
+                        }
+
+                      
+                      }
+                    
+                  })
+</script>
+
