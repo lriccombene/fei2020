@@ -88,7 +88,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                 {{acta.fec}}
                             </td>
                             <td>
-                                
+                                {{acta.localidad.nombre}}
                             </td>
                             <td>
                                <button v-on:click ="editActas(acta.id)" type ="button" class="btn btn-warning">Editor</button>

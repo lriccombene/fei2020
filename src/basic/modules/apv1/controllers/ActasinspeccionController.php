@@ -12,17 +12,17 @@ use yii\rest\ActiveController;
 class ActasinspeccionController extends ActiveController
 {
     public $modelClass ="app\modules\apv1\models\Actasinspeccion";
-    public function actions()
+   /* public function actions()
     {
         $actions = parent::actions();
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
 //        $actions['index']['dataFilter'] = ['class'=>ActiveDataFilter::class,'searchModel' => Post::class];
         return $actions;
     }
-
+*/
     public function prepareDataProvider()
     {
-        $searchModel = new ActasinspeccionSearch();
+        $searchModel = new Actasinspeccion();
         $dataProvider =  $searchModel->search(Yii::$app->request->queryParams);
         return $dataProvider;
     }
