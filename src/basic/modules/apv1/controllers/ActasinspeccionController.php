@@ -16,7 +16,7 @@ class ActasinspeccionController extends ActiveController
     {
         $actions = parent::actions();
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
-       $actions['index']['dataFilter'] = ['class'=>ActiveDataFilter::class,'searchModel' => Post::class];
+       //$actions['index']['dataFilter'] = ['class'=>ActiveDataFilter::class,'searchModel' => Post::class];
         return $actions;
     }
 
