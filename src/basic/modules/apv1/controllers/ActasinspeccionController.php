@@ -22,7 +22,7 @@ class ActasinspeccionController extends ActiveController
 
     public function prepareDataProvider()
     {
-        $searchModel = new Actasinspeccion();
+        $searchModel = new ActasinspeccionSearch();
         $dataProvider =  $searchModel->search(Yii::$app->request->queryParams);
         return $dataProvider;
     }

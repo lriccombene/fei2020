@@ -41,6 +41,7 @@ class ActasinspeccionSearch extends Actasinspeccion
     public function search($params)
     {
         $query = Actasinspeccion::find();
+        $query->joinWith('localidad');
 
         // add conditions that should always apply here
 
@@ -61,7 +62,6 @@ class ActasinspeccionSearch extends Actasinspeccion
             'id' => $this->id,
             'nro' => $this->nro,
             'fec' => $this->fec,
-            'id_localidad' => $this->id_localidad,
             'id_categoria' => $this->id_categoria,
             'id_motivo' => $this->id_motivo,
             'id_empresa' => $this->id_empresa,
@@ -69,6 +69,7 @@ class ActasinspeccionSearch extends Actasinspeccion
             'latitud' => $this->latitud,
             'longitud' => $this->longitud,
         ]);
+        $query->andFilterWhere(['like','localidad.nombre',$this->id_localidad]);
 
         return $dataProvider;
     }

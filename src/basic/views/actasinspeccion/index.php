@@ -88,7 +88,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                 {{acta.fec}}
                             </td>
                             <td>
-                                {{acta.localidad.nombre}}
+                                
                             </td>
                             <td>
                                <button v-on:click ="editActas(acta.id)" type ="button" class="btn btn-warning">Editor</button>
@@ -139,7 +139,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                             const params = new URLSearchParams();
                            params.append('nro', self.filter.nro);
                            params.append('fec', self.filter.fec);
-                          // params.append('id_localidad', self.filter.id_localidad);
+                           params.append('id_localidad', self.filter.id_localidad);
 
 
                             axios.get('/apv1/actasinspeccion?page='+self.currentPage,{params:self.filter})
