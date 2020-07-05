@@ -127,7 +127,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
               
           </div>
       </div>
-    </>
+    </div>
 
     
 </div>

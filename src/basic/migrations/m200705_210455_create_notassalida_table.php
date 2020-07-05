@@ -9,7 +9,7 @@ use yii\db\Migration;
  * - `{{%categoria}}`
  * - `{{%empresa}}`
  */
-class m200515_212414_create_notassalida_table extends Migration
+class m200705_210455_create_notassalida_table extends Migration
 {
     /**
      * {@inheritdoc}
