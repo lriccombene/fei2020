@@ -11,12 +11,20 @@ use yii\rest\ActiveController;
 class ActasinspeccionController extends ActiveController
 {
     public $modelClass ="app\modules\apv1\models\Actasinspeccion";
+<<<<<<< HEAD
     
     public function actions()
     {
         $actions = parent::actions();
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
 
+=======
+   public function actions()
+    {
+        $actions = parent::actions();
+        $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
+       //$actions['index']['dataFilter'] = ['class'=>ActiveDataFilter::class,'searchModel' => Post::class];
+>>>>>>> 922a71671565850c9b0c5b983be8c1b087ea6d1c
         return $actions;
     }
 
