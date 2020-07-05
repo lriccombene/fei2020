@@ -5,10 +5,11 @@ namespace app\modules\apv1\models;
 class Dictamentecnico extends \app\models\Dictamentecnico
 {
     public function fields (){
-        return ['fec','nro','id_categoria','id_empresa','id_area','id_tipotrabajo','detalle','longitud','latitud'];
+        return ['id','fec','nro','categoria','empresa','area','yacimiento','tipodictamente','tipotrabajo','detalle',
+                'longitud','latitud'];
     }
 
     public function extraFields(){
-        return [ 'categoria', 'empresa', 'area','yasicmiento','tipodictamente' ]; 
+        return [ 'categoria', 'empresa', 'area','yacimiento','tipodictamente' ]; 
     }
 }

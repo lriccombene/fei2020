@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
-$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
-                      ['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Dictamentecnico */
@@ -12,10 +12,10 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 ?>
 
 <div class="dictamentecnico-form">
-  <form  id="app"   method="post">
+  
 
 
-    <div class="container-fluid">
+  <div id="app"class="container-fluid">
 	<div class="row">
 		<div class="col-md-2">
             <label for="nro">Nro :</label>
@@ -23,7 +23,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 		<div class="col-md-8">
 
             <input v-bind:placeholder="nro_hint" id="nro" v-model="nro" type="text" name="nro" required >
-            
+            <span class="text-danger" v-if="errors.nro" >{{errors.nro}}</span>
 		</div>
 	</div>
     <div class="row">
@@ -32,6 +32,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="fec_hint"  id="fec" v-model="fec" type="date" name="fec">
+            <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
         </div>
 	</div>
       <div class="row">
@@ -44,6 +45,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.categoria" >{{errors.categoria}}</span>
         </div>
 	</div>
     <div class="row">
@@ -56,6 +58,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.empresa" >{{errors.empresa}}</span>
         </div>
 	</div>
     <div class="row">
@@ -68,6 +71,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.area" >{{errors.area}}</span>
         </div>
 	</div>
     <div class="row">
@@ -80,6 +84,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.yacimiento" >{{errors.yacimiento}}</span>
         </div>
 	</div>
     <div class="row">
@@ -92,6 +97,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.tipodictamen" >{{errors.tipodictamen}}</span>
         </div>
 	</div>
     <div class="row">
@@ -104,6 +110,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.tipotrabajo" >{{errors.tipotrabajo}}</span>
         </div>
 	</div>
     <div class="row">
@@ -112,6 +119,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="detalle_hint"  id="detalle" v-model="detalle" type="text" name="detalle">
+            <span class="text-danger" v-if="errors.detalle" >{{errors.detalle}}</span>
         </div>
 	</div>
 
@@ -121,6 +129,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="latitud_hint"  id="latitud" v-model="latitud" type="text" name="latitud">
+            <span class="text-danger" v-if="errors.latitud" >{{errors.latitud}}</span>
         </div>
 	</div>
     <div class="row">
@@ -129,17 +138,19 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="longitud_hint"  id="longitud" v-model="longitud" type="text" name="longitud">
+            <span class="text-danger" v-if="errors.longitud" >{{errors.longitud}}</span>
         </div>
 	</div>
 
 
     <div class="row">
 		<div class="col-md-2">
-            <input type="submit" value="Enviar" class="btn btn-success">
+            <button v-if="!id"  v-on:click="add()"  type ="button"  class="btn btn-success">Enviar</button>
+            <button v-if="id" v-on:click ="edit(id)" type ="button" class="btn btn-warning" >Actualizar</button>
         </div>
     </div>
 
-    </form>
+    </div>
 </div>
 
 <script>
