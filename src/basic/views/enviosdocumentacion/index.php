@@ -6,6 +6,9 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EnviosdocumentacionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+use yii\web\View;
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 
 $this->title = 'Envios documentacion';
 $this->params['breadcrumbs'][] = $this->title;
@@ -20,24 +23,168 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+  
+    <div id='app'>
+    <div class="container-fluid">
 
-            'id',
-            'fec',
-            'transporte',
-            'id_relevancia',
-            'detalle:ntext',
-            //'archivo_urlnotificado',
-            //'destino',
-            //'fec_notificado',
+        <div class="row">
+            <div class="col-md-12">
+         <!--    <b-pagination
+            v-model="currentPage"
+            :total-rows.number="pagination.total"
+            :per-page.number="pagination.perPage"
+            aria-controls="my-table"
+            ></b-pagination> -->
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                <p class="mt-3">Current Page: {{ currentPage }}</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th>
+                            id
+                            </th>
+                            <th>
+                            fec
+                            </th>
+                            <th>
+                            detalle
+                            </th>
+                            <th>
+                            relevancia
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                         
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                        <tr>
+                        <td></td>
+                            <td>
+                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.fec">
+                            </td>
+                            <td>
+                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.detalle">
+                            </td>
+                            <td>
+                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.relevancia">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(doc,key) of enviosdocumentaciones" v-bind:key="doc.id">
+                        <td scope="row">{{doc.id}} </td>
+                            <td>
+                                {{doc.fec}}
+                            </td>
+                            <td>
+                                {{doc.detalle}}
+                            </td>
+                            <td>
+                                {{doc.relevancia.nombre}}
+                            </td>
+                            <td>
+                               <button v-on:click ="edit(doc.id)" type ="button" class="btn btn-warning">Editor</button>
+                            </td>
+                            <td>
+                               <button v-on:click ="delete(doc.id)" type ="button" class="btn btn-danger">Borrar</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
 </div>
+
+
+
+</div>
+
+<script>
+  var app = new Vue({
+                    el:'#app',
+                    data:{
+                        enviosdocumentaciones:[],
+                        enviosdocumentacion: {},
+                        id:'',
+                        currentPage: 1,
+                        pagination:{},
+                        filter:{},
+                    },
+                    mounted(){
+                        this.getEnviosDocumentacion();
+                        
+                    },
+                    watch:{
+                        currentPage:function(){
+                           // this.getAreas();
+                        }
+                    },
+                    // define methods under the `methods` object
+                    methods: {
+                        getEnviosDocumentacion:function(){
+                            
+                            var self=this;
+                            const params = new URLSearchParams();
+                           params.append('fec', self.filter.fec);
+                           params.append('detalle', self.filter.detalle);
+                           params.append('relevancia', self.filter.relevancia);
+                           axios.get('/apv1/enviosdocumentacion?page='+self.currentPage,{params:self.filter})
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    self.pagination.total = response.headers['x-pagination-total-count'];
+                                    self.pagination.totalPages = response.headers['x-pagination-page-count'];
+                                    self.pagination.perPage = response.headers['x-pagination-per-page'];
+                                    
+                                    self.enviosdocumentaciones=response.data;
+
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        delete:function(id){
+                            var self=this;
+                            axios.delete('/apv1/enviosdocumentacion/'+id)
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    self.getDictamen();
+
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        edit:function(key){
+                            window.location.href = '/enviosdocumentacion/update?id='+key;
+
+                        }
+
+                      
+}
+
+})
+</script>
