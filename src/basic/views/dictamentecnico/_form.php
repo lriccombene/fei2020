@@ -323,6 +323,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                            params.append('id_area', self.selected_area);
                            params.append('latitud', self.latitud);
                            params.append('longitud', self.longitud);
+                           params.append('detalle', self.detalle);
                            axios.post('/apv1/dictamentecnico',params)
                               .then(function (response) {
                                   // handle success
