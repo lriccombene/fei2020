@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
-$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
-                      ['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 /* @var $this yii\web\View */
 /* @var $model app\models\Enviosdocumentacion */
 /* @var $form yii\widgets\ActiveForm */
@@ -21,6 +21,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="fec_hint"  id="fec" v-model="fec" type="date" name="fec">
+            <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
         </div>
 	</div>
 	<div class="row">
@@ -109,6 +110,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                         destino_hint: 'ingrese destino',
                         fec_notificado: '<?php  echo ($model->fec_notificado); ?>',
                         fec_notificado_hint: 'ingrese fecha notificado',
+                        errors: {},
+                        id:'<?php  echo ($model->id); ?>'
 
                     }
                    

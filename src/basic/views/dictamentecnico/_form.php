@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
-$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
-                      ['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Dictamentecnico */
@@ -12,10 +12,10 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 ?>
 
 <div class="dictamentecnico-form">
-  <form  id="app"   method="post">
+  
 
 
-    <div class="container-fluid">
+    <div id="app" class="container-fluid">
 	<div class="row">
 		<div class="col-md-2">
             <label for="nro">Nro :</label>
@@ -23,7 +23,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
 		<div class="col-md-8">
 
             <input v-bind:placeholder="nro_hint" id="nro" v-model="nro" type="text" name="nro" required >
-            
+            <span class="text-danger" v-if="errors.nro" >{{errors.nro}}</span>
 		</div>
 	</div>
     <div class="row">
@@ -32,6 +32,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="fec_hint"  id="fec" v-model="fec" type="date" name="fec">
+            <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
         </div>
 	</div>
       <div class="row">
@@ -44,6 +45,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.id_categoria" >{{errors.id_categoria}}</span>
         </div>
 	</div>
     <div class="row">
@@ -56,6 +58,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.id_empresa" >{{errors.id_empresa}}</span>
         </div>
 	</div>
     <div class="row">
@@ -68,6 +71,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.id_area" >{{errors.id_area}}</span>
         </div>
 	</div>
     <div class="row">
@@ -80,6 +84,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.id_yacimiento" >{{errors.id_yacimiento}}</span>
         </div>
 	</div>
     <div class="row">
@@ -92,6 +97,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.id_tipodictamen" >{{errors.id_tipodictamen}}</span>
         </div>
 	</div>
     <div class="row">
@@ -104,6 +110,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                 {{ option.nombre }}
             </option>
         </select>
+        <span class="text-danger" v-if="errors.id_tipotrabajo" >{{errors.id_tipotrabajo}}</span>
         </div>
 	</div>
     <div class="row">
@@ -112,6 +119,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="detalle_hint"  id="detalle" v-model="detalle" type="text" name="detalle">
+            <span class="text-danger" v-if="errors.detalle" >{{errors.detalle}}</span>
         </div>
 	</div>
 
@@ -121,6 +129,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="latitud_hint"  id="latitud" v-model="latitud" type="text" name="latitud">
+            <span class="text-danger" v-if="errors.latitud" >{{errors.latitud}}</span>
         </div>
 	</div>
     <div class="row">
@@ -129,71 +138,235 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="longitud_hint"  id="longitud" v-model="longitud" type="text" name="longitud">
+            <span class="text-danger" v-if="errors.longitud" >{{errors.longitud}}</span>
         </div>
 	</div>
 
 
     <div class="row">
-		<div class="col-md-2">
-            <input type="submit" value="Enviar" class="btn btn-success">
-        </div>
+      <div class="col-md-2"> 
+              
+             <button v-if="!id"  v-on:click="add()"  type ="button"  class="btn btn-success">Enviar</button>
+              <button v-if="id" v-on:click ="edit(id)" type ="button" class="btn btn-warning" >Actualizar</button>
+              
+          </div>
+      </div>
     </div>
 
-    </form>
 </div>
+ 
+
 
 <script>
   var app = new Vue({
                     el:'#app',
                     data:{
                         nro: '<?php  echo ($model->nro); ?>',
-                        nro_hint: 'ingrerse nro',
+                        nro_hint: 'ingrese nro',
                         fec:'<?php  echo ($model->fec); ?>',
-                        fec_hint: 'ingrerse fec',
+                        fec_hint: 'ingrese fec',
                         selected_categoria: '<?php  echo ($model->id_categoria); ?>',
-                        categorias: [
-                                { id: '1', nombre: 'categoria1' },
-                                { id: '2', nombre: 'categoria2' },
-                                { id: '3', nombre: 'categoria3' }
-                               ],
+                        categorias: [],
                         selected_empresa: '<?php  echo ($model->id_empresa); ?>',
-                        empresas: [
-                                { id: '1', nombre: 'empresa1' },
-                                { id: '2', nombre: 'empresa2' },
-                                { id: '3', nombre: 'empresa3' }
-                               ],
+                        empresas: [],
                         selected_area: '<?php  echo ($model->id_area); ?>',
-                        areas: [
-                                { id: '1', nombre: 'area1' },
-                                { id: '2', nombre: 'area2' },
-                                { id: '3', nombre: 'area3' }
-                               ],
+                        areas: [],
                         selected_yacimiento: '<?php  echo ($model->id_yacimiento); ?>',
-                        yacimientos: [
-                                { id: '1', nombre: 'yacimiento1' },
-                                { id: '2', nombre: 'yacicmiento2' },
-                                { id: '3', nombre: 'yacimiento3' }
-                               ],
+                        yacimientos: [],
                         selected_tipodictamen: '<?php  echo ($model->id_tipodictamen); ?>',
-                        tipodictamenes: [
-                                { id: '1', nombre: 'tipodictamen1' },
-                                { id: '2', nombre: 'tipodictamen2' },
-                                { id: '3', nombre: 'tipodictamen3' }
-                               ],
+                        tipodictamenes: [],
                         selected_tipotrabajo: '<?php  echo ($model->id_tipotrabajo); ?>',
-                        tipotrabajos: [
-                                { id: '1', nombre: 'tipotrabajo1' },
-                                { id: '2', nombre: 'tipotrabajo2' },
-                                { id: '3', nombre: 'tipotrabajo3' }
-                               ], 
+                        tipotrabajos: [], 
                         detalle: '<?php  echo ($model->detalle); ?>',
-                        detalle_hint: 'ingrerse detalle',
+                        detalle_hint: 'ingrese detalle',
                         longitud: '<?php  echo ($model->longitud); ?>',
-                        longitud_hint: 'ingrerse longitud',
+                        longitud_hint: 'ingrese longitud',
                         latitud: '<?php  echo ($model->latitud); ?>',
-                        latitud_hint: 'ingrerse latitud',
+                        latitud_hint: 'ingrese latitud',
+                        errors: {},
+                        id:'<?php  echo ($model->id); ?>'
+                    },
+                    mounted() {
+                        this.getCategorias();
+                        this.getEmpresas();
+                        this.getAreas();
+                        this.getYacimiento();
+                        this.getTipotrabajo();
+                        this.getTipodictamen();
+                        },                 
+                    methods: { 
+                        normalizeErrors: function(errors){
+                            var allErrors = {};
+                            for(var i = 0 ; i < errors.length; i++ ){
+                                allErrors[errors[i].field] = errors[i].message;
+                            }
+                            return allErrors;
+                        },
+                        getTipodictamen(){
+                            var self = this;
+                            axios.get('/apv1/tipodictamen?sort=-nombre&per-page=100')
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    console.log("trae todas las tipo dictamen");
+                                    // self.especialidades = response.data;
+                                    self.tipodictamenes = response.data;
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        getTipotrabajo(){
+                            var self = this;
+                            axios.get('/apv1/tipotrabajo?sort=-nombre&per-page=100')
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    console.log("trae todas las tipo trabajo");
+                                    // self.especialidades = response.data;
+                                    self.tipotrabajos = response.data;
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        getYacimiento(){
+                            var self = this;
+                            axios.get('/apv1/yacimiento?sort=-nombre&per-page=100')
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    console.log("trae todas las yacimiento");
+                                    // self.especialidades = response.data;
+                                    self.yacimientos = response.data;
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        getAreas(){
+                            var self = this;
+                            axios.get('/apv1/area?sort=-nombre&per-page=100')
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    console.log("trae todas las areas");
+                                    // self.especialidades = response.data;
+                                    self.areas = response.data;
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        getEmpresas(){
+                            var self = this;
+                            axios.get('/apv1/empresa?sort=-nombre&per-page=100')
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    console.log("trae todas las empresa");
+                                    // self.especialidades = response.data;
+                                    self.empresas = response.data;
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        getCategorias(){
+                            var self = this;
+                            axios.get('/apv1/categoria?sort=-nombre&per-page=100')
+                                .then(function (response) {
+                                    // handle success
+                                    console.log(response.data);
+                                    console.log("trae todas las categorias");
+                                    // self.especialidades = response.data;
+                                    self.categorias = response.data;
+                                })
+                                .catch(function (error) {
+                                    // handle error
+                                    console.log(error);
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                        },
+                        add:function(){
+                           var self = this;
+                           const params = new URLSearchParams();
+                           params.append('nro', self.nro);
+                           params.append('fec', self.fec);
+                           params.append('id_categoria', self.selected_categoria);
+                           params.append('id_empresa', self.selected_empresa);
+                           params.append('id_yacimiento', self.selected_yacimiento);
+                           params.append('id_tipodictamen', self.selected_tipodictamen);
+                           params.append('id_tipotrabajo', self.selected_tipotrabajo);
+                           params.append('id_area', self.selected_area);
+                           params.append('latitud', self.latitud);
+                           params.append('longitud', self.longitud);
+                           axios.post('/apv1/dictamentecnico',params)
+                              .then(function (response) {
+                                  // handle success
+                                  console.log(response.data);
+                                  alert('Los datos fueron guardados');
 
+                              })
+                              .catch(function (error) {
+                                  // handle error
+                                  console.log(error.response.data);
+                                  self.errors = self.normalizeErrors(error.response.data);
+                              })
+                              .then(function () {
+                                  // always executed
+                              });
+                      },
+                      edit:function(id){
+                        var self = this;
+                        const params = new URLSearchParams();
+                        params.append('nro', self.nro);
+                           params.append('fec', self.fec);
+                           params.append('id_categoria', self.selected_categoria);
+                           params.append('id_empresa', self.selected_empresa);
+                           params.append('id_yacimiento', self.selected_yacimiento);
+                           params.append('id_tipodictamen', self.selected_tipodictamen);
+                           params.append('id_tipotrabajo', self.selected_tipotrabajo);
+                           params.append('id_area', self.selected_area);
+                           params.append('latitud', self.latitud);
+                           params.append('longitud', self.longitud);
+                          // alert(params);
+                           axios.patch('/apv1/dictamentecnico'+'/'+id,params)
+                              .then(function (response) {
+                                  // handle success
+                                  console.log(response.data);
+                                  alert('Los datos fueron actualizados');
+                              })
+                              .catch(function (error) {
+                                  // handle error
+                                  console.log(error);
+                              })
+                              .then(function () {
+                                  // always executed
+                                });
+                      }
                     }
-                   
                   })
 </script>

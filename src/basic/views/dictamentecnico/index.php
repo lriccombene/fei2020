@@ -79,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </thead>
                     <tbody>
                         <tr v-for="(dict,key) of dictamenes" v-bind:key="dict.id">
-                        <td scope="row">{{empresa.id}} </td>
+                        <td scope="row">{{dict.id}} </td>
                             <td>
                                 {{dict.nro}}
                             </td>
@@ -87,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 {{dict.fec}}
                             </td>
                             <td>
-                                {{dict.consultor.categoria}}
+                                {{dict.categoria.nombre}}
                             </td>
                             <td>
                                <button v-on:click ="edit(dict.id)" type ="button" class="btn btn-warning">Editor</button>
