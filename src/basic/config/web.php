@@ -54,7 +54,7 @@ $config = [
                 'rules' => [
                     'class' => 'yii\rest\UrlRule',
                     'pluralize' => false,
-                    'controller' => ['apv1/enviosdocumentacion','apv1/dictamentecnico','apv1/notassalida','apv1/empresa','apv1/categoria','apv1/usuario','apv1/yacimiento','apv1/consultor','apv1/localidad','apv1/motivo','apv1/area','apv1/actasinspeccion','apv1/mesaentrada','apv1/tipotramite','apv1/tipotrabajo','apv1/tipodictamen',
+                    'controller' => ['apv1/solicitudcaratula','apv1/enviosdocumentacion','apv1/dictamentecnico','apv1/notassalida','apv1/empresa','apv1/categoria','apv1/usuario','apv1/yacimiento','apv1/consultor','apv1/localidad','apv1/motivo','apv1/area','apv1/actasinspeccion','apv1/mesaentrada','apv1/tipotramite','apv1/tipotrabajo','apv1/tipodictamen',
                     ],
                 ],
             ],

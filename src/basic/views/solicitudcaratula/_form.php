@@ -17,9 +17,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
             <label for="fec">Fecha :</label>
         </div>
         <div class="col-md-8">
-
             <input  id="fec" v-model="fec" type="date" name="fec" required >
-            
+            <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
         </div>
     </div>
     <div class="row">
@@ -28,6 +27,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="extracto_hint"  id="extracto" v-model="extracto" type="text" name="extracto" maxlength="350">
+            <span class="text-danger" v-if="errors.extracto" >{{errors.extracto}}</span>
         </div>
     </div>
     <div class="row">
@@ -36,10 +36,11 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
         </div>
         <div class="col-md-8">
             <select v-model="selected" required >
-                <option v-for="option in options" v-bind:value="option.id">
+                <option v-for="option in options" v-bind:value="option.nombre">
                     {{ option.nombre }}
                 </option>
             </select>
+            <span class="text-danger" v-if="errors.recibido" >{{errors.recibido}}</span>
         </div>
     </div>
     <div class="row">
