@@ -8,6 +8,8 @@ use yii\web\View;
 /* @var $form yii\widgets\ActiveForm */
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
+
+
 ?>
 
 
