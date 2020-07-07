@@ -23,6 +23,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 		</div>
 		<div class="col-md-8">
             <input v-bind:placeholder="nombre_hint" id="nombre" v-model="nombre" type="text" name="nombre" required >
+            <span class="text-danger" v-if="errors.nombre" >{{errors.nombre}}</span>
 		</div>
 	</div>
     <div class="row">
@@ -31,6 +32,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="apellido_hint"  id="apellido" v-model="apellido" type="text" name="apellido" required>
+            <span class="text-danger" v-if="errors.apellido" >{{errors.apellido}}</span>
         </div>
 	</div>
     <div class="row">
@@ -39,6 +41,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="telefono_hint"  id="telefono" v-model="telefono" type="text" name="telefono" required>
+            <span class="text-danger" v-if="errors.telefono" >{{errors.telefono}}</span>
         </div>
 	</div>
     <div class="row">
@@ -47,6 +50,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="email_hint"  id="email" v-model="email" type="email" name="email" required>
+            <span class="text-danger" v-if="errors.email" >{{errors.email}}</span>
         </div>
 	</div>
 
@@ -56,13 +60,17 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
         </div>
         <div class="col-md-8">
             <input v-bind:placeholder="domicilio_hint"  id="domicilio" v-model="domicilio" type="text" name="domicilio" required>
+            <span class="text-danger" v-if="errors.domicilio" >{{errors.domicilio}}</span>
         </div>
 	</div>
 
 
     <div class="row">
 		<div class="col-md-2">
-            <input type="submit" value="Enviar" class="btn btn-success">
+                            
+          <button v-if="!id" type="button" v-on:click="addCons()"  class="btn btn-success">Enviar</button>
+          <button v-if="id" v-on:click ="editCons(id)" type ="button" class="btn btn-warning" >Actualizar</button>
+              
         </div>
     </div>
   </div>
@@ -83,7 +91,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         email:'<?php  echo ($model->email); ?>',
                         email_hint: 'ingrerse email',
                         domicilio:'<?php  echo ($model->domicilio); ?>',
-                        domicilio_hint: 'ingrerse domicilio'
+                        domicilio_hint: 'ingrerse domicilio',
+                        id:'<?php  echo ($model->id); ?>',
                         errors: {},
 
                     },  // define methods under the `methods` object
@@ -95,12 +104,16 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                             }
                             return allErrors;
                       },
-                      addArea: function(){
+                      addCons: function(){
                            var self = this;
                            const params = new URLSearchParams();
                            params.append('nombre', self.nombre);
                            params.append('descripcion', self.descripcion);
-                           axios.post('/apv1/area',params)
+                           params.append('telefono', self.telefono);
+                           params.append('domicilio', self.domicilio);
+                           params.append('email', self.email);
+
+                           axios.post('/apv1/consultor',params)
                               .then(function (response) {
                                   // handle success
                                   console.log(response.data);
@@ -116,14 +129,17 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                   // always executed
                               });
                       },
-                      editArea:function(id){
+                      editCons:function(id){
                         
                         var self = this;
                         const params = new URLSearchParams();
-                           params.append('nombre', self.nombre);
+                        params.append('nombre', self.nombre);
                            params.append('descripcion', self.descripcion);
-                          // alert(params);
-                           axios.patch('/apv1/area'+'/'+id,params)
+                           params.append('telefono', self.telefono);
+                           params.append('domicilio', self.domicilio);
+                           params.append('email', self.email);
+
+                           axios.post('/apv1/consultor',params)
                               .then(function (response) {
                                   // handle success
                                   console.log(response.data);
