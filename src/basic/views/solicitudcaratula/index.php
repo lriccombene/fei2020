@@ -92,10 +92,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 {{caratula.recibido}}
                             </td>
                             <td>
-                               <button v-on:click ="edit(caratula.id)" type ="button" class="btn btn-warning">Editor</button>
+                               <button v-on:click ="editCara(caratula.id)" type ="button" class="btn btn-warning">Editor</button>
                             </td>
                             <td>
-                               <button v-on:click ="delete(caratula.id)" type ="button" class="btn btn-danger">Borrar</button>
+                               <button v-on:click ="deleteCara(caratula.id)" type ="button" class="btn btn-danger">Borrar</button>
                             </td>
                         </tr>
 
@@ -161,7 +161,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     // always executed
                                 });
                         },
-                        delete:function(id){
+                        deleteCara:function(id){
                             var self=this;
                             axios.delete('/apv1/solicitudcaratula/'+id)
                                 .then(function (response) {
@@ -179,7 +179,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     // always executed
                                 });
                         },
-                        edit:function(key){
+                        editCara:function(key){
                             window.location.href = '/solicitudcaratula/update?id='+key;
 
                         }

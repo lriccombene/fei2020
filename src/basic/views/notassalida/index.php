@@ -42,10 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         id
                         </th>
                         <th>
-                        fec_emision
+                        fec emision
                         </th>
                         <th>
-                        fec_notificado
+                        fec notificado
                         </th>
                         <th>
                         categoria
@@ -80,10 +80,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr v-for="(nota,key) of notassalidas" v-bind:key="nota.id">
                     <td scope="row">{{nota.id}} </td>
                         <td>
-                            {{nota.fec}}
+                            {{nota.fec_emision}}
                         </td>
                         <td>
-                            {{nota.fec_ingreso}}
+                            {{nota.fec_notificado}}
                         </td>
                         <td>
                             {{nota.categoria.nombre}}

@@ -65,13 +65,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         <tr>
                         <td></td>
                             <td>
-                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.fec">
+                                <input v-on:change="getEnviosDocumentacion()" class="form-control" v-model="filter.fec">
                             </td>
                             <td>
-                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.detalle">
+                                <input v-on:change="getEnviosDocumentacion()" class="form-control" v-model="filter.detalle">
                             </td>
                             <td>
-                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.relevancia">
+                                <input v-on:change="getEnviosDocumentacion()" class="form-control" v-model="filter.relevancia">
                             </td>
                             <td></td>
                             <td></td>
@@ -91,10 +91,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 {{doc.relevancia.nombre}}
                             </td>
                             <td>
-                               <button v-on:click ="edit(doc.id)" type ="button" class="btn btn-warning">Editor</button>
+                               <button v-on:click ="editDoc(doc.id)" type ="button" class="btn btn-warning">Editor</button>
                             </td>
                             <td>
-                               <button v-on:click ="delete(doc.id)" type ="button" class="btn btn-danger">Borrar</button>
+                               <button v-on:click ="deleteDoc(doc.id)" type ="button" class="btn btn-danger">Borrar</button>
                             </td>
                         </tr>
 
@@ -160,13 +160,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                     // always executed
                                 });
                         },
-                        delete:function(id){
+                        deleteDoc:function(id){
                             var self=this;
                             axios.delete('/apv1/enviosdocumentacion/'+id)
                                 .then(function (response) {
                                     // handle success
                                     console.log(response.data);
-                                    self.getDictamen();
+                                    self.getEnviosDocumentacion();
 
                                 })
                                 .catch(function (error) {
@@ -178,7 +178,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     // always executed
                                 });
                         },
-                        edit:function(key){
+                        editDoc:function(key){
                             window.location.href = '/enviosdocumentacion/update?id='+key;
 
                         }
