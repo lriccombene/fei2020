@@ -10,6 +10,20 @@ use yii\web\View;
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 
+$this->registerJsFile("https://unpkg.com/bootstrap/dist/css/bootstrap.min.css",['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" ,['position'=>View::POS_HEAD]);
+
+
+$this->registerJsFile("https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver",['position'=>View::POS_HEAD]);
+
+
+$this->registerJsFile("https://unpkg.com/vue@latest/dist/vue.min.js",['position'=>View::POS_HEAD]);
+$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js",['position'=>View::POS_HEAD]);
+
+
+$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js",['position'=>View::POS_HEAD]);
+
+
 $this->title = 'Empresas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -24,17 +38,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
-    <div id='app'>
+<div id='app'>
     <div class="container-fluid">
 
         <div class="row">
             <div class="col-md-12">
-         <!--    <b-pagination
+             <b-pagination
             v-model="currentPage"
             :total-rows.number="pagination.total"
             :per-page.number="pagination.perPage"
             aria-controls="my-table"
-            ></b-pagination> -->
+            ></b-pagination> 
 
                 <p class="mt-3">Current Page: {{ currentPage }}</p>
                 <table class="table">
@@ -128,7 +142,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     },
                     watch:{
                         currentPage:function(){
-                           // this.getAreas();
+                            this.getEmpresas();
                         }
                     },
                     // define methods under the `methods` object
