@@ -30,21 +30,31 @@ sudo systemctl status docker
 
 
 -Una vez instalado el docker-compose
+
 -descarga del repo de la rama master el codigo
+
 -Ubica el archivo docker-compose.dist.yml  cambiale el nombre a docker-compose.yml
 -Ubicate en la carpeta del proyecto justo donde esta el archivo que recien modificaste su nombre
+
 -y ejecuta con o permiso de administrador 
     sudo docker-compose up    
+
 -como es la primera vez que lo ejecutas va tardar no te preocupes espera un momento
 -luego de esto abri otra terminal
 -y ejecuta este archivo bash 
+
     start-project.sh  "puede que requieras permisos de admin"
+
 -aqui se va instalar composer dento del docker + yii2
 -otra manera es entrando dentro del docker con 
+    
     docker-compose exec app bash 
+
 -y ejecutar aqui dentro las dos lineas de bash 
+    
     composer global require "fxp/composer-asset-plugin:^1.4.1"
     composer create-project --prefer-dist yiisoft/yii2-app-basic basic
+
 esto va atardar un rato dado que descarga yii2 crea las carpetas .....
 
 Una vez que ya instalaste yii2 y composer ahora tenes que dar permisos algunas carpetas con el segundo bash
@@ -53,12 +63,17 @@ first-start.sh
 listo bola ya tendrias que tener tu docker corriendo con todo lo necesario para empezar.
 
 Atento........ 
+
 Tema MIGRATE y insert  
+
 Por la dudas que no podes correr algun migrate  para tu facilidad te dejamos un archivo yii.sh 
 que te permite de forma mas rapida ejecutar el comando 
+
 docker-compose exec app yii $@  
+
 $@ es un parametro para cuando lo ejecutes
 te dejo aqui un ejemplo
+
 sudo bin/yii.sh migrate/create create_localidad_table --fields="nombre:string:notNull,descripcion:string"
 
 En la carpeta comandos migrate insert dejo todos los archivos para crear las tablas y los insert para probar la api ;) 
