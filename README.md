@@ -14,13 +14,17 @@ Como instalar docker-compose
 referencia : https://www.hostinger.com.ar/tutoriales/instalar-docker-compose-ubuntu/
 sudo apt-get update
 sudo apt-get upgrade
+
 2. Crea un nuevo protocolo de repositorio
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+
 3. Importa el comando con Curl
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
 4. Instala la edición comunidad
 sudo apt-get install docker-ce
+
 5. Verifica la instalación
 sudo systemctl status docker
 
@@ -49,6 +53,7 @@ first-start.sh
 listo bola ya tendrias que tener tu docker corriendo con todo lo necesario para empezar.
 
 Atento........ 
+Tema MIGRATE y insert  
 Por la dudas que no podes correr algun migrate  para tu facilidad te dejamos un archivo yii.sh 
 que te permite de forma mas rapida ejecutar el comando 
 docker-compose exec app yii $@  
@@ -62,8 +67,17 @@ asi cuando arranques con el sistema ya tenes ejemplo de prueba no los insert no 
 Por las dudas si te fallo algo con los migrate o no pudiste terminar el proceso , te dejo el archivo fei2020.sql que con el podesde restaurar la base y tenes todas las tablas  
 
 
-Tema usuario aplicacion web aqui dejo un usario con permisos para ver todas las opcion de menu usu Lucas clave lucas
+Usuario ......
+Tema usuario aplicacion web aqui dejo un usario con permisos para ver todas las opcion de menu usu Lucas clave lucas y con el usuario juan clave juan solo algunas tablas
 
+
+Por las dudas tene encuenta esto 
+la aplicacion esta configurada para que corra en el puerto 8000 y en el 8001 phpmyadmin
+
+
+Para ingresar por primera vez a la aplicacion hace lo siguiente
+abri tu navegador  y coloca lo siguiente
+localhost:8000/
 
 
 
