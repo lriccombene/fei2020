@@ -20,6 +20,7 @@ sudo apt-get install apt-transport-https ca-certificates curl software-propertie
 
 3. Importa el comando con Curl
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
 4. Instala la edición comunidad
@@ -29,9 +30,8 @@ sudo apt-get install docker-ce
 sudo systemctl status docker
 
 
+sudo apt install docker-compose
 -Una vez instalado el docker-compose
-
--descarga del repo de la rama master el codigo
 
 -Ubica el archivo docker-compose.dist.yml  cambiale el nombre a docker-compose.yml
 -Ubicate en la carpeta del proyecto justo donde esta el archivo que recien modificaste su nombre
@@ -60,9 +60,15 @@ esto va atardar un rato dado que descarga yii2 crea las carpetas .....
 Una vez que ya instalaste yii2 y composer ahora tenes que dar permisos algunas carpetas con el segundo bash
 first-start.sh
 
-listo bola ya tendrias que tener tu docker corriendo con todo lo necesario para empezar.
+listo ya tendrias que tener tu docker corriendo con todo lo necesario para empezar.
 
 Atento........ 
+
+luego de esto clona del repositorio el proyecto, dado que en el github no estan todos los archivos por una cuestion de que pensan mucho.
+
+en el caso que no logres que funcione, lo importante es lograr que corra yii2 , y luego copia al proyecto las carpetas models,controllers, views, modules, web, config. 
+
+
 
 Tema MIGRATE y insert  
 
