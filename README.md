@@ -24,14 +24,18 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
 4. Instala la edición comunidad
+
 sudo apt-get install docker-ce
 
 5. Verifica la instalación
+
 sudo systemctl status docker
 
+-Una vez instalado el docker-compose
 
 sudo apt install docker-compose
--Una vez instalado el docker-compose
+
+
 
 -Ubica el archivo docker-compose.dist.yml  cambiale el nombre a docker-compose.yml
 -Ubicate en la carpeta del proyecto justo donde esta el archivo que recien modificaste su nombre
