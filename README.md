@@ -11,11 +11,14 @@ Yii2
 S.o Cualquiera de software libre "en este caso lo voy armar con Ubuntu 18 distribucion MATE"
 
 Como instalar docker-compose
+
 referencia : https://www.hostinger.com.ar/tutoriales/instalar-docker-compose-ubuntu/
+
 sudo apt-get update
 sudo apt-get upgrade
 
 2. Crea un nuevo protocolo de repositorio
+
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
 
 3. Importa el comando con Curl
