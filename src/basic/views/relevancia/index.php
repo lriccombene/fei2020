@@ -88,13 +88,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(motivo,key) of relevancias" v-bind:key="relevancia.id">
-                        <td scope="row">{{motivo.id}} </td>
+                    <tr v-for="(relevancia,key) of relevancias" v-bind:key="relevancia.id">
+                        <td scope="row">{{relevancia.id}} </td>
                         <td>
-                            {{motivo.nombre}}
+                            {{relevancia.nombre}}
                         </td>
                         <td>
-                            {{motivo.descripcion}}
+                            {{relevancia.descripcion}}
                         </td>
                         <td>
                            <button v-on:click ="editMotivo(relevancia.id)" type ="button" class="btn btn-warning">Editor</button>

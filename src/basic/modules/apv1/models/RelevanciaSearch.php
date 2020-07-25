@@ -9,7 +9,7 @@ use app\models\Relevancia;
 /**
  * PostSearch represents the model behind the search form of `app\models\Post`.
  */
-class MotivoSearch extends \app\modules\apv1\models\Relevancia
+class RelevanciaSearch extends \app\modules\apv1\models\Relevancia
 {
 
     public function fields()
@@ -74,8 +74,8 @@ class MotivoSearch extends \app\modules\apv1\models\Relevancia
 
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->title])
-            ->andFilterWhere(['like', 'descripcion', $this->body]);
+        $query->andFilterWhere(['like', 'nombre', $this->nombre])
+            ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
 
         return $dataProvider;
     }

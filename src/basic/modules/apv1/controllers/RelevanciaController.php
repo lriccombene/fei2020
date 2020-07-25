@@ -1,7 +1,6 @@
 <?php
 
 namespace app\modules\apv1\controllers;
-use app\modules\apv1\models\Relevancia;
 use app\modules\apv1\models\RelevanciaSearch;
 use Yii;
 use yii\rest\ActiveController;
@@ -23,7 +22,7 @@ class RelevanciaController extends ActiveController
 
     public function prepareDataProvider()
     {
-        $searchModel = new Relevancia();
+        $searchModel = new RelevanciaSearch();
         $dataProvider =  $searchModel->search(Yii::$app->request->queryParams);
         return $dataProvider;
     }
