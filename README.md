@@ -1,43 +1,21 @@
 # fei2020
-materia de framework e Interoperabilidad
+Materia Trabajo Final 2020
+
+Es un sistema de Gestion de expediente de la Secretaria de Ambiente Desarrollo Sustentable y Cambio Climatico. La idea es que funcione como una mesa de entrada, como tambien de seguiento de datos tecnicos. Es un software que lo utilizaran Administrativos como Profesionales.
+
+
+Softeware Libre Tecnologias requeridas
+1.Docker
+2.Docker-compose
+3.Mysql
+4.Php 7.x
+5.Yii2
+6. S.o Cualquiera de software libre "en este caso lo voy armar con Ubuntu 18 distribucion MATE"
+
 Paso a Paso como hacer que funcione este proyecto
 
-Softeware Libre
-Tecnologias requeridas son 
-Docker-compose
-Mysql
-Php
-Yii2
-S.o Cualquiera de software libre "en este caso lo voy armar con Ubuntu 18 distribucion MATE"
-
-Como instalar docker-compose
-
-referencia : https://www.hostinger.com.ar/tutoriales/instalar-docker-compose-ubuntu/
-
-sudo apt-get update
-sudo apt-get upgrade
-
-2. Crea un nuevo protocolo de repositorio
-
-sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
-
-3. Importa el comando con Curl
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
-4. Instala la edición comunidad
-
-sudo apt-get install docker-ce
-
-5. Verifica la instalación
-
-sudo systemctl status docker
-
--Una vez instalado el docker-compose
-
-sudo apt install docker-compose
-
+1.Instalar Docker y Docker-compose 
+Referencia : https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es
 
 
 -Ubica el archivo docker-compose.dist.yml  cambiale el nombre a docker-compose.yml
