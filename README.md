@@ -5,6 +5,7 @@ Es un sistema de Gestion de expediente de la Secretaria de Ambiente Desarrollo S
 
 
 Softeware Libre Tecnologias requeridas
+
 1.Docker
 2.Docker-compose
 3.Mysql
@@ -16,23 +17,34 @@ Softeware Libre Tecnologias requeridas
 Paso a Paso como hacer que funcione este proyecto
 
 1.Instalar Docker y Docker-compose 
+
 Referencia : https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es
 Referencia 2 :https://docs.docker.com/compose/install/
 
 2.Creo mi Docker Yml de en base a dist.yml pre existente
+
 -Ubica el archivo docker-compose.dist.yml  cambiale el nombre a docker-compose.yml
+
     a. cp docker-compose.dist.yml docker-compose.yml
+    
     b. actualiza las variables de entorno de docker-compose.yml si fuera necesario 
+    
 
 3. Ejecuta el comando docker-compose up -d  para levantar los contenedores.
+
     -como es la primera vez que lo ejecutas va tardar no te preocupes espera un momento
 
 4.ejecuta este archivo bash que se encuentra en la carpeta bin del proyecto
+
     a. bash bin/start-project.sh
+    
     b. bash bin/first-start.sh
     
+    
 5. ejecuta las migraciones
+
     a.   ./bin/yii.sh migrate/up
+    
 
 
 
