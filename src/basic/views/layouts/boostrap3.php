@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\Usuario;
 
 AppAsset::register($this);
 ?>
@@ -28,10 +29,19 @@ AppAsset::register($this);
 
 
 <div> <?php 
-         $banderita=FALSE;
-         if(Yii::$app->user->id==5){
+    $banderita=FALSE;
+    if(Yii::$app->user->isGuest ){}
+    else{
+        if(Yii::$app->user->identity->username === "admin")
+        {
             $banderita=TRUE;
-         }
+        }
+    } 
+
+            
+       
+        
+        
     ?></div>
 
 <div class="wrap">

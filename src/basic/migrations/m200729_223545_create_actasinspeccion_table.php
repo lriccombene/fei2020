@@ -12,7 +12,7 @@ use yii\db\Migration;
  * - `{{%empresa}}`
  * - `{{%area}}`
  */
-class m200517_145046_create_actasinspeccion_table extends Migration
+class m200729_223545_create_actasinspeccion_table extends Migration
 {
     /**
      * {@inheritdoc}

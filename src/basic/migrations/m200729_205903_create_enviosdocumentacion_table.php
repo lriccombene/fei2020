@@ -8,7 +8,7 @@ use yii\db\Migration;
  *
  * - `{{%relevancia}}`
  */
-class m200515_212937_create_enviosdocumentacion_table extends Migration
+class m200729_205903_create_enviosdocumentacion_table extends Migration
 {
     /**
      * {@inheritdoc}

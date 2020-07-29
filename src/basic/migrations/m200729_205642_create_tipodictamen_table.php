@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `{{%tipodictamen}}`.
  */
-class m200515_202610_create_tipodictamen_table extends Migration
+class m200729_205642_create_tipodictamen_table extends Migration
 {
     /**
      * {@inheritdoc}

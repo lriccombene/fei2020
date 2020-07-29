@@ -13,7 +13,7 @@ use yii\db\Migration;
  * - `{{%tipodictamen}}`
  * - `{{%tipotrabajo}}`
  */
-class m200531_183821_create_dictamentecnico_table extends Migration
+class m200729_223631_create_dictamentecnico_table extends Migration
 {
     /**
      * {@inheritdoc}

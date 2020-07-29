@@ -10,7 +10,7 @@ use yii\db\Migration;
  * - `{{%tipotramite}}`
  * - `{{%empresa}}`
  */
-class m200517_223914_create_mesaentrada_table extends Migration
+class m200729_205821_create_mesaentrada_table extends Migration
 {
     /**
      * {@inheritdoc}
