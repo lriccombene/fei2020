@@ -50,24 +50,15 @@ git clone https://github.com/lriccombene/fei2020.git
 
     a.   ./bin/yii.sh migrate/up
     
+6. Crear usuario con permisos de administracion
+    a. ingresar al sitio al formulario usuario http://localhost:8000/usuario
+    b. crear un usuario con los datos : nombre(admin), nombre de usuario(admin), clave(la que gustes)
 
+7. Empezar a usar la aplicacion
+    a. http://localhost:8000
 
-
-Usuario ......
-Tema usuario aplicacion web aqui dejo un usario con permisos para ver todas las opcion de menu usu Lucas clave lucas y con el usuario juan clave juan solo algunas tablas
-
-
-Por las dudas tene encuenta esto 
-la aplicacion esta configurada para que corra en el puerto 8000 y en el 8001 phpmyadmin
-
-
-Para ingresar por primera vez a la aplicacion hace lo siguiente
-abri tu navegador  y coloca lo siguiente
-localhost:8000/
-
-
-
-
+8. Acceder phpmyadmin
+    a. http://localhost:8001
 
 
 
