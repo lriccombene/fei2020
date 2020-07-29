@@ -11,66 +11,29 @@ Softeware Libre Tecnologias requeridas
 4.Php 7.x
 5.Yii2
 6. S.o Cualquiera de software libre "en este caso lo voy armar con Ubuntu 18 distribucion MATE"
+7. Git
 
 Paso a Paso como hacer que funcione este proyecto
 
 1.Instalar Docker y Docker-compose 
 Referencia : https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es
+Referencia 2 :https://docs.docker.com/compose/install/
 
-
+2.Creo mi Docker Yml de en base a dist.yml pre existente
 -Ubica el archivo docker-compose.dist.yml  cambiale el nombre a docker-compose.yml
--Ubicate en la carpeta del proyecto justo donde esta el archivo que recien modificaste su nombre
+    a. cp docker-compose.dist.yml docker-compose.yml
+    b. actualiza las variables de entorno de docker-compose.yml si fuera necesario 
 
--y ejecuta con o permiso de administrador 
-    sudo docker-compose up    
+3. Ejecuta el comando docker-compose up -d  para levantar los contenedores.
+    -como es la primera vez que lo ejecutas va tardar no te preocupes espera un momento
 
--como es la primera vez que lo ejecutas va tardar no te preocupes espera un momento
--luego de esto abri otra terminal
--y ejecuta este archivo bash 
-
-    start-project.sh  "puede que requieras permisos de admin"
-
--aqui se va instalar composer dento del docker + yii2
--otra manera es entrando dentro del docker con 
+4.ejecuta este archivo bash que se encuentra en la carpeta bin del proyecto
+    a. bash bin/start-project.sh
+    b. bash bin/first-start.sh
     
-    docker-compose exec app bash 
+5. ejecuta las migraciones
+    a.   ./bin/yii.sh migrate/up
 
--y ejecutar aqui dentro las dos lineas de bash 
-    
-    composer global require "fxp/composer-asset-plugin:^1.4.1"
-    composer create-project --prefer-dist yiisoft/yii2-app-basic basic
-
-esto va atardar un rato dado que descarga yii2 crea las carpetas .....
-
-Una vez que ya instalaste yii2 y composer ahora tenes que dar permisos algunas carpetas con el segundo bash
-first-start.sh
-
-listo ya tendrias que tener tu docker corriendo con todo lo necesario para empezar.
-
-Atento........ 
-
-luego de esto clona del repositorio el proyecto, dado que en el github no estan todos los archivos por una cuestion de que pensan mucho.
-
-en el caso que no logres que funcione, lo importante es lograr que corra yii2 , y luego copia al proyecto las carpetas models,controllers, views, modules, web, config. 
-
-
-
-Tema MIGRATE y insert  
-
-Por la dudas que no podes correr algun migrate  para tu facilidad te dejamos un archivo yii.sh 
-que te permite de forma mas rapida ejecutar el comando 
-
-docker-compose exec app yii $@  
-
-$@ es un parametro para cuando lo ejecutes
-te dejo aqui un ejemplo
-
-sudo bin/yii.sh migrate/create create_localidad_table --fields="nombre:string:notNull,descripcion:string"
-
-En la carpeta comandos migrate insert dejo todos los archivos para crear las tablas y los insert para probar la api ;) 
-asi cuando arranques con el sistema ya tenes ejemplo de prueba no los insert no son obligatorios para el funcionanmiento del sistema
-
-Por las dudas si te fallo algo con los migrate o no pudiste terminar el proceso , te dejo el archivo fei2020.sql que con el podesde restaurar la base y tenes todas las tablas  
 
 
 Usuario ......
