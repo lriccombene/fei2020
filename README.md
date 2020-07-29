@@ -21,7 +21,12 @@ Paso a Paso como hacer que funcione este proyecto
 Referencia : https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es
 Referencia 2 :https://docs.docker.com/compose/install/
 
-2.Creo mi Docker Yml de en base a dist.yml pre existente
+2. clono del repo el proyecto
+
+git clone https://github.com/lriccombene/fei2020.git
+
+
+3.Creo mi Docker Yml de en base a dist.yml pre existente
 
 -Ubica el archivo docker-compose.dist.yml  cambiale el nombre a docker-compose.yml
 
