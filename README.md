@@ -52,11 +52,17 @@ git clone https://github.com/lriccombene/fei2020.git
     
 6. Crear usuario con permisos de administracion
 
-    a. ingresar al sitio al formulario usuario http://localhost:8000/usuario
+    a. ingresar al sitio al formulario usuario http://localhost:8000/usuario/create
     
     b. crear un usuario 
     
-    c. hacer click en nuevo usuario  luego completar el formulario con los datos : en nombre =admin, nombre de usuario =admin , clave =admin
+    c. hacer click en nuevo usuario  luego completar el formulario con los datos : en 
+    
+    nombre =admin
+    
+    nombre de usuario =admin 
+    
+    clave =admin
 
 7. Empezar a usar la aplicacion
 
