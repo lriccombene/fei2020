@@ -17,8 +17,8 @@ class UsuarioSearch extends Usuario
     public function rules()
     {
         return [
-            [['id', 'username'], 'integer'],
-            [['name', 'password'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'password', 'username'], 'safe'],
         ];
     }
 
