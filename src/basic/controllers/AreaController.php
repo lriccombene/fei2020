@@ -35,12 +35,9 @@ class AreaController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new AreaSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+        $model = new AreA();
+        return $this->render('axios',[
+            'model'=>$model,
         ]);
     }
 
@@ -125,6 +122,14 @@ class AreaController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-
+    public function actionAxios()
+    {
+       // $this->layout = 'bootstrap3';
+        $model = new AreA();
+        return $this->render('axios',[
+            'model'=>$model,
+        ]);
+    }
+    
 
 }
