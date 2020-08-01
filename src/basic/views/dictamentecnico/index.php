@@ -1,4 +1,5 @@
 <?php
+Yii::$app->params['boostrap']=4;
 
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -69,6 +70,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             area
                             </th>
                             <th>
+                            empresa
+                            </th>
+                            <th>
+                            tipodictamen
+                            </th>
+                            <th>
+                            yacimiento
+                            </th>
+                            <th>
+                            tipotrabajo
+                            </th>
+                            <th>
                                 
                             </th>
                             <th>
@@ -92,6 +105,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             <td>
                                 <input v-on:change="getDictamen()" class="form-control" v-model="filter.area">
                             </td>
+                            <td>
+                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.empresa">
+                            </td>
+                            <td>
+                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.tipodictamen">
+                            </td>
+                            <td>
+                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.yacimiento">
+                            </td>
+                            <td>
+                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.tipotrabajo">
+                            </td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -111,6 +136,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td>
                                 {{dict.area.nombre}}
+                            </td>
+                            <td>
+                                {{dict.empresa.nombre}}
+                            </td>
+                            <td>
+                                {{dict.tipodictamen.nombre}}
+                            </td>
+                            <td>
+                                {{dict.yacimiento.nombre}}
+                            </td>
+                            <td>
+                                {{dict.tipotrabajo.nombre}}
                             </td>
                             <td>
                                <button v-on:click ="edit(dict.id)" type ="button" class="btn btn-warning">Editor</button>
@@ -159,12 +196,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             
                             var self=this;
                             const params = new URLSearchParams();
-                           params.append('nro', self.filter.nro);
-                           params.append('fec', self.filter.fec);
-                           params.append('categoria', self.filter.categoria);
-                           params.append('area', self.filter.area);
-
-
+                            params.append('nro', self.filter.nro);
+                            params.append('fec', self.filter.fec);
+                            params.append('categoria', self.filter.categoria);
+                            params.append('area', self.filter.area);
+                            params.append('empresa', self.filter.empresa);
+                            params.append('tipodictamen', self.filter.tipodictamen);
+                            params.append('yacimiento', self.filter.yacimiento);
+                            params.append('tipotrabajo', self.filter.tipotrabajo);
                             axios.get('/apv1/dictamentecnico?page='+self.currentPage,{params:self.filter})
                                 .then(function (response) {
                                     // handle success

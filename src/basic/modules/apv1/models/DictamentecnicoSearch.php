@@ -18,7 +18,7 @@ class DictamentecnicoSearch extends \app\models\Dictamentecnico
 
     public $categoria;
     public $empresa;
-    public $yacicmiento;
+    public $yacimiento;
     public $area;
     public $tipodictamen;
     public $tipotrabajo;
@@ -55,13 +55,11 @@ class DictamentecnicoSearch extends \app\models\Dictamentecnico
         $query = Dictamentecnico::find();
         $query->leftJoin('area','dictamentecnico.id_area = area.id');
         $query->leftJoin('categoria','dictamentecnico.id_categoria = categoria.id');
-       /* $query->joinWith(['Dicatmentecnico','categoria']);
-        $query->joinWith(['Dicatmentecnico','empresa']);
+        $query->leftJoin('empresa','dictamentecnico.id_empresa = empresa.id');
+        $query->leftJoin('yacimiento','dictamentecnico.id_yacimiento = yacimiento.id');
+        $query->leftJoin('tipodictamen','dictamentecnico.id_tipodictamen = tipodictamen.id');
+        $query->leftJoin('tipotrabajo','dictamentecnico.id_tipotrabajo = tipotrabajo.id');
 
-        $query->joinWith('yacimiento');
-        $query->joinWith('tipodictamen');
-        $query->joinWith('tipotrabajo');
-*/
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -87,6 +85,10 @@ class DictamentecnicoSearch extends \app\models\Dictamentecnico
         
         $query->andFilterWhere(['like','categoria.nombre',$this->categoria]);
         $query->andFilterWhere(['like','area.nombre',$this->area]);
+        $query->andFilterWhere(['like','empresa.nombre',$this->empresa]);
+        $query->andFilterWhere(['like','tipodictamen.nombre',$this->tipodictamen]);
+        $query->andFilterWhere(['like','yacimiento.nombre',$this->yacimiento]);
+        $query->andFilterWhere(['like','tipotrabajo.nombre',$this->tipotrabajo]);
         return $dataProvider;
     }
 }
