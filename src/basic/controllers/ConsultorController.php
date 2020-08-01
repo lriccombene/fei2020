@@ -35,12 +35,17 @@ class ConsultorController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ConsultorSearch();
+       /* $searchModel = new ConsultorSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        // se actualiza para enviando los parametros correctos a la vista index
+        $model = new Consultor();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+Yii::$app->params['boostrap']=4;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EmpresaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -61,6 +61,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             nombre
                             </th>
                             <th>
+                            Razon Social
+                            </th>
+                            <th>
                             descripcion
                             </th>
                             <th>
@@ -79,10 +82,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         <tr>
                         <td></td>
                             <td>
-                                <input v-on:change="getEmpresas()" class="form-control" v-model="filter.nro">
+                                <input v-on:change="getEmpresas()" class="form-control" v-model="filter.nombre">
                             </td>
                             <td>
-                                <input v-on:change="getEmpresas()" class="form-control" v-model="filter.fec">
+                                <input v-on:change="getEmpresas()" class="form-control" v-model="filter.razon_social">
+                            </td>
+                            <td>
+                                <input v-on:change="getEmpresas()" class="form-control" v-model="filter.descripcion">
                             </td>
                             <td>
                                 <input v-on:change="getEmpresas()" class="form-control" v-model="filter.consultor">
@@ -97,6 +103,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td scope="row">{{empresa.id}} </td>
                             <td>
                                 {{empresa.nombre}}
+                            </td>
+                            <td>
+                                {{empresa.razon_social}}
                             </td>
                             <td>
                                 {{empresa.descripcion}}
@@ -151,9 +160,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             
                             var self=this;
                             const params = new URLSearchParams();
-                           params.append('nombre', self.filter.nro);
-                           params.append('descripcion', self.filter.fec);
-                           params.append('consultor', self.filter.localidad);
+                           params.append('nombre', self.filter.nombre);
+                           params.append('descripcion', self.filter.descripcion);
+                           params.append('consultor', self.filter.consultor);
+                           params.append('razon_social', self.filter.razon_social);
 
 
                             axios.get('/apv1/empresa?page='+self.currentPage,{params:self.filter})

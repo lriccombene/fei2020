@@ -75,6 +75,7 @@ class EmpresaSearch extends \app\modules\apv1\models\Empresa
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
+        $query->andFilterWhere(['like','razon_social',$this->razon_social]);   
         
         $query->andFilterWhere(['like','consultor.nombre',$this->consultor]);
         return $dataProvider;

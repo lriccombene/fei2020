@@ -35,12 +35,16 @@ class EmpresaController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new EmpresaSearch();
+       /* $searchModel = new EmpresaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Empresa();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 
