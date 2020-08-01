@@ -1,7 +1,6 @@
 <?php
 
 namespace app\modules\apv1\controllers;
-use app\modules\apv1\models\Categoria;
 use app\modules\apv1\models\CategoriaSearch;
 use Yii;
 
@@ -24,7 +23,7 @@ class CategoriaController extends ActiveController
 
     public function prepareDataProvider()
     {
-        $searchModel = new Categoria();
+        $searchModel = new CategoriaSearch();
         $dataProvider =  $searchModel->search(Yii::$app->request->queryParams);
         return $dataProvider;
     }

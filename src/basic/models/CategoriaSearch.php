@@ -7,20 +7,13 @@ use yii\data\ActiveDataProvider;
 use app\models\Categoria;
 
 /**
- * CategoriaSearch represents the model behind the search form of `app\models\Categoria`.
+ * AreaSearch represents the model behind the search form of `app\models\Area`.
  */
 class CategoriaSearch extends Categoria
 {
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
-        return [
-            [['id'], 'integer'],
-            [['nombre', 'descripcion'], 'safe'],
-        ];
-    }
 
     /**
      * {@inheritdoc}

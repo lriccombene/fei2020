@@ -101,20 +101,20 @@
                 }
                 return allErrors;
             },
-            // normalizeFilters(){
-            //     var filters = {};
-            //     for(var i in this.filter ){
-            //         if(this.filter[i]) {
-            //             filters['filter[' + i + ']'] = this.filter[i];
-            //         }
-            //     }
-            //     return filters;
-            // },
+            normalizeFilters(){
+                 var filters = {};
+                 for(var i in this.filter ){
+                     if(this.filter[i]) {
+                         filters['filter[' + i + ']'] = this.filter[i];
+                     }
+                 }
+                 return filters;
+             },
             getModels: function(){
                 var self = this;
                 self.errors = {};
-                // var filters = self.normalizeFilters();
-                axios.get('/apv1/'+self.modelname+'?page='+self.currentPage,{params:self.filter})
+                var filters = self.normalizeFilters();
+                axios.get('/apv1/'+self.modelname+'?page='+self.currentPage,{params:self.filters})
                     .then(function (response) {
                         // handle success
                         // console.log(response.data);
