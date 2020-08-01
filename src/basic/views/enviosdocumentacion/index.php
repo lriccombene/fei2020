@@ -1,5 +1,5 @@
 <?php
-
+Yii::$app->params['boostrap']=4;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -58,6 +58,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             id
                             </th>
                             <th>
+                            Nro
+                            </th>
+                            <th>
                             fec
                             </th>
                             <th>
@@ -65,6 +68,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             </th>
                             <th>
                             relevancia
+                            </th>
+                            <th>
+                            Archivo url notificado
+                            </th>
+                            <th>
+                            Destino
+                            </th>
+                            <th>
+                            Fec Notificado
                             </th>
                             <th>
                                 
@@ -79,6 +91,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <tr>
                         <td></td>
                             <td>
+                                <input v-on:change="getEnviosDocumentacion()" class="form-control" v-model="filter.nro">
+                            </td>
+                            <td>
                                 <input v-on:change="getEnviosDocumentacion()" class="form-control" v-model="filter.fec">
                             </td>
                             <td>
@@ -86,6 +101,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td>
                                 <input v-on:change="getEnviosDocumentacion()" class="form-control" v-model="filter.relevancia">
+                            </td>
+                            <td>
+                                <input v-on:change="getEnviosDocumentacion()" class="form-control" v-model="filter.archivo_urlnotificado">
+                            </td>
+                            <td>
+                                <input v-on:change="getEnviosDocumentacion()" class="form-control" v-model="filter.destino">
+                            </td>
+                            <td>
+                                <input v-on:change="getEnviosDocumentacion()" class="form-control" v-model="filter.fec_notificado">
                             </td>
                             <td></td>
                             <td></td>
@@ -96,6 +120,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <tr v-for="(doc,key) of enviosdocumentaciones" v-bind:key="doc.id">
                         <td scope="row">{{doc.id}} </td>
                             <td>
+                                {{doc.nro}}
+                            </td>
+                            <td>
                                 {{doc.fec}}
                             </td>
                             <td>
@@ -103,6 +130,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td>
                                 {{doc.relevancia.nombre}}
+                            </td>
+                            <td>
+                                {{doc.archivo_urlnotificado}}
+                            </td>
+                            <td>
+                                {{doc.destino}}
+                            </td>
+                            <td>
+                                {{doc.fec_notificado}}
                             </td>
                             <td>
                                <button v-on:click ="editDoc(doc.id)" type ="button" class="btn btn-warning">Editor</button>
@@ -151,9 +187,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             
                             var self=this;
                             const params = new URLSearchParams();
-                           params.append('fec', self.filter.fec);
+                            params.append('nro', self.filter.nro);
+                            params.append('fec', self.filter.fec);
                            params.append('detalle', self.filter.detalle);
                            params.append('relevancia', self.filter.relevancia);
+                           params.append('destino', self.filter.destino);
                            axios.get('/apv1/enviosdocumentacion?page='+self.currentPage,{params:self.filter})
                                 .then(function (response) {
                                     // handle success
