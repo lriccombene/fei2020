@@ -54,10 +54,9 @@ git clone https://github.com/lriccombene/fei2020.git
 
     a. ingresar al sitio al formulario usuario http://localhost:8000/usuario/create
     
-    b. crear un usuario 
     
-    c. hacer click en nuevo usuario  luego completar el formulario con los datos : en 
-    
+    c. completar el formulario con los datos :
+            
     nombre =admin
     
     nombre de usuario =admin 
