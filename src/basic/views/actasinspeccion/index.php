@@ -1,5 +1,5 @@
 <?php
-
+Yii::$app->params['boostrap']=4;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -67,7 +67,19 @@ $this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue
                             fec
                             </th>
                             <th>
+                            area
+                            </th>
+                            <th>
+                            categoria
+                            </th>
+                            <th>
+                            empresa
+                            </th>
+                            <th>
                             localidad
+                            </th>
+                            <th>
+                            motivo
                             </th>
                             <th>
                                 
@@ -88,9 +100,21 @@ $this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue
                                 <input v-on:change="getActas()" class="form-control" v-model="filter.fec">
                             </td>
                             <td>
+                                <input v-on:change="getActas()" class="form-control" v-model="filter.area">
+                            </td>
+                            <td>
+                                <input v-on:change="getActas()" class="form-control" v-model="filter.categoria">
+                            </td>
+                            <td>
+                                <input v-on:change="getActas()" class="form-control" v-model="filter.empresa">
+                            </td>
+                            <td>
                                 <input v-on:change="getActas()" class="form-control" v-model="filter.localidad">
                             </td>
-                            <td></td>
+                            <td>
+                                <input v-on:change="getActas()" class="form-control" v-model="filter.motivo">
+                            </td>
+                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -105,7 +129,19 @@ $this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue
                                 {{acta.fec}}
                             </td>
                             <td>
+                                {{acta.area.nombre}}
+                            </td>
+                            <td>
+                                {{acta.categoria.nombre}}
+                            </td>
+                            <td>
+                                {{acta.empresa.nombre}}
+                            </td>
+                            <td>
                                 {{acta.localidad.nombre}}
+                            </td>
+                            <td>
+                                {{acta.motivo.nombre}}
                             </td>
                             <td>
                                <button v-on:click ="editActas(acta.id)" type ="button" class="btn btn-warning">Editor</button>
@@ -156,8 +192,11 @@ $this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue
                             const params = new URLSearchParams();
                            params.append('nro', self.filter.nro);
                            params.append('fec', self.filter.fec);
+                           params.append('area', self.filter.area);
+                           params.append('categoria', self.filter.categoria);
+                           params.append('empresa', self.filter.empresa);
                            params.append('localidad', self.filter.localidad);
-
+                           params.append('motivo', self.filter.motivo);
 
                             axios.get('/apv1/actasinspeccion?page='+self.currentPage,{params:self.filter})
                                 .then(function (response) {

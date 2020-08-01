@@ -53,13 +53,15 @@ class DictamentecnicoSearch extends \app\models\Dictamentecnico
     public function search($params)
     {
         $query = Dictamentecnico::find();
-        $query->joinWith('categoria');
-        $query->joinWith('empresa');
-        $query->joinWith('area');
+        $query->leftJoin('area','dictamentecnico.id_area = area.id');
+        $query->leftJoin('categoria','dictamentecnico.id_categoria = categoria.id');
+       /* $query->joinWith(['Dicatmentecnico','categoria']);
+        $query->joinWith(['Dicatmentecnico','empresa']);
+
         $query->joinWith('yacimiento');
         $query->joinWith('tipodictamen');
         $query->joinWith('tipotrabajo');
-
+*/
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -84,6 +86,7 @@ class DictamentecnicoSearch extends \app\models\Dictamentecnico
             ->andFilterWhere(['like', 'nro', $this->nro]);
         
         $query->andFilterWhere(['like','categoria.nombre',$this->categoria]);
+        $query->andFilterWhere(['like','area.nombre',$this->area]);
         return $dataProvider;
     }
 }

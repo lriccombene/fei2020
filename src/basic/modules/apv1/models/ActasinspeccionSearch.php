@@ -10,7 +10,13 @@ use yii\data\ActiveDataProvider;
 class ActasinspeccionSearch extends \app\modules\apv1\models\Actasinspeccion
 {
 
+    //propiedades que se declaran para que funcione los filtrods de la grilla
+
     public $localidad;
+    public $categoria;
+    public $motivo;
+    public $empresa;
+    public $area;
 
     public function fields()
     {
@@ -29,7 +35,7 @@ class ActasinspeccionSearch extends \app\modules\apv1\models\Actasinspeccion
     {
         return [
             [['id', ], 'integer'],
-            [['localidad', 'fec','nro'], 'safe'],
+            [['localidad', 'fec','nro','categoria','motivo','empresa','area',], 'safe'],
         ];
     }
 
@@ -51,8 +57,14 @@ class ActasinspeccionSearch extends \app\modules\apv1\models\Actasinspeccion
      */
     public function search($params)
     {
+        //relaciono las tablas de la grilla para buscar la propiedades
         $query = Actasinspeccion::find();
-        $query->joinWith('localidad');
+        $query->leftJoin('localidad','actasinspeccion.id_localidad = localidad.id');
+        $query->leftJoin('categoria','actasinspeccion.id_categoria = categoria.id');
+        $query->leftJoin('motivo','actasinspeccion.id_motivo = motivo.id');
+        $query->leftJoin('empresa','actasinspeccion.id_empresa = empresa.id');
+        $query->leftJoin('area','actasinspeccion.id_area = area.id');
+
 
         // add conditions that should always apply here
 
@@ -77,7 +89,14 @@ class ActasinspeccionSearch extends \app\modules\apv1\models\Actasinspeccion
             'latitud' => $this->latitud,
             'longitud' => $this->longitud,
         ]);
+        //armo el where del quey para que funcione los filtros
+
         $query->andFilterWhere(['like','localidad.nombre',$this->localidad]);
+        $query->andFilterWhere(['like','categoria.nombre',$this->categoria]);
+        $query->andFilterWhere(['like','motivo.nombre',$this->motivo]);
+        $query->andFilterWhere(['like','empresa.nombre',$this->empresa]);
+        $query->andFilterWhere(['like','area.nombre',$this->area]);
+
 
         return $dataProvider;
     }

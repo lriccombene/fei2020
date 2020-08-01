@@ -66,6 +66,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             categoria
                             </th>
                             <th>
+                            area
+                            </th>
+                            <th>
                                 
                             </th>
                             <th>
@@ -86,6 +89,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <td>
                                 <input v-on:change="getDictamen()" class="form-control" v-model="filter.categoria">
                             </td>
+                            <td>
+                                <input v-on:change="getDictamen()" class="form-control" v-model="filter.area">
+                            </td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -102,6 +108,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td>
                                 {{dict.categoria.nombre}}
+                            </td>
+                            <td>
+                                {{dict.area.nombre}}
                             </td>
                             <td>
                                <button v-on:click ="edit(dict.id)" type ="button" class="btn btn-warning">Editor</button>
@@ -153,6 +162,7 @@ $this->params['breadcrumbs'][] = $this->title;
                            params.append('nro', self.filter.nro);
                            params.append('fec', self.filter.fec);
                            params.append('categoria', self.filter.categoria);
+                           params.append('area', self.filter.area);
 
 
                             axios.get('/apv1/dictamentecnico?page='+self.currentPage,{params:self.filter})
