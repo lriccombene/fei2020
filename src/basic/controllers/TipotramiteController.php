@@ -35,12 +35,16 @@ class TipotramiteController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TipotramiteSearch();
+        /*$searchModel = new TipotramiteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Tipotramite();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

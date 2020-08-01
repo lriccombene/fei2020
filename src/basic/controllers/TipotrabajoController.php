@@ -35,12 +35,16 @@ class TipotrabajoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TipotrabajoSearch();
+        /*$searchModel = new TipotrabajoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Tipotrabajo();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

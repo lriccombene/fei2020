@@ -35,12 +35,16 @@ class YacimientoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new YacimientoSearch();
+        /*$searchModel = new YacimientoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Yacimiento();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

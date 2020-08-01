@@ -35,12 +35,16 @@ class LocalidadController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new LocalidadSearch();
+       /* $searchModel = new LocalidadSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Localidad();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

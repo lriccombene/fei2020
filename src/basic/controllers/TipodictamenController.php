@@ -35,12 +35,16 @@ class TipodictamenController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TipodictamenSearch();
+       /* $searchModel = new TipodictamenSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Tipodictamen();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

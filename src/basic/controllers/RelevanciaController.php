@@ -35,12 +35,16 @@ class RelevanciaController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new RelevanciaSearch();
+        /*$searchModel = new RelevanciaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Relevancia();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

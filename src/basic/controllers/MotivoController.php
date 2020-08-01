@@ -35,12 +35,16 @@ class MotivoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new MotivoSearch();
+        /*$searchModel = new MotivoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Motivo();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 
