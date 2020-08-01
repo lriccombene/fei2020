@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+Yii::$app->params['boostrap']=4;
 
 $this->registerCssFile("//unpkg.com/bootstrap/dist/css/bootstrap.min.css",['position'=>$this::POS_HEAD]);
 $this->registerCssFile("//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css",['position'=>$this::POS_HEAD]);

@@ -35,12 +35,16 @@ class CategoriaController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CategoriaSearch();
+      /*  $searchModel = new CategoriaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Categoria();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

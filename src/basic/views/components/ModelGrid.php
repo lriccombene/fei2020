@@ -4,7 +4,7 @@
         <!-- Button trigger modal -->
         
         <p>
-        <button v-on:click="NewModel()" type="button" class="btn btn-outline-warning">Nuevo</button>
+        <button v-on:click="NewModel()" type="button" class="btn btn-success">Nuevo</button>
          </p>
 
 

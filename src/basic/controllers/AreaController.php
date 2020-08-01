@@ -35,8 +35,8 @@ class AreaController extends Controller
      */
     public function actionIndex()
     {
-        $model = new AreA();
-        return $this->render('axios',[
+        $model = new Area();
+        return $this->render('index',[
             'model'=>$model,
         ]);
     }

@@ -25,6 +25,23 @@ use app\assets\AppAsset;
 </head>
 <body>
 <?php $this->beginBody() ?>
+<div> <?php 
+
+    //aca  armamos los permisos para que se vean o no el menu y la opcion Parametros
+    $banderita=FALSE;
+    if(Yii::$app->user->isGuest ){}
+    else{
+        if(Yii::$app->user->identity->username === "admin")
+        {
+            $banderita=TRUE;
+        }
+    } 
+
+            
+       
+        
+        
+    ?></div>
 
 <div class="wrap">
     <?php
@@ -36,17 +53,34 @@ use app\assets\AppAsset;
         ],
     ]);
     echo Nav::widget([
-        'options' => [
-            'class' => 'navbar navbar-nav w-100 justify-content-end',
-        ],
+        'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Post', 'url' => ['/area/index']],
+            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Actas de Inspeccion', 'url' => ['/actasinspeccion/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Dictamen Tecnico', 'url' => ['/dictamentecnico/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Env. Documentacion', 'url' => ['/enviosdocumentacion/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Mesa de Entrada', 'url' => ['/mesaentrada/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Notas Salida', 'url' => ['/notassalida/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Solid. Caratula', 'url' => ['/solicitudcaratula/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Parametros', 'items' => [
+                ['label'=> 'Area', 'url' => ['/area/index']],
+                ['label'=> 'Categoria', 'url' => ['/categoria/index']],
+                ['label'=> 'Consultor', 'url' => ['/consultor/index']],
+                ['label'=> 'Empresa', 'url' => ['/empresa/index']],
+                ['label'=> 'Localidad', 'url' => ['/localidad/index']],
+                ['label'=> 'Motivo', 'url' => ['/motivo/index']],
+                ['label'=> 'Relevancia', 'url' => ['/relevancia/index']],
+                ['label'=> 'Tipo Dictamen', 'url' => ['/tipodictamen/index']],
+                ['label'=> 'Tipo trabajo', 'url' => ['/tipotrabajo/index']],
+                ['label'=> 'Tipo tramite', 'url' => ['/tipotramite/index']],
+                ['label'=> 'Yacimiento', 'url' => ['/yacimiento/index']],
+            ] ,'visible'=> $banderita],
 
             Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
-                . Html::beginForm(['/site/logout'], 'area')
+                . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
                     'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
@@ -58,7 +92,6 @@ use app\assets\AppAsset;
     ]);
     NavBar::end();
     ?>
-
     <div class="container">
 
         <?= $content ?>
