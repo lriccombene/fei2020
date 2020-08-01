@@ -63,6 +63,10 @@ git clone https://github.com/lriccombene/fei2020.git
     nombre de usuario =admin 
     
     clave =admin
+    
+    D. Opcion 2 crealo ejecutando el archivo bash de la carperta comandos migrate insert
+    
+    e. bash insert_usuario.sh
 
 7. Empezar a usar la aplicacion
 
