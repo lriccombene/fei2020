@@ -66,7 +66,7 @@ git clone https://github.com/lriccombene/fei2020.git
     
     Opcion 2
     
-    c.  crealo ejecutando el archivo bash de la carperta comandos migrate insert
+    c.  ejecutar el archivo bash de la carperta "comandos migrate insert"
     
     d. bash insert_usuario.sh
 
