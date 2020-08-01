@@ -51,10 +51,21 @@ git clone https://github.com/lriccombene/fei2020.git
     a.   ./bin/yii.sh migrate/up
     
 6. Crear usuario con permisos de administracion
-    a. ingresar al sitio al formulario usuario http://localhost:8000/usuario
-    b. crear un usuario con los datos : nombre(admin), nombre de usuario(admin), clave(la que gustes)
+
+    a. ingresar al sitio al formulario usuario http://localhost:8000/usuario/create
+    
+    b. crear un usuario 
+    
+    c. hacer click en nuevo usuario  luego completar el formulario con los datos : en 
+    
+    nombre =admin
+    
+    nombre de usuario =admin 
+    
+    clave =admin
 
 7. Empezar a usar la aplicacion
+
     a. http://localhost:8000
 
 8. Acceder phpmyadmin
