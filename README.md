@@ -52,10 +52,11 @@ git clone https://github.com/lriccombene/fei2020.git
     
 6. Crear usuario con permisos de administracion
 
+    Opcion 1
+    
     a. ingresar al sitio a través siguiente link  http://localhost:8000/usuario/create
     
-    
-    c. completar el formulario con los datos :
+    b. completar el formulario con los datos :
             
     nombre =admin
     
@@ -63,9 +64,11 @@ git clone https://github.com/lriccombene/fei2020.git
     
     clave =admin
     
-    D. Opcion 2 crealo ejecutando el archivo bash de la carperta comandos migrate insert
+    Opcion 2
     
-    e. bash insert_usuario.sh
+    c.  crealo ejecutando el archivo bash de la carperta comandos migrate insert
+    
+    d. bash insert_usuario.sh
 
 7. Empezar a usar la aplicacion
 
