@@ -52,12 +52,9 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <div class="row">
 		<div class="col-md-2">
-                
           <button v-if="id" v-on:click ="editModel(id)" type ="button" class="btn btn-warning" >Actualizar</button>
-              
         </div>
     </div>
-
     </form>
 </div>
 
@@ -81,7 +78,6 @@ $this->params['breadcrumbs'][] = 'Update';
                             return allErrors;
                       },
                       editModel:function(id){
-                        
                         var self = this;
                         const params = new URLSearchParams();
                            params.append('nombre', self.nombre);
@@ -92,18 +88,15 @@ $this->params['breadcrumbs'][] = 'Update';
                                   // handle success
                                   console.log(response.data);
                                   alert('Los datos fueron actualizados');
-
                               })
                               .catch(function (error) {
                                   // handle error
                                   console.log(error);
-
                               })
                               .then(function () {
                                   // always executed
                               });
                       }
-
                     }
                   })
 </script>
