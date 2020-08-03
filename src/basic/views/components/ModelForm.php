@@ -1,6 +1,6 @@
 <script type="text/x-template" id="crud-template">
     <div class="container">
-        <h1 class="text-capitalize">{{modelname}}</h1>
+
         <!-- Button trigger modal -->
             <div>
                 <form action="">
@@ -53,13 +53,14 @@
                 axios.post('/apv1/'+self.modelname,self.activemodel)
                     .then(function (response) {
                         // handle success
-                        console.log(response.data);
-                        self.getModels()
+                        //console.log(response.data);
                         self.activemodel = {};
+                        console.log(response.data);
+                        alert('Los datos fueron guardados');
                     })
                     .catch(function (error) {
                         // var errors = error.response.data;
-                        console.log(error.response.data);
+                        //console.log(error.response.data);
                         self.errors = self.normalizeErrors(error.response.data);
                         // handle error
                         console.log(self.errors);

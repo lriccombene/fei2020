@@ -13,8 +13,15 @@ $this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue
 //$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js",['position'=>$this::POS_HEAD]);
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 //echo $this->render('/components/ModelForm');
+$this->title = 'Actulizar Area: ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'area', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Update';
 ?>
+<div class="area-update">
 
+    <h1><?= Html::encode($this->title) ?></h1>
+</div>
 <div class="area-form " >
 
 
