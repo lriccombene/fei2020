@@ -55,7 +55,7 @@ use app\assets\AppAsset;
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'Actas de Inspeccion', 'url' => ['/actasinspeccion/index'],'visible'=>!Yii::$app->user->isGuest],
             ['label' => 'Dictamen Tecnico', 'url' => ['/dictamentecnico/index'],'visible'=>!Yii::$app->user->isGuest],
             ['label' => 'Env. Documentacion', 'url' => ['/enviosdocumentacion/index'],'visible'=>!Yii::$app->user->isGuest],

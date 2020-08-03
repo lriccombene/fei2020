@@ -50,7 +50,7 @@ AppAsset::register($this);
 
 
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => "Sistema SEPYDS",
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -59,7 +59,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'Actas de Inspeccion', 'url' => ['/actasinspeccion/index'],'visible'=>!Yii::$app->user->isGuest],
             ['label' => 'Dictamen Tecnico', 'url' => ['/dictamentecnico/index'],'visible'=>!Yii::$app->user->isGuest],
             ['label' => 'Env. Documentacion', 'url' => ['/enviosdocumentacion/index'],'visible'=>!Yii::$app->user->isGuest],
@@ -108,9 +108,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; SEPYDS <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        
     </div>
 </footer>
 
