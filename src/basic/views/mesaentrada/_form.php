@@ -1,83 +1,56 @@
 <?php
-
+Yii::$app->params['boostrap']=4;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 ?>
-
 <div class="mesaentrada-form">
-
-
 <div  id="app" class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
+<div class="form-group">
                 <label for="fec">Fecha :</label>
-            </div>
-            <div class="col-md-8">
-                <input v-bind:placeholder="fec" id="fec" v-model="fec" type="date" name="fec" required >
+                <input v-bind:placeholder="fec" class="form-control" id="fec" v-model="fec" type="date" name="fec" required >
                 <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
-            </div>
         </div>
-        <div class="row">
-            <div class="col-md-2">
+        <div class="form-group">
                 <label for="fec_ingreso">Fecha ingreso :</label>
-            </div>
-            <div class="col-md-8">
-                <input v-bind:placeholder="fec_ingreso_hint"  id="fec_ingreso" v-model="fec_ingreso" type="date" name="fec_ingreso">
+                <input v-bind:placeholder="fec_ingreso_hint"   class="form-control" id="fec_ingreso" v-model="fec_ingreso" type="date" name="fec_ingreso">
                 <span class="text-danger" v-if="errors.fec_ingreso" >{{errors.fec_ingreso}}</span>
-            </div>
         </div>
-        <div class="row">
-            <div class="col-md-2">
+        <div class="form-group">
                 <label for="categoria">Categoria :</label>
-            </div>
-            <div class="col-md-8">
-            <select v-model="selected_categoria" required >
+            <select v-model="selected_categoria" class="form-control" required >
                 <option v-for="option in categorias" v-bind:value="option.id">
                     {{ option.nombre }}
                 </option>
             </select>
             <span class="text-danger" v-if="errors.id_categoria" >{{errors.id_categoria}}</span>
-            </div>
         </div>
-        <div class="row">
-            <div class="col-md-2">
+        <div class="form-group">
                 <label for="tramite">Tramite :</label>
-            </div>
-            <div class="col-md-8">
-            <select v-model="selected_tramite" required >
+            <select v-model="selected_tramite" class="form-control" required >
                 <option v-for="option in tramites" v-bind:value="option.id">
                     {{ option.nombre }}
                 </option>
             </select>
             <span class="text-danger" v-if="errors.id_tramite" >{{errors.id_tramite}}</span>
-            </div>
         </div>
-        <div class="row">
-                <div class="col-md-2">
+        <div class="form-group">
                     <label for="empresa">Empresa :</label>
-                </div>
-            <div class="col-md-8">
-                <select v-model="selected_empresa" required >
+                <select v-model="selected_empresa" class="form-control" required >
                     <option v-for="option in empresas" v-bind:value="option.id">
                         {{ option.nombre }}
                     </option>
-                </select>
-                </div>
+               </select>
             <span class="text-danger" v-if="errors.id_empresa" >{{errors.id_empresa}}</span>
             </div>
-            <div class="row">
-                <div class="col-md-2">
+            <div class="form-group">
                     <label for="descripcion">Descripcion :</label>
-                </div>
-                <div class="col-md-8">
-                    <textarea v-bind:placeholder="descripcion_hint"  id="descripcion" v-model="descripcion" type="text" name="descripcion"></textarea>
+                    <textarea v-bind:placeholder="descripcion_hint" class="form-control"  id="descripcion" v-model="descripcion" type="text" name="descripcion"></textarea>
                     <span class="text-danger" v-if="errors.descripcion" >{{errors.descripcion}}</span>
-                </div>
             </div>
-            <div class="row">
+            <div class="form-group">
                 <div class="col-md-2"> 
               
                     <input v-if="!id" type="submit" v-on:click="add()" value="Enviar" class="btn btn-success">

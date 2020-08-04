@@ -25,35 +25,23 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 <div id="app"class="container-fluid">
 
 <div class="form-group">
-
             <label for="fec">Fec :</label>
-
             <input v-bind:placeholder="fec_hint"  class="form-control"  id="fec" v-model="fec" type="date" name="fec">
             <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
-
 	</div>
     <div class="form-group">
-
             <label for="transporte">Nro :</label>
-
-
             <input v-bind:placeholder="transporte_hint"  class="form-control"  id="transporte" v-model="transporte" type="text" name="transporte" required >
-            
-
 	</div>
     <div class="form-group">
-
             <label for="relevancia">Relevancia :</label>
-
         <select v-model="selected_relevancia" class="form-control"  required >
             <option v-for="option in relevancias" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
-
-	</div>
-   
-    <div class="form-group">
+    </div>
+     <div class="form-group">
             <label for="detalle">Detalle :</label>
             <input v-bind:placeholder="detalle_hint"  class="form-control"  id="detalle" v-model="detalle" type="text" name="detalle">
 	</div>
@@ -68,14 +56,11 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
     <div class="form-group">
             <label for="fec_notificado">Fec Notificado:</label>
             <input v-bind:placeholder="fec_notificado_hint" class="form-control"  id="fec_notificado" v-model="fec_notificado" type="date" name="fec_notificado">
-
 	</div>
     <div class="row">
       <div class="col-md-2"> 
-              
              <button v-if="!id"  v-on:click="add()"  type ="button"  class="btn btn-success">Enviar</button>
               <button v-if="id" v-on:click ="edit(id)" type ="button" class="btn btn-warning" >Actualizar</button>
-              
           </div>
     </div>
     
