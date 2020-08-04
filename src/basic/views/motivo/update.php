@@ -49,7 +49,6 @@ $this->params['breadcrumbs'][] = 'Update';
     </div>
     </form>
 </div>
-
 <script>
  var app = new Vue({
                     el:'#app',
