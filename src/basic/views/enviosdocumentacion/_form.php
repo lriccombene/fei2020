@@ -3,7 +3,16 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
-$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
+Yii::$app->params['boostrap']=4;
+/* @var $this yii\web\View */
+/* @var $model app\models\Consultor */
+$this->registerCssFile("//unpkg.com/bootstrap/dist/css/bootstrap.min.css",['position'=>$this::POS_HEAD]);
+$this->registerCssFile("//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css",['position'=>$this::POS_HEAD]);
+//$this->registerCssFile("//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver",['position'=>$this::POS_HEAD]);
+
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>$this::POS_HEAD]);
+$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js",['position'=>$this::POS_HEAD]);
+//$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js",['position'=>$this::POS_HEAD]);
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 /* @var $this yii\web\View */
 /* @var $model app\models\Enviosdocumentacion */
@@ -15,69 +24,51 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 
 <div id="app"class="container-fluid">
 
-    <div class="row">
-		<div class="col-md-2">
-            <label for="fec">Fec :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="fec_hint"  id="fec" v-model="fec" type="date" name="fec">
-            <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
-        </div>
-	</div>
-	<div class="row">
-		<div class="col-md-2">
-            <label for="transporte">Nro :</label>
-		</div>
-		<div class="col-md-8">
+<div class="form-group">
 
-            <input v-bind:placeholder="transporte_hint" id="transporte" v-model="transporte" type="text" name="transporte" required >
-            
-		</div>
+            <label for="fec">Fec :</label>
+
+            <input v-bind:placeholder="fec_hint"  class="form-control"  id="fec" v-model="fec" type="date" name="fec">
+            <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
+
 	</div>
-    <div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
+
+            <label for="transporte">Nro :</label>
+
+
+            <input v-bind:placeholder="transporte_hint"  class="form-control"  id="transporte" v-model="transporte" type="text" name="transporte" required >
+            
+
+	</div>
+    <div class="form-group">
+
             <label for="relevancia">Relevancia :</label>
-        </div>
-        <div class="col-md-8">
-        <select v-model="selected_relevancia" required >
+
+        <select v-model="selected_relevancia" class="form-control"  required >
             <option v-for="option in relevancias" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
-        </div>
+
 	</div>
    
-    <div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
             <label for="detalle">Detalle :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="detalle_hint"  id="detalle" v-model="detalle" type="text" name="detalle">
-        </div>
+            <input v-bind:placeholder="detalle_hint"  class="form-control"  id="detalle" v-model="detalle" type="text" name="detalle">
 	</div>
-    <div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
             <label for="archivo_urlnotificado">Archivo url notificado :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="archivo_urlnotificado_hint"  id="archivo_urlnotificado" v-model="archivo_urlnotificado" type="text" name="archivo_urlnotificado">
-        </div>
+            <input v-bind:placeholder="archivo_urlnotificado_hint"  class="form-control"  id="archivo_urlnotificado" v-model="archivo_urlnotificado" type="text" name="archivo_urlnotificado">
 	</div>
-    <div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
             <label for="destino">Destino :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="destino_hint"  id="destino" v-model="destino" type="text" name="destino">
-        </div>
+            <input v-bind:placeholder="destino_hint" class="form-control"  id="destino" v-model="destino" type="text" name="destino">
 	</div>
-    <div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
             <label for="fec_notificado">Fec Notificado:</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="fec_notificado_hint"  id="fec_notificado" v-model="fec_notificado" type="date" name="fec_notificado">
-        </div>
+            <input v-bind:placeholder="fec_notificado_hint" class="form-control"  id="fec_notificado" v-model="fec_notificado" type="date" name="fec_notificado">
+
 	</div>
     <div class="row">
       <div class="col-md-2"> 
@@ -86,8 +77,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
               <button v-if="id" v-on:click ="edit(id)" type ="button" class="btn btn-warning" >Actualizar</button>
               
           </div>
-      </div>
     </div>
+    
 
 </div>
 
