@@ -26,51 +26,41 @@ $this->params['breadcrumbs'][] = 'Actualizar';
  <div id="app" >
 
     <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
+
             <label for="nombre">Nombre :</label>
-		</div>
-		<div class="col-md-8">
-            <input v-bind:placeholder="nombre_hint" id="nombre" v-model="nombre" type="text" name="nombre" required >
+
+
+            <input v-bind:placeholder="nombre_hint" class="form-control" id="nombre" v-model="nombre" type="text" name="nombre" required >
             <span class="text-danger" v-if="errors.nombre" >{{errors.nombre}}</span>
-		</div>
+
 	</div>
-    <div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
             <label for="apellido">Apellido :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="apellido_hint"  id="apellido" v-model="apellido" type="text" name="apellido" required>
+            <input v-bind:placeholder="apellido_hint"  class="form-control" id="apellido" v-model="apellido" type="text" name="apellido" required>
             <span class="text-danger" v-if="errors.apellido" >{{errors.apellido}}</span>
-        </div>
+
 	</div>
-    <div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
             <label for="telefono">Telefono :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="telefono_hint"  id="telefono" v-model="telefono" type="text" name="telefono" required>
+            <input v-bind:placeholder="telefono_hint" class="form-control"  id="telefono" v-model="telefono" type="text" name="telefono" required>
             <span class="text-danger" v-if="errors.telefono" >{{errors.telefono}}</span>
-        </div>
+
 	</div>
-    <div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
+
             <label for="email">Email :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="email_hint"  id="email" v-model="email" type="email" name="email" required>
+            <input v-bind:placeholder="email_hint" class="form-control" id="email" v-model="email" type="email" name="email" required>
             <span class="text-danger" v-if="errors.email" >{{errors.email}}</span>
-        </div>
 	</div>
 
-    <div class="row">
-		<div class="col-md-2">
+    <div class="form-group">
+
             <label for="domicilio">Domicilio :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="domicilio_hint"  id="domicilio" v-model="domicilio" type="text" name="domicilio" required>
+
+            <input v-bind:placeholder="domicilio_hint" class="form-control" id="domicilio" v-model="domicilio" type="text" name="domicilio" required>
             <span class="text-danger" v-if="errors.domicilio" >{{errors.domicilio}}</span>
-        </div>
+
 	</div>
 
 

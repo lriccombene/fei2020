@@ -29,26 +29,18 @@ $this->params['breadcrumbs'][] = 'Update';
 
 
     <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-2">
-            <label for="nombre">Nombre :</label>
-		</div>
-		<div class="col-md-8">
 
-            <input v-bind:placeholder="nombre_hint" id="nombre" v-model="nombre" type="text" name="nombre" required >
+    <div class="form-group">
+            <label for="nombre">Nombre :</label>
+            <input v-bind:placeholder="nombre_hint"  class="form-control" id="nombre" v-model="nombre" type="text" name="nombre" required >
             <span class="text-danger" v-if="errors.nombre" >{{errors.nombre}}</span>
             
 		</div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
+        <div class="form-group">
             <label for="Descripcion">Descripcion :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="descripcion_hint"  id="descripcion" v-model="descripcion" type="text" name="descripcion">
+            <input v-bind:placeholder="descripcion_hint"  class="form-control" id="descripcion" v-model="descripcion" type="text" name="descripcion">
             <span class="text-danger" v-if="errors.descripcion" >{{errors.descripcion}}</span>
         </div>
-	</div>
 
     <div class="row">
 		<div class="col-md-2">

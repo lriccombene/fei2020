@@ -39,7 +39,7 @@
                 <td>{{key+1}}</td>
                 <td v-for="field in modelfields">{{model[field]}}</td>
                 <td>
-                    <button v-on:click="editModel(model[modelfields[0]])" type="button" class="btn btn-outline-warning">Editar</button>
+                    <button v-on:click="editModel(model[modelfields[0]])" type="button" class="btn btn-warning">Editar</button>
                 </td>
                 <td>
                     <button v-on:click="deleteModel(model[modelfields[0]])" type="button" class="btn btn-danger">Borrar</button>
@@ -65,11 +65,11 @@
             // bModal : bModal,
         },
         props: {
-            modelname: String,
-            model : Object,
+            modelname: String, //aqui guardamos en esta variable el modelo que utilizamos ejemplo : categoria, motivo, etc
+            model : Object,// aqui tenemos el objeto del modelo
             fields: {
-                type:Array,
-                // default: Object.keys(model),
+                type:Array,// aqui los campos que definimos mostrar
+                // default: Object.keys(model), 
             },
         },
         mounted() {
@@ -82,32 +82,31 @@
         },
         data : function(){
             return {
-                modalShow: false,
                 modelfields: this.fields??Object.keys(this.model),
                 currentPage: 1,
                 pagination:{},
                 filter:{},
                 errors: {},
                 models: [],
-                activemodel:{},
-                isNewRecord:true,
             }
         },
         methods: {
-            normalizeErrors: function(errors){
+            normalizeErrors: function(errors){// en este metodo acomodamos los errrores para que figuren de una marenra 
+                                              //correcta junto al campo
                 var allErrors = {};
                 for(var i = 0 ; i < errors.length; i++ ){
                     allErrors[errors[i].field] = errors[i].message;
                 }
                 return allErrors;
             },
-            getModels: function(){
+            getModels: function(){// en este metodo obtenemos los todos los registros de la tabla
                 var self = this;
                 self.errors = {};
                 axios.get('/apv1/'+self.modelname+'?page='+self.currentPage,{params:self.filter})
                     .then(function (response) {
                         // handle success
                         // console.log(response.data);
+                        //esta variable son utilizadas por el objeto paginacion 
                         self.pagination.total = response.headers['x-pagination-total-count'];
                         self.pagination.totalPages = response.headers['x-pagination-page-count'];
                         self.pagination.perPage = response.headers['x-pagination-per-page'];
@@ -122,7 +121,7 @@
                         // always executed
                     });
             },
-            deleteModel: function(id){
+            deleteModel: function(id){ //aqui borramos el registro de la tabla atravez del boton borrar 
                 var self = this;
                 axios.delete('/apv1/'+self.modelname+'/'+id,{})
                     .then(function (response) {
@@ -137,12 +136,12 @@
                         // always executed
                     });
             },
-            editModel: function (key) {
+            editModel: function (key) { //nos redirecciona al archivo vista que esta la informacion de actualizar
                 var self = this;
                 window.location.href = '/'+self.modelname+'/update?id='+key;
             },
             NewModel: function () {
-                var self = this;
+                var self = this; // nos re envia a la vista que crea obejeto del modelo
                 window.location.href = '/'+self.modelname+'/create';
             }
             

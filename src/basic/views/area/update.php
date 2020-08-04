@@ -13,52 +13,33 @@ $this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue
 //$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js",['position'=>$this::POS_HEAD]);
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 //echo $this->render('/components/ModelForm');
-$this->title = 'Actulizar Area: ' . $model->id;
+$this->title = 'Actualizar Area: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'area', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="area-update">
-
     <h1><?= Html::encode($this->title) ?></h1>
 </div>
 <div class="area-form " >
-
-
     <form  id="app"   method="post">
-
-
-    <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-2">
-            <label for="nombre">Nombre :</label>
-		</div>
-		<div class="col-md-8">
-
-            <input v-bind:placeholder="nombre_hint" id="nombre" v-model="nombre" type="text" name="nombre" required >
-            <span class="text-danger" v-if="errors.nombre" >{{errors.nombre}}</span>
-            
-		</div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
-            <label for="Descripcion">Descripcion :</label>
+        <div class="container-fluid">
+        <div class="form-group">
+           
+                <label for="nombre">Nombre </label>
+                <input v-bind:placeholder="nombre_hint" class="form-control"  id="nombre" v-model="nombre" type="text" name="nombre" required >
+                <span class="text-danger" v-if="errors.nombre" >{{errors.nombre}}</span>
         </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="descripcion_hint"  id="descripcion" v-model="descripcion" type="text" name="descripcion">
-            <span class="text-danger" v-if="errors.descripcion" >{{errors.descripcion}}</span>
+       <div class="form-group">
+                <label for="Descripcion">Descripcion :</label>
+                <input v-bind:placeholder="descripcion_hint"  class="form-control"  id="descripcion" v-model="descripcion" type="text" name="descripcion">
+                <span class="text-danger" v-if="errors.descripcion" >{{errors.descripcion}}</span>
         </div>
-	</div>
-
-    <div class="row">
-		<div class="col-md-2">
-                
-          <button v-if="!id" type="button" v-on:click="addArea()"  class="btn btn-success">Enviar</button>
-          <button v-if="id" v-on:click ="editArea(id)" type ="button" class="btn btn-warning" >Actualizar</button>
-              
+        <div class="row">
+            <div class="col-md-2">
+            <button v-if="id" v-on:click ="editArea(id)" type ="button" class="btn btn-warning" >Actualizar</button>
+            </div>
         </div>
-    </div>
-
     </form>
 </div>
 
@@ -82,7 +63,6 @@ $this->params['breadcrumbs'][] = 'Update';
                             return allErrors;
                       },
                       editArea:function(id){
-                        
                         var self = this;
                         const params = new URLSearchParams();
                            params.append('nombre', self.nombre);
@@ -93,18 +73,15 @@ $this->params['breadcrumbs'][] = 'Update';
                                   // handle success
                                   console.log(response.data);
                                   alert('Los datos fueron actualizados');
-
                               })
                               .catch(function (error) {
                                   // handle error
                                   console.log(error);
-
                               })
                               .then(function () {
                                   // always executed
                               });
                       }
-
                     }
                   })
 </script>

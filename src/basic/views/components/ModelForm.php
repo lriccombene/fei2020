@@ -12,7 +12,7 @@
                 </form>
             </div>
             <button v-if="isNewRecord"  @click="addModel()" type="button" class="btn btn-primary m-3">Crear</button>
-
+    </div>
 </script>
 <script>
 
