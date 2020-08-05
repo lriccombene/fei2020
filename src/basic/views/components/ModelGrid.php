@@ -138,7 +138,7 @@
             },
             editModel: function (key) { //nos redirecciona al archivo vista que esta la informacion de actualizar
                 var self = this;
-                window.location.href = '/'+self.modelname+'/update?id='+key;
+                window.location.href = '/'+self.modelname+'/updatev2?id='+key;
             },
             NewModel: function () {
                 var self = this; // nos re envia a la vista que crea obejeto del modelo

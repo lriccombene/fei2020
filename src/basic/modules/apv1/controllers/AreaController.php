@@ -4,6 +4,7 @@ namespace app\modules\apv1\controllers;
 
 
 use app\modules\apv1\models\AreaSearch;
+use app\modules\apv1\models\Area;
 use Yii;
 use yii\rest\ActiveController;
 
@@ -28,4 +29,5 @@ class AreaController extends ActiveController
         $dataProvider =  $searchModel->search(Yii::$app->request->queryParams);
         return $dataProvider;
     }
+   
 }
