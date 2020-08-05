@@ -88,7 +88,7 @@ class TipodictamenController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+       /* $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -96,6 +96,10 @@ class TipodictamenController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+        ]);*/
+        $model = new Tipodictamen();
+        return $this->render('update',[
+            'model'=>$model,
         ]);
     }
 
