@@ -79,10 +79,10 @@ class AreaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdatev2($id)
+    public function actionUpdate($id)
     {
         $model = new Area();
-        return $this->render('updatev2',[
+        return $this->render('update',[
             'model'=>$model,
         ]);
     }

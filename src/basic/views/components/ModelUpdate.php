@@ -75,7 +75,7 @@
                         var self = this;
                         const params = new URLSearchParams();
                            console.log(self.activemodel);
-                           axios.patch('/apv1/area'+'/'+ids,self.activemodel)
+                           axios.patch('/apv1/'+self.modelname+'/'+ids,self.activemodel)
                               .then(function (response) {
                                   // handle success
                                  // console.log(response.data);

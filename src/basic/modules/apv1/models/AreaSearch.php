@@ -69,7 +69,7 @@ class AreaSearch extends \app\modules\apv1\models\Area
 //        }
 
         // grid filtering conditions
-        $query->andFilterWhere(['' => $this->id]);
+        $query->andFilterWhere(['id' => $this->id]);
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
 
