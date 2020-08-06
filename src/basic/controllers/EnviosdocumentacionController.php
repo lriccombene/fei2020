@@ -35,12 +35,16 @@ class EnviosdocumentacionController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new EnviosdocumentacionSearch();
+        /*$searchModel = new EnviosdocumentacionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Enviosdocumentacion();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

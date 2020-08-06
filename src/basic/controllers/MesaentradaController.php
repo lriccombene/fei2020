@@ -35,12 +35,16 @@ class MesaentradaController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new MesaentradaSearch();
+       /* $searchModel = new MesaentradaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Mesaentrada();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

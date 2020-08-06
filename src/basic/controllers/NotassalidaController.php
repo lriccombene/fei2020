@@ -35,12 +35,17 @@ class NotassalidaController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new NotassalidaSearch();
+       /* $searchModel = new NotassalidaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+
+        $model = new Notassalida();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 
