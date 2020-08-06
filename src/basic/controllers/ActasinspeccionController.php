@@ -35,12 +35,16 @@ class ActasinspeccionController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ActasinspeccionSearch();
+       /* $searchModel = new ActasinspeccionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);*/
+        $model = new Actasinspeccion();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 

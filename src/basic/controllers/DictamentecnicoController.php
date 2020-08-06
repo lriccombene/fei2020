@@ -35,12 +35,17 @@ class DictamentecnicoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new DictamentecnicoSearch();
+       /* $searchModel = new DictamentecnicoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+        */
+        $model = new Dictamentecnico();
+        return $this->render('index',[
+            'model'=>$model,
         ]);
     }
 
