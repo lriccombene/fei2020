@@ -59,8 +59,8 @@ git clone https://github.com/lriccombene/fei2020.git
     b. Opcion 1
          
          ejecutar el archivo bash de la carperta "comandos migrate insert"
-    
-    d. bash insert_usuario.sh
+         
+         bash insert_usuario.sh
 
 7. Empezar a usar la aplicacion
 
