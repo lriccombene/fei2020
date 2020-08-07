@@ -42,6 +42,9 @@ class CategoriaController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);*/
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Categoria();
         return $this->render('index',[
             'model'=>$model,
@@ -56,6 +59,9 @@ class CategoriaController extends Controller
      */
     public function actionView($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -68,6 +74,9 @@ class CategoriaController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Categoria();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -97,6 +106,9 @@ class CategoriaController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);*/
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Categoria();
         return $this->render('update',[
             'model'=>$model,
@@ -113,6 +125,9 @@ class CategoriaController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -127,6 +142,9 @@ class CategoriaController extends Controller
      */
     protected function findModel($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         if (($model = Categoria::findOne($id)) !== null) {
             return $model;
         }

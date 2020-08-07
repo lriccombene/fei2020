@@ -43,6 +43,9 @@ class DictamentecnicoController extends Controller
             'dataProvider' => $dataProvider,
         ]);
         */
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Dictamentecnico();
         return $this->render('index',[
             'model'=>$model,
@@ -57,6 +60,9 @@ class DictamentecnicoController extends Controller
      */
     public function actionView($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -69,6 +75,9 @@ class DictamentecnicoController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Dictamentecnico();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -89,6 +98,9 @@ class DictamentecnicoController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -109,6 +121,9 @@ class DictamentecnicoController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -123,6 +138,9 @@ class DictamentecnicoController extends Controller
      */
     protected function findModel($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         if (($model = Dictamentecnico::findOne($id)) !== null) {
             return $model;
         }

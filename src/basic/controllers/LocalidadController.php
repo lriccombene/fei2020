@@ -97,7 +97,9 @@ class LocalidadController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);*/
-        
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Localidad();
         return $this->render('update',[
             'model'=>$model,
@@ -115,6 +117,9 @@ class LocalidadController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -129,6 +134,9 @@ class LocalidadController extends Controller
      */
     protected function findModel($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         if (($model = Localidad::findOne($id)) !== null) {
             return $model;
         }

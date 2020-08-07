@@ -42,6 +42,9 @@ class EmpresaController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);*/
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Empresa();
         return $this->render('index',[
             'model'=>$model,
@@ -56,6 +59,9 @@ class EmpresaController extends Controller
      */
     public function actionView($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -68,6 +74,9 @@ class EmpresaController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Empresa();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -88,6 +97,9 @@ class EmpresaController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -108,6 +120,9 @@ class EmpresaController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -122,6 +137,9 @@ class EmpresaController extends Controller
      */
     protected function findModel($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         if (($model = Empresa::findOne($id)) !== null) {
             return $model;
         }

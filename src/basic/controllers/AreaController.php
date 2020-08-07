@@ -35,6 +35,12 @@ class AreaController extends Controller
      */
     public function actionIndex()
     {
+
+
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = new Area();
         return $this->render('index',[
             'model'=>$model,
@@ -49,6 +55,10 @@ class AreaController extends Controller
      */
     public function actionView($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -61,6 +71,9 @@ class AreaController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Area();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -81,6 +94,10 @@ class AreaController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = new Area();
         return $this->render('update',[
             'model'=>$model,
@@ -96,6 +113,10 @@ class AreaController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

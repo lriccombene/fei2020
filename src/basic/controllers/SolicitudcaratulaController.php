@@ -42,6 +42,9 @@ class SolicitudcaratulaController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);*/
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Solicitudcaratula();
         return $this->render('index',[
             'model'=>$model,

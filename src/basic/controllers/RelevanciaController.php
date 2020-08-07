@@ -97,7 +97,9 @@ class RelevanciaController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);*/
-
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Relevancia();
         return $this->render('update',[
             'model'=>$model,
@@ -113,6 +115,9 @@ class RelevanciaController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -127,6 +132,9 @@ class RelevanciaController extends Controller
      */
     protected function findModel($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         if (($model = Relevancia::findOne($id)) !== null) {
             return $model;
         }

@@ -42,7 +42,9 @@ class NotassalidaController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);*/
-
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Notassalida();
         return $this->render('index',[
             'model'=>$model,
@@ -57,6 +59,9 @@ class NotassalidaController extends Controller
      */
     public function actionView($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -69,6 +74,9 @@ class NotassalidaController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Notassalida();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -89,6 +97,9 @@ class NotassalidaController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -109,6 +120,9 @@ class NotassalidaController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -123,6 +137,9 @@ class NotassalidaController extends Controller
      */
     protected function findModel($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         if (($model = Notassalida::findOne($id)) !== null) {
             return $model;
         }

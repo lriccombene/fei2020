@@ -42,6 +42,9 @@ class TipodictamenController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);*/
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Tipodictamen();
         return $this->render('index',[
             'model'=>$model,
@@ -56,6 +59,9 @@ class TipodictamenController extends Controller
      */
     public function actionView($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -68,6 +74,9 @@ class TipodictamenController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Tipodictamen();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -97,6 +106,9 @@ class TipodictamenController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);*/
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new Tipodictamen();
         return $this->render('update',[
             'model'=>$model,
@@ -112,6 +124,9 @@ class TipodictamenController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -126,6 +141,9 @@ class TipodictamenController extends Controller
      */
     protected function findModel($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         if (($model = Tipodictamen::findOne($id)) !== null) {
             return $model;
         }
