@@ -54,12 +54,15 @@ git clone https://github.com/lriccombene/fei2020.git
 
     a. Opcion 1
          
-         ejecutar el contenido del archivo  desde el terminal de la carperta "comandos migrate insert" nombre del archivo insert_usuario.sh
+         ejecutar el archivo  desde el terminal de la carperta "comandos migrate insert" nombre del archivo insert_usuario.sh
          
-         Inicia un terminal en la carpeta donde se encuentra este archivo insert_usuario.sh
+          bash insert_usuario.sh
+
+        Inicia un terminal en la carpeta donde se encuentra este archivo insert_usuario.sh
          
          http -v POST http://127.0.0.1:8000/apv1/usuario/create name="admin" username="admin" password='$2y$10$Q87lTh3XpHKvHR/AXv9.ZeTOBNPvf/UZIOa8NSk6S7otlPzPu4AIK'
          
+         si no tenes http instalado hacelo de esta forma sudo apt install httpie y repeti el paso anterior
          
 
 7. Empezar a usar la aplicacion
