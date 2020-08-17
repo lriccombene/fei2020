@@ -12,139 +12,111 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 ?>
 
 <div class="dictamentecnico-form">
-
-
-
     <div id="app" class="container-fluid">
-	<div class="row">
-		<div class="col-md-2">
-            <label for="nro">Nro :</label>
-		</div>
-		<div class="col-md-8">
 
-            <input v-bind:placeholder="nro_hint" id="nro" v-model="nro" type="text" name="nro" required >
-            <span class="text-danger" v-if="errors.nro" >{{errors.nro}}</span>
-		</div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
-            <label for="fec">Fec :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="fec_hint"  id="fec" v-model="fec" type="date" name="fec">
-            <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
-        </div>
-	</div>
-      <div class="row">
-		<div class="col-md-2">
+    		<div class="form-group">
+                <label for="nro">Nro :</label>
+                <input v-bind:placeholder="nro_hint" class="form-control" id="nro" v-model="nro" type="text" name="nro" required >
+                <span class="text-danger" v-if="errors.nro" >{{errors.nro}}</span>
+
+    	 </div>
+
+  		 <div class="form-group">
+              <label for="fec">Fec :</label>
+
+              <input v-bind:placeholder="fec_hint" class="form-control"  id="fec" v-model="fec" type="date" name="fec">
+              <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
+
+  	 </div>
+		 <div class="form-group">
             <label for="categoria">Categoria :</label>
-        </div>
-        <div class="col-md-8">
-        <select v-model="selected_categoria" required >
+            <select v-model="selected_categoria" class="form-control" required >
             <option v-for="option in categorias" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_categoria" >{{errors.id_categoria}}</span>
-        </div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
+
+	  </div>
+		<div class="form-group">
             <label for="empresa">Empresa :</label>
-        </div>
-       <div class="col-md-8">
-        <select v-model="selected_empresa" required >
+           <select v-model="selected_empresa" class="form-control" required >
             <option v-for="option in empresas" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_empresa" >{{errors.id_empresa}}</span>
-        </div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
+
+	 </div>
+
+		<div class="form-group">
             <label for="area">Area :</label>
-        </div>
-       <div class="col-md-8">
-        <select v-model="selected_area" required >
+            <select v-model="selected_area" class="form-control" required >
             <option v-for="option in areas" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_area" >{{errors.id_area}}</span>
-        </div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
+    </div>
+
+		<div class="form-group">
             <label for="yacimiento">Yacimiento :</label>
-        </div>
-       <div class="col-md-8">
-        <select v-model="selected_yacimiento" required >
+
+           <select v-model="selected_yacimiento" class="form-control" required >
             <option v-for="option in yacimientos" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_yacimiento" >{{errors.id_yacimiento}}</span>
-        </div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
+    </div>
+
+		<div class="form-group">
             <label for="tipodictamen">Tipo dictamen:</label>
-        </div>
-       <div class="col-md-8">
-        <select v-model="selected_tipodictamen" required >
+
+        <select v-model="selected_tipodictamen" class="form-control" required >
             <option v-for="option in tipodictamenes" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_tipodictamen" >{{errors.id_tipodictamen}}</span>
-        </div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
+    </div>
+
+		<div class="form-group">
             <label for="tipotrabajo">Tipo trabajo:</label>
-        </div>
-       <div class="col-md-8">
-        <select v-model="selected_tipotrabajo" required >
+
+        <select v-model="selected_tipotrabajo" class="form-control" required >
             <option v-for="option in tipotrabajos" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_tipotrabajo" >{{errors.id_tipotrabajo}}</span>
-        </div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
+    </div>
+		<div class="form-group">
             <label for="detalle">Detalle :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="detalle_hint"  id="detalle" v-model="detalle" type="text" name="detalle">
+
+            <input v-bind:placeholder="detalle_hint" class="form-control" id="detalle" v-model="detalle" type="text" name="detalle">
             <span class="text-danger" v-if="errors.detalle" >{{errors.detalle}}</span>
-        </div>
-	</div>
+    </div>
 
-    <div class="row">
-		<div class="col-md-2">
+		<div class="form-group">
             <label for="latitud">Latitud :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="latitud_hint"  id="latitud" v-model="latitud" type="text" name="latitud">
+
+            <input v-bind:placeholder="latitud_hint" class="form-control" id="latitud" v-model="latitud" type="text" name="latitud">
             <span class="text-danger" v-if="errors.latitud" >{{errors.latitud}}</span>
-        </div>
-	</div>
-    <div class="row">
-		<div class="col-md-2">
+    </div>
+
+		<div class="form-group">
             <label for="longitud">Longitud :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="longitud_hint"  id="longitud" v-model="longitud" type="text" name="longitud">
-            <span class="text-danger" v-if="errors.longitud" >{{errors.longitud}}</span>
-        </div>
-	</div>
 
+            <input v-bind:placeholder="longitud_hint" class="form-control" id="longitud" v-model="longitud" type="text" name="longitud">
+            <span class="text-danger" v-if="errors.longitud" >{{errors.longitud}}</span>
+    </div>
+
+
+<p></p>
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
 
              <button v-if="!id"  v-on:click="add()"  type ="button"  class="btn btn-success">Enviar</button>
               <button v-if="id" v-on:click ="edit(id)" type ="button" class="btn btn-warning" >Actualizar</button>
