@@ -72,11 +72,26 @@ git clone https://github.com/lriccombene/fei2020.git
 8. Acceder phpmyadmin
     a. http://localhost:8001
 
+#######################################
+# Modificaciones hechas el 17/08/2020 #
+#######################################
+
+1. Se modifico el depliegue para que no haga falta ejecutar la serie de comandos al iniciar el proyecto.
+Ahora solo hace falta levantar el proyecto para que funcione.
+
+2. Se modifico el proyecto para que los archivos de la aplicacion, no se almancen en un directorio. Estan empaquetados en la imagen.
+
+3. Se crea un script que revisa si la base de datos existe. En caso de que no, la crea.
 
 
+# Nuevas instrucciones de uso:
 
+1. Clonar el repositorio: git clone https://github.com/lriccombene/fei2020
 
+2. Acceder a la carpeta del proyecto: cd fei2020
 
+3. (Opcional pero recomendado) Modificar las contraseñas en el docker-compose.yml
 
+4. Levantar el proyecto: docker-compose up -d
 
-
+Este ultimo paso tarda unos segundos hasta que la basde de datos este operativa.
