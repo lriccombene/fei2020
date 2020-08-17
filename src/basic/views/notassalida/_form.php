@@ -14,30 +14,27 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 <div class="notassalida-form">
     <div id="app" class="container-fluid">
             <div class="row">
-                <div class="col-md-2">
+                <div class=class="form-group">
                     <label for="fec_emision">Fecha emision:</label>
-                </div>
-                <div class="col-md-8">
-                    <input v-bind:placeholder="fec_emision" id="fec_emision" v-model="fec_emision" type="date" name="fec_emision" required >
+
+                    <input v-bind:placeholder="fec_emision" class="form-control" id="fec_emision" v-model="fec_emision" type="date" name="fec_emision" required >
                     <span class="text-danger" v-if="errors.fec_emision" >{{errors.fec_emision}}</span>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-2">
+                <div class=class="form-group">
                     <label for="fec_notificado">Fecha notificacion :</label>
-                </div>
-                <div class="col-md-8">
-                    <input v-bind:placeholder="fec_notificado_hint"  id="fec_notificado" v-model="fec_notificado" type="date" name="fec_notificado">
+
+                    <input v-bind:placeholder="fec_notificado_hint" class="form-control" id="fec_notificado" v-model="fec_notificado" type="date" name="fec_notificado">
                     <span class="text-danger" v-if="errors.fec_notificado" >{{errors.fec_notificado}}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2">
+                <div class=class="form-group">
                     <label for="categoria">Categoria :</label>
-                </div>
-                <div class="col-md-8">
-                    <select v-model="selected_categoria" required >
+
+                    <select v-model="selected_categoria" class="form-control" required >
                         <option v-for="option in categorias" v-bind:value="option.id">
                             {{ option.nombre }}
                         </option>
@@ -46,11 +43,10 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2">
+                <div class=class="form-group">
                     <label for="empresa">Empresa :</label>
-                </div>
-                <div class="col-md-8">
-                <select v-model="selected_empresa" required >
+
+                <select v-model="selected_empresa" class="form-control" required >
                     <option v-for="option in empresas" v-bind:value="option.id">
                         {{ option.nombre }}
                     </option>
@@ -59,34 +55,31 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2">
+                <div class=class="form-group">
                     <label for="detalle">Detalle :</label>
-                </div>
-                <div class="col-md-8">
-                    <textarea v-bind:placeholder="detalle_hint"  id="detalle" v-model="detalle" type="text" name="detalle"></textarea>
+
+                    <textarea v-bind:placeholder="detalle_hint" class="form-control" id="detalle" v-model="detalle" type="text" name="detalle"></textarea>
                     <span class="text-danger" v-if="errors.detalle" >{{errors.detalle}}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2">
+                <div class=class="form-group">
                     <label for="notificado">Notificado :</label>
-                </div>
-                <div class="col-md-8">
-                    <input v-bind:placeholder="notificado_hint"  id="notificado" v-model="notificado" type="text" name="notificado">
+
+                    <input v-bind:placeholder="notificado_hint" class="form-control" id="notificado" v-model="notificado" type="text" name="notificado">
                     <span class="text-danger" v-if="errors.notificado" >{{errors.notificado}}</span>
                 </div>
             </div>
+            <p> </p>
             <div class="row">
-                <div class="col-md-2"> 
+                <div class=class="form-group">
                     <button v-if="!id"  v-on:click="add()"  type ="button"  class="btn btn-success">Enviar</button>
                     <button v-if="id" v-on:click ="edit(id)" type ="button" class="btn btn-warning" >Actualizar</button>
-                         
-          </div>
-      </div>
+                </div>
+           </div>
     </div>
 
-    
-</div>
+
 </div>
 
 <script>
@@ -111,8 +104,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                     mounted() {
                         this.getCategorias();
                         this.getEmpresas();
-                        },                 
-                    methods: { 
+                        },
+                    methods: {
                         normalizeErrors: function(errors){
                             var allErrors = {};
                             for(var i = 0 ; i < errors.length; i++ ){
@@ -182,7 +175,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                             });
                         },
                         edit:function(id){
-                        
+
                             var self = this;
                             const params = new URLSearchParams();
                             params.append('nro', self.nro);
