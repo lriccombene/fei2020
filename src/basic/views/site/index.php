@@ -23,7 +23,7 @@ $url = Yii::getAlias("@web") . '/img/';
 ?>
 <style>
 body {
-    background-color: #4E9A06;
+    background-color: #009a3b;
 
 }
 </style>
