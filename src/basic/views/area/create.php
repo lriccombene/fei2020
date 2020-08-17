@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Area */
 
-$this->title = 'Create Area';
+$this->title = 'Crear Area';
 $this->params['breadcrumbs'][] = ['label' => 'Area', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -18,5 +18,3 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
-
-

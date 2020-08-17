@@ -13,11 +13,12 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 echo $this->render('/components/ModelForm');
 ?>
 <form  id="app"   method="post">
+
     <crud
             v-bind:model="model"
             v-bind:modelname="modelname"
             v-bind:fields="fields"
-            
+
     ></crud>
 </form>
 
@@ -29,6 +30,7 @@ echo $this->render('/components/ModelForm');
             crud: Crud,
         },
         data:{
+           //preparo los atributos del modelo para luego enlazarlos con el componente crud
             model: <?= json_encode($model->getAttributes()) ?>,
             //relates: <?//= json_encode($model->getRelationData()) ?>//,
             //rules: <?//= json_encode($model->rules()) ?>//,
