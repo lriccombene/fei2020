@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tipodictamen */
 
-$this->title = 'Create Tipodictamen';
-$this->params['breadcrumbs'][] = ['label' => 'Tipodictamens', 'url' => ['index']];
+$this->title = 'Crear Tipo dictamen';
+$this->params['breadcrumbs'][] = ['label' => 'Tipo dictamen', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tipodictamen-create">

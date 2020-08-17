@@ -1,5 +1,5 @@
 <?php
-
+Yii::$app->params['boostrap']=4;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
@@ -12,7 +12,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 ?>
 
 <div class="dictamentecnico-form">
-  
+
 
 
     <div id="app" class="container-fluid">
@@ -144,17 +144,17 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 
 
     <div class="row">
-      <div class="col-md-2"> 
-              
+      <div class="col-md-2">
+
              <button v-if="!id"  v-on:click="add()"  type ="button"  class="btn btn-success">Enviar</button>
               <button v-if="id" v-on:click ="edit(id)" type ="button" class="btn btn-warning" >Actualizar</button>
-              
+
           </div>
       </div>
     </div>
 
 </div>
- 
+
 
 
 <script>
@@ -176,7 +176,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         selected_tipodictamen: '<?php  echo ($model->id_tipodictamen); ?>',
                         tipodictamenes: [],
                         selected_tipotrabajo: '<?php  echo ($model->id_tipotrabajo); ?>',
-                        tipotrabajos: [], 
+                        tipotrabajos: [],
                         detalle: '<?php  echo ($model->detalle); ?>',
                         detalle_hint: 'ingrese detalle',
                         longitud: '<?php  echo ($model->longitud); ?>',
@@ -193,8 +193,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         this.getYacimiento();
                         this.getTipotrabajo();
                         this.getTipodictamen();
-                        },                 
-                    methods: { 
+                        },
+                    methods: {
                         normalizeErrors: function(errors){
                             var allErrors = {};
                             for(var i = 0 ; i < errors.length; i++ ){

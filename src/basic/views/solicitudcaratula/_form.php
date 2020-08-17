@@ -10,32 +10,26 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'
 $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 ?>
 <div class="solicitudcaratula-form">
- 
+
 <div id="app" class="container-fluid">
     <div class="row">
-        <div class="col-md-2">
-            <label for="fec">Fecha :</label>
-        </div>
-        <div class="col-md-8">
-            <input  id="fec" v-model="fec" type="date" name="fec" required >
+        <div class="form-group">
+            <label for="fec">Fecha </label>
+            <input  id="fec" v-model="fec" class="form-control" type="date" name="fec" required >
             <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2">
-            <label for="extracto">Extracto :</label>
-        </div>
-        <div class="col-md-8">
-            <input v-bind:placeholder="extracto_hint"  id="extracto" v-model="extracto" type="text" name="extracto" maxlength="350">
+        <div class="form-group">
+            <label for="extracto">Extracto </label>
+            <input v-bind:placeholder="extracto_hint" class="form-control" id="extracto" v-model="extracto" type="text" name="extracto" maxlength="350">
             <span class="text-danger" v-if="errors.extracto" >{{errors.extracto}}</span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2">
-            <label for="recibido">Recibido :</label>
-        </div>
-        <div class="col-md-8">
-            <select v-model="selected" required >
+        <div class="form-group">
+            <label for="recibido">Recibido </label>
+            <select v-model="selected" class="form-control" required >
                 <option v-for="option in options" v-bind:value="option.nombre">
                     {{ option.nombre }}
                 </option>
@@ -43,6 +37,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
             <span class="text-danger" v-if="errors.recibido" >{{errors.recibido}}</span>
         </div>
     </div>
+    <p></p>
+
     <div class="row">
 		<div class="col-md-2">
             <button v-if="!id"  v-on:click="add()"  type ="button"  class="btn btn-success">Enviar</button>
@@ -67,11 +63,11 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                 { id: '2', nombre: 'Recibido' },
                                 { id: '3', nombre: '------' }
                                ],
-             
+
                  errors: {}
-                  
-                },                
-                methods: { 
+
+                },
+                methods: {
                     normalizeErrors: function(errors){
                         var allErrors = {};
                         for(var i = 0 ; i < errors.length; i++ ){
