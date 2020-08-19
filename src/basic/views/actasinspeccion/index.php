@@ -13,7 +13,9 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 
 echo $this->render('/components/ModelGrid2');
 ?>
-
+        <p></p>
+        <p></p>   
+   <a><h1>   Actas de inspección</h1></a>
 
 
 <div id="app">

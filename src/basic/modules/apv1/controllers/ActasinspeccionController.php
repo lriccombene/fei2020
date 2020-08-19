@@ -10,6 +10,7 @@ use yii\rest\ActiveController;
  */
 class ActasinspeccionController extends ActiveController
 {
+    
     public $modelClass ="app\modules\apv1\models\Actasinspeccion";
     
     public function actions()

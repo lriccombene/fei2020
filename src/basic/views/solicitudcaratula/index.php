@@ -15,7 +15,6 @@ echo $this->render('/components/ModelGrid');
 ?>
 
 
-
 <div id="app">
     <crud
             v-bind:model="model"
