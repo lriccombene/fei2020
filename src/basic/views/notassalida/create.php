@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="notassalida-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Crear Notas de Salida</h1>
 
     <?= $this->render('_form', [
         'model' => $model,
