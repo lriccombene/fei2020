@@ -3,6 +3,7 @@
          <!--<h1 class="text-capitalize">{{modelname}}</h1>-->
         <!-- Button trigger modal -->
         <p></p>
+        <p></p>
         <p>
         <button v-on:click="NewModel()" type="button" class="btn btn-success">Nuevo</button>
          </p>

@@ -15,21 +15,21 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
     <div id="app" class="container-fluid">
 
     		<div class="form-group">
-                <label for="nro">Nro :</label>
+                <label for="nro">Número:</label>
                 <input v-bind:placeholder="nro_hint" class="form-control" id="nro" v-model="nro" type="text" name="nro" required >
                 <span class="text-danger" v-if="errors.nro" >{{errors.nro}}</span>
 
     	 </div>
 
   		 <div class="form-group">
-              <label for="fec">Fec :</label>
+              <label for="fec">Fecha :</label>
 
               <input v-bind:placeholder="fec_hint" class="form-control"  id="fec" v-model="fec" type="date" name="fec">
               <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
 
   	 </div>
 		 <div class="form-group">
-            <label for="categoria">Categoria :</label>
+            <label for="categoria">Categoría :</label>
             <select v-model="selected_categoria" class="form-control" required >
             <option v-for="option in categorias" v-bind:value="option.id">
                 {{ option.nombre }}
@@ -50,7 +50,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 	 </div>
 
 		<div class="form-group">
-            <label for="area">Area :</label>
+            <label for="area">Área :</label>
             <select v-model="selected_area" class="form-control" required >
             <option v-for="option in areas" v-bind:value="option.id">
                 {{ option.nombre }}

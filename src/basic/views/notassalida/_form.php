@@ -15,7 +15,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
     <div id="app" class="container-fluid">
             <div class="row">
                 <div class=class="form-group">
-                    <label for="fec_emision">Fecha emision:</label>
+                    <label for="fec_emision">Fecha emisión:</label>
 
                     <input v-bind:placeholder="fec_emision" class="form-control" id="fec_emision" v-model="fec_emision" type="date" name="fec_emision" required >
                     <span class="text-danger" v-if="errors.fec_emision" >{{errors.fec_emision}}</span>
@@ -24,7 +24,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 
             <div class="row">
                 <div class=class="form-group">
-                    <label for="fec_notificado">Fecha notificacion :</label>
+                    <label for="fec_notificado">Fecha notificación :</label>
 
                     <input v-bind:placeholder="fec_notificado_hint" class="form-control" id="fec_notificado" v-model="fec_notificado" type="date" name="fec_notificado">
                     <span class="text-danger" v-if="errors.fec_notificado" >{{errors.fec_notificado}}</span>
@@ -32,7 +32,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
             </div>
             <div class="row">
                 <div class=class="form-group">
-                    <label for="categoria">Categoria :</label>
+                    <label for="categoria">Categoría :</label>
 
                     <select v-model="selected_categoria" class="form-control" required >
                         <option v-for="option in categorias" v-bind:value="option.id">

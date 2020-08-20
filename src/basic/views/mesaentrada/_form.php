@@ -19,7 +19,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                 <span class="text-danger" v-if="errors.fec_ingreso" >{{errors.fec_ingreso}}</span>
         </div>
         <div class="form-group">
-                <label for="categoria">Categoria :</label>
+                <label for="categoria">Categoría :</label>
             <select v-model="selected_categoria" class="form-control" required >
                 <option v-for="option in categorias" v-bind:value="option.id">
                     {{ option.nombre }}
@@ -28,7 +28,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
             <span class="text-danger" v-if="errors.id_categoria" >{{errors.id_categoria}}</span>
         </div>
         <div class="form-group">
-                <label for="tramite">Tramite :</label>
+                <label for="tramite">Trámite :</label>
             <select v-model="selected_tramite" class="form-control" required >
                 <option v-for="option in tramites" v-bind:value="option.id">
                     {{ option.nombre }}
@@ -46,7 +46,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
             <span class="text-danger" v-if="errors.id_empresa" >{{errors.id_empresa}}</span>
             </div>
             <div class="form-group">
-                    <label for="descripcion">Descripcion :</label>
+                    <label for="descripcion">Descripción :</label>
                     <textarea v-bind:placeholder="descripcion_hint" class="form-control"  id="descripcion" v-model="descripcion" type="text" name="descripcion"></textarea>
                     <span class="text-danger" v-if="errors.descripcion" >{{errors.descripcion}}</span>
             </div>

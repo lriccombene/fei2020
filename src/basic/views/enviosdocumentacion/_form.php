@@ -25,12 +25,12 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 <div id="app"class="container-fluid">
 
 <div class="form-group">
-            <label for="fec">Fec :</label>
+            <label for="fec">Fecha :</label>
             <input v-bind:placeholder="fec_hint"  class="form-control"  id="fec" v-model="fec" type="date" name="fec">
             <span class="text-danger" v-if="errors.fec" >{{errors.fec}}</span>
 	</div>
     <div class="form-group">
-            <label for="transporte">Nro :</label>
+            <label for="transporte">Número :</label>
             <input v-bind:placeholder="transporte_hint"  class="form-control"  id="transporte" v-model="transporte" type="text" name="transporte" required >
 	</div>
     <div class="form-group">
@@ -54,7 +54,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
             <input v-bind:placeholder="destino_hint" class="form-control"  id="destino" v-model="destino" type="text" name="destino">
 	</div>
     <div class="form-group">
-            <label for="fec_notificado">Fec Notificado:</label>
+            <label for="fec_notificado">Fecha Notificado:</label>
             <input v-bind:placeholder="fec_notificado_hint" class="form-control"  id="fec_notificado" v-model="fec_notificado" type="date" name="fec_notificado">
 	</div>
     <div class="row">
