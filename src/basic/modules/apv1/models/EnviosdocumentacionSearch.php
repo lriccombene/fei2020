@@ -74,7 +74,9 @@ class EnviosdocumentacionSearch extends \app\modules\apv1\models\Enviosdocumenta
         ]);
 
         $query->andFilterWhere(['like', 'fec', $this->fec])
-            ->andFilterWhere(['like', 'detalle', $this->detalle]);
+            ->andFilterWhere(['like', 'detalle', $this->destino])
+            ->andFilterWhere(['like', 'detalle', $this->detalle])
+            ->andFilterWhere(['like', 'detalle', $this->fec_notificado]);
         
         $query->andFilterWhere(['like','relevancia.nombre',$this->relevancia]);
         return $dataProvider;
