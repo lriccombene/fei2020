@@ -1,0 +1,15 @@
+/.dea
+/bin
+/comandos migrate insert
+/diagrama de db
+/documentacion
+/nbproject
+/src/basic/assets
+/src/basic/commands/
+/src/basic/config/
+/src/basic/mail/layouts/
+/src/basic/migrations
+/src/basic/runtime/
+/src/basic/tests/
+/src/basic/vagrant/
+/src/basic/web/
