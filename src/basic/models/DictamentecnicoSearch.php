@@ -17,8 +17,8 @@ class DictamentecnicoSearch extends Dictamentecnico
     public function rules()
     {
         return [
-            [['id', 'nro', 'id_categoria', 'id_empresa', 'id_area', 'id_yacimiento', 'id_tipodictamen', 'id_tipotrabajo', 'longitud', 'latitud'], 'integer'],
-            [['fec', 'detalle'], 'safe'],
+            [['id', 'nro', 'id_categoria', 'id_empresa', 'id_area', 'id_yacimiento', 'id_tipodictamen', 'id_tipotrabajo'], 'integer'],
+            [['fec', 'detalle', 'longitud', 'latitud'], 'safe'],
         ];
     }
 

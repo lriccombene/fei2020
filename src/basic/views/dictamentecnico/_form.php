@@ -3,9 +3,14 @@ Yii::$app->params['boostrap']=4;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
-$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>View::POS_HEAD]);
-$this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
+$this->registerCssFile("//unpkg.com/bootstrap/dist/css/bootstrap.min.css",['position'=>$this::POS_HEAD]);
+$this->registerCssFile("//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css",['position'=>$this::POS_HEAD]);
+//$this->registerCssFile("//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver",['position'=>$this::POS_HEAD]);
 
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/vue/dist/vue.js",['position'=>$this::POS_HEAD]);
+$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js",['position'=>$this::POS_HEAD]);
+//$this->registerJsFile("https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js",['position'=>$this::POS_HEAD]);
+$this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['position'=>$this::POS_HEAD]);
 /* @var $this yii\web\View */
 /* @var $model app\models\Dictamentecnico */
 /* @var $form yii\widgets\ActiveForm */
@@ -46,8 +51,15 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_empresa" >{{errors.id_empresa}}</span>
-
+        si no encuentra la empresa a click en la siguiente pagina
+        <b-pagination
+                  v-model="currentPageEmpresa"
+                  :total-rows="paginationempresa.total"
+                  :per-page="paginationempresa.perPage"
+                  aria-controls="my-table"
+              ></b-pagination>
 	 </div>
+
 
 		<div class="form-group">
             <label for="area">Área :</label>
@@ -68,6 +80,13 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_yacimiento" >{{errors.id_yacimiento}}</span>
+        si no encuentra el yacimiento a click en la siguiente pagina
+        <b-pagination
+                  v-model="currentPageYacimiento"
+                  :total-rows="paginationyacimiento.total"
+                  :per-page="paginationyacimiento.perPage"
+                  aria-controls="my-table"
+              ></b-pagination>
     </div>
 
 		<div class="form-group">
@@ -94,7 +113,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
 		<div class="form-group">
             <label for="detalle">Detalle :</label>
 
-            <input v-bind:placeholder="detalle_hint" class="form-control" id="detalle" v-model="detalle" type="text" name="detalle">
+            <b-form-textarea v-bind:placeholder="detalle_hint" class="form-control" id="detalle" v-model="detalle" type="textarea" name="detalle">
             <span class="text-danger" v-if="errors.detalle" >{{errors.detalle}}</span>
     </div>
 
@@ -156,7 +175,12 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         latitud: '<?php  echo ($model->latitud); ?>',
                         latitud_hint: 'ingrese latitud',
                         errors: {},
-                        id:'<?php  echo ($model->id); ?>'
+                        id:'<?php  echo ($model->id); ?>',
+                        currentPageEmpresa: 1,
+                        paginationempresa:{},
+                        currentPageYacimiento: 1,
+                        paginationyacimiento:{},
+
                     },
                     mounted() {
                         this.getCategorias();
@@ -166,6 +190,14 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         this.getTipotrabajo();
                         this.getTipodictamen();
                         },
+                        watch:{
+                                currentPageEmpresa: function() {
+                                    this.getEmpresas();
+                                },
+                                 currentPageYacimiento: function() {
+                                      this.getYacimiento();
+                                  }
+                            },
                     methods: {
                         normalizeErrors: function(errors){
                             var allErrors = {};
@@ -212,8 +244,11 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         },
                         getYacimiento(){
                             var self = this;
-                            axios.get('/apv1/yacimiento?sort=-nombre&per-page=100')
+                            axios.get('/apv1/yacimiento?page='+self.currentPageYacimiento)
                                 .then(function (response) {
+                                  self.paginationyacimiento.total = response.headers['x-pagination-total-count'];
+                                  self.paginationyacimiento.totalPages = response.headers['x-pagination-page-count'];
+                                  self.paginationyacimiento.perPage = response.headers['x-pagination-per-page'];
                                     // handle success
                                     console.log(response.data);
                                     console.log("trae todas las yacimiento");
@@ -248,8 +283,11 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         },
                         getEmpresas(){
                             var self = this;
-                            axios.get('/apv1/empresa?sort=-nombre&per-page=100')
+                            axios.get('/apv1/empresa?page='+self.currentPageEmpresa)
                                 .then(function (response) {
+                                  self.paginationempresa.total = response.headers['x-pagination-total-count'];
+                                  self.paginationempresa.totalPages = response.headers['x-pagination-page-count'];
+                                  self.paginationempresa.perPage = response.headers['x-pagination-per-page'];
                                     // handle success
                                     console.log(response.data);
                                     console.log("trae todas las empresa");

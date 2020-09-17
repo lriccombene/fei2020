@@ -76,6 +76,7 @@ class ConsultorSearch extends \app\modules\apv1\models\Consultor
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
               ->andFilterWhere(['like', 'email', $this->email])
+              ->andFilterWhere(['like', 'nro', $this->nro])
               ->andFilterWhere(['like', 'apellido', $this->apellido]);
 
         return $dataProvider;

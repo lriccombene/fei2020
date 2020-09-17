@@ -18,7 +18,7 @@ class ConsultorSearch extends Consultor
     {
         return [
             [['id'], 'integer'],
-            [['nombre', 'apellido', 'telefono', 'email', 'domicilio'], 'safe'],
+            [['nombre', 'apellido', 'telefono', 'email', 'domicilio', 'nro'], 'safe'],
         ];
     }
 
@@ -65,6 +65,7 @@ class ConsultorSearch extends Consultor
             ->andFilterWhere(['like', 'apellido', $this->apellido])
             ->andFilterWhere(['like', 'telefono', $this->telefono])
             ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'nro', $this->nro])
             ->andFilterWhere(['like', 'domicilio', $this->domicilio]);
 
         return $dataProvider;

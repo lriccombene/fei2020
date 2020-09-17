@@ -23,6 +23,10 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
    <p> </p>
    <p> </p>
 <div class="notassalida-form">
+  <?php
+ echo ($model->id);
+
+  ?>
     <div id="app" class="container-fluid">
 
                 <div class="form-group">
@@ -89,17 +93,17 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                     data:{
                       id:'<?php  echo ($model->id); ?>',
                       fec_emision: '<?php  echo ($model->fec_emision); ?>',
-                      fec_emision_hint: 'ingrerse fecha emision',
+                      fec_emision_hint: 'ingrere fecha emision',
                       fec_notificado:'<?php  echo ($model->fec_notificado); ?>',
-                      fec_notificado_hint: 'ingrerse fec notificado',
+                      fec_notificado_hint: 'ingrese fec notificado',
                       selected_categoria: '<?php  echo ($model->id_categoria); ?>',
                       categorias: [],
                       selected_empresa: '<?php  echo ($model->id_empresa); ?>',
                       empresas: [],
                       detalle: '<?php  echo ($model->detalle); ?>',
-                      detalle_hint: 'ingrerse detalle',
+                      detalle_hint: 'ingrese detalle',
                       notificado: '<?php  echo ($model->notificado); ?>',
-                      notificado_hint: 'ingrerse notificado',
+                      notificado_hint: 'ingrese notificado',
                       errors: {},
                     },
                     mounted() {

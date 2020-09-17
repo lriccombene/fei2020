@@ -52,7 +52,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
     <div class="form-group">
 
             <label for="referente">Referente :</label>
- 
+
             <input v-bind:placeholder="referente_hint" class="form-control" id="referente" v-model="referente" type="text" name="referente" >
             <span class="text-danger" v-if="errors.referente" >{{errors.referente}}</span>
 
@@ -67,7 +67,12 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                 </option>
             </select>
             <span class="text-danger" v-if="errors.id_consultor" >{{errors.id_consultor}}</span>
-
+            <b-pagination
+                v-model="currentPage"
+                :total-rows="pagination.total"
+                :per-page="pagination.perPage"
+                aria-controls="my-table"
+            ></b-pagination>
 	</div>
     <div class="row">
 		<div class="col-md-2">
@@ -95,14 +100,20 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         referente_hint: 'ingrese Referente',
                         consultores:[],
                         selected_consultor: '<?php  echo ($model->id_consultor); ?>',
-
+                        currentPage: 1,
+                        pagination:{},
                         errors: {}
-                  
+
                     },
                     mounted() {
                         this.getConsultores();
-                        },                 
-                    methods: { 
+                        },
+                        watch:{
+                            currentPage: function() {
+                                this.getConsultores();
+                            }
+                        },
+                    methods: {
                         normalizeErrors: function(errors){
                             var allErrors = {};
                             for(var i = 0 ; i < errors.length; i++ ){
@@ -112,8 +123,13 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         },
                         getConsultores(){
                             var self = this;
-                            axios.get('/apv1/consultor?sort=-nombre&per-page=100')
+                            //alert(self.currentPage);
+                            axios.get('/apv1/consultor?page='+self.currentPage)
                                 .then(function (response) {
+                                  self.pagination.total = response.headers['x-pagination-total-count'];
+                                  self.pagination.totalPages = response.headers['x-pagination-page-count'];
+                                  self.pagination.perPage = response.headers['x-pagination-per-page'];
+                                //  self.consultores = response.data;
                                     // handle success
                                     console.log(response.data);
                                     console.log("trae todas las consultores");

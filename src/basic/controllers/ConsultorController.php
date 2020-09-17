@@ -84,6 +84,9 @@ class ConsultorController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $max = Consultor::find()->max('nro');
+        $model->nro=$max+1;
+        //var_dump($model->nro);
         return $this->render('create', [
             'model' => $model,
         ]);

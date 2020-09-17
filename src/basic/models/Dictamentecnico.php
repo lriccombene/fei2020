@@ -17,8 +17,8 @@ use Yii;
  * @property int $id_tipodictamen
  * @property int $id_tipotrabajo
  * @property string|null $detalle
- * @property int|null $longitud
- * @property int|null $latitud
+ * @property string|null $longitud
+ * @property string|null $latitud
  *
  * @property Area $area
  * @property Categoria $categoria
@@ -45,8 +45,8 @@ class Dictamentecnico extends \yii\db\ActiveRecord
         return [
             [['fec'], 'safe'],
             [['nro', 'id_categoria', 'id_empresa', 'id_area', 'id_yacimiento', 'id_tipodictamen', 'id_tipotrabajo'], 'required'],
-            [['nro', 'id_categoria', 'id_empresa', 'id_area', 'id_yacimiento', 'id_tipodictamen', 'id_tipotrabajo', 'longitud', 'latitud'], 'integer'],
-            [['detalle'], 'string'],
+            [['nro', 'id_categoria', 'id_empresa', 'id_area', 'id_yacimiento', 'id_tipodictamen', 'id_tipotrabajo'], 'integer'],
+            [['detalle', 'longitud', 'latitud'], 'string'],
             [['id_area'], 'exist', 'skipOnError' => true, 'targetClass' => Area::className(), 'targetAttribute' => ['id_area' => 'id']],
             [['id_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::className(), 'targetAttribute' => ['id_categoria' => 'id']],
             [['id_empresa'], 'exist', 'skipOnError' => true, 'targetClass' => Empresa::className(), 'targetAttribute' => ['id_empresa' => 'id']],
