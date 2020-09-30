@@ -124,7 +124,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         getConsultores(){
                             var self = this;
                             //alert(self.currentPage);
-                            axios.get('/apv1/consultor?page='+self.currentPage)
+                            axios.get('/apv1/consultor?sort=-apellido&page='+self.currentPage)
                                 .then(function (response) {
                                   self.pagination.total = response.headers['x-pagination-total-count'];
                                   self.pagination.totalPages = response.headers['x-pagination-page-count'];

@@ -59,14 +59,21 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
         <span class="text-danger" v-if="errors.id_motivo" >{{errors.id_motivo}}</span>
     </div>
     <div class="form-group">
-        <label for="empresa">Empresa :</label>
-        <select v-model="selected_empresa" class="form-control" required >
+            <label for="empresa">Empresa :</label>
+           <select v-model="selected_empresa" class="form-control" required >
             <option v-for="option in empresas" v-bind:value="option.id">
                 {{ option.nombre }}
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_empresa" >{{errors.id_empresa}}</span>
-	</div>
+        si no encuentra la empresa a click en la siguiente pagina
+        <b-pagination
+                  v-model="currentPageEmpresa"
+                  :total-rows="paginationempresa.total"
+                  :per-page="paginationempresa.perPage"
+                  aria-controls="my-table"
+              ></b-pagination>
+   </div>
     <div class="form-group">
         <label for="area">Área :</label>
         <select v-model="selected_area" class="form-control" required >
@@ -75,6 +82,15 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
             </option>
         </select>
         <span class="text-danger" v-if="errors.id_area" >{{errors.id_area}}</span>
+        si no encuentra la empresa a click en la siguiente pagina
+
+        <b-pagination
+                  v-model="currentPageArea"
+                  :total-rows="paginationarea.total"
+                  :per-page="paginationarea.perPage"
+                  aria-controls="my-table"
+              ></b-pagination>
+
 	</div>
     <div class="form-group">
             <label for="latitud">Latitud :</label>
@@ -127,7 +143,10 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         latitud: '<?php  echo ($model->latitud); ?>',
                         latitud_hint: 'ingrese latitud',
                         errors: {},
-
+                        currentPageEmpresa: 1,
+                        paginationempresa:{},
+                        currentPageArea: 1,
+                        paginationarea:{},
                     },
                     mounted() {
                         this.getLocalidad();
@@ -136,6 +155,14 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         this.getEmpresas();
                         this.getAreas();
                         },
+                        watch:{
+                                currentPageEmpresa: function() {
+                                    this.getEmpresas();
+                                },
+                                 currentPageArea: function() {
+                                      this.getAreas();
+                                  }
+                            },
                     methods: {
                         normalizeErrors: function(errors){
                             var allErrors = {};
@@ -146,9 +173,12 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         },
                         getAreas(){
                             var self = this;
-                            axios.get('/apv1/area?sort=-nombre&per-page=100')
+                            axios.get('/apv1/area?sort=-nombre&per-page=='+self.currentArea)
                                 .then(function (response) {
-                                    // handle success
+                                  self.paginationarea.total = response.headers['x-pagination-total-count'];
+                                  self.paginationarea.totalPages = response.headers['x-pagination-page-count'];
+                                  self.paginationarea.perPage = response.headers['x-pagination-per-page'];
+                                              // handle success
                                     console.log(response.data);
                                     console.log("trae todas las areas");
                                     // self.especialidades = response.data;
@@ -163,10 +193,13 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                                 });
                         },
                         getEmpresas(){
-                            var self = this;
-                            axios.get('/apv1/empresa?sort=-nombre&per-page=100')
-                                .then(function (response) {
-                                    // handle success
+                          var self = this;
+                          axios.get('/apv1/empresa?sort=-nombre&page='+self.currentPageEmpresa)
+                              .then(function (response) {
+                                self.paginationempresa.total = response.headers['x-pagination-total-count'];
+                                self.paginationempresa.totalPages = response.headers['x-pagination-page-count'];
+                                self.paginationempresa.perPage = response.headers['x-pagination-per-page'];
+                                            // handle success
                                     console.log(response.data);
                                     console.log("trae todas las empresa");
                                     // self.especialidades = response.data;

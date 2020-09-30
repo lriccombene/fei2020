@@ -59,9 +59,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                   aria-controls="my-table"
               ></b-pagination>
 	 </div>
-
-
-		<div class="form-group">
+  	<div class="form-group">
             <label for="area">Área :</label>
             <select v-model="selected_area" class="form-control" required >
             <option v-for="option in areas" v-bind:value="option.id">
@@ -244,7 +242,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         },
                         getYacimiento(){
                             var self = this;
-                            axios.get('/apv1/yacimiento?page='+self.currentPageYacimiento)
+                            axios.get('/apv1/yacimiento?sort=-nombre&page='+self.currentPageYacimiento)
                                 .then(function (response) {
                                   self.paginationyacimiento.total = response.headers['x-pagination-total-count'];
                                   self.paginationyacimiento.totalPages = response.headers['x-pagination-page-count'];
@@ -283,7 +281,7 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         },
                         getEmpresas(){
                             var self = this;
-                            axios.get('/apv1/empresa?page='+self.currentPageEmpresa)
+                            axios.get('/apv1/empresa?sort=-nombre&page='+self.currentPageEmpresa)
                                 .then(function (response) {
                                   self.paginationempresa.total = response.headers['x-pagination-total-count'];
                                   self.paginationempresa.totalPages = response.headers['x-pagination-page-count'];
