@@ -57,6 +57,11 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
               <span class="text-danger" v-if="errors.nro" >{{errors.nro}}</span>
 
      </div>
+     <div class="form-group">
+             <label for="fecregistro">Fecha de registro :</label>
+             <input v-bind:placeholder="fecregistro_hint" class="form-control" id="fecregistro" v-model="fecregistro" type="date" name="fecregistro">
+             <span class="text-danger" v-if="errors.fecregistro" >{{errors.fecregistro}}</span>
+    </div>
     <div class="row">
   		<div class="col-md-2">
               <button v-if="!id"  v-on:click="add()"  type ="button"  class="btn btn-success">Enviar</button>
@@ -81,6 +86,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                         domicilio_hint: 'ingrese domicilio',
                         nro: '<?php  echo ($model->nro); ?>',
                         nro_hint: 'ingrese numero',
+                        fecregistro:'',
+                        fecregistro_hint: 'ingrese domicilio',
 
                         errors: {},
                     },
@@ -101,6 +108,8 @@ $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",['p
                            params.append('telefono', self.telefono);
                            params.append('domicilio', self.domicilio);
                            params.append('nro', self.nro);
+                           params.append('fecregistro', self.fecregistro);
+
                            axios.post('/apv1/consultor',params)
                               .then(function (response) {
                                   // handle success

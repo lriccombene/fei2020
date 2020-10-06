@@ -29,7 +29,7 @@ echo $this->render('/components/ModelUpdate');
             model: <?= json_encode($model->getAttributes()) ?>,
             //relates: <?//= json_encode($model->getRelationData()) ?>//,
             //rules: <?//= json_encode($model->rules()) ?>//,
-            fields: ['id','nombre','apellido','telefono','domicilio','email','nro'] , //poner en un array los campos que queres
+            fields: ['id','nombre','apellido','telefono','domicilio','email','nro','fecregistro'] , //poner en un array los campos que queres
             modelname: <?= json_encode($model::tableName())?>,
             ids: '<?php  echo ($_GET["id"]);?>'
         }

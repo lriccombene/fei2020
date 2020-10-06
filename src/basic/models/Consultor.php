@@ -14,6 +14,7 @@ use Yii;
  * @property string|null $email
  * @property string|null $domicilio
  * @property integer|null $nro
+ * @property string|null $fecregistro
  *
  * @property Empresa[] $empresas
  */
@@ -35,6 +36,7 @@ class Consultor extends \yii\db\ActiveRecord
         return [
             [['nombre'], 'required'],
             [['nro'], 'integer'],
+            [['fecregistro'], 'safe'],
             [['nombre', 'apellido', 'telefono', 'email', 'domicilio'], 'string', 'max' => 255],
         ];
     }
@@ -51,7 +53,8 @@ class Consultor extends \yii\db\ActiveRecord
             'telefono' => 'Telefono',
             'email' => 'Email',
             'domicilio' => 'Domicilio',
-            'nro'=>'Nro Registro'
+            'nro'=>'Nro Registro',
+            'fecregistro'=>'Fec Reg'
         ];
     }
 

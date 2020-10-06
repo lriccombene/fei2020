@@ -35,7 +35,7 @@ echo $this->render('/components/ModelGrid');
             model: <?= json_encode($model->getAttributes()) ?>,
             //relates: <?//= json_encode($model->getRelationData()) ?>//,
             //rules: <?//= json_encode($model->rules()) ?>//,
-            fields: ['id','nombre','apellido','telefono','email','domicilio','nro'] , //poner en un array los campos que queres
+            fields: ['id','nombre','apellido','telefono','email','domicilio','nro','fecregistro'] , //poner en un array los campos que queres
             modelname: <?= json_encode($model::tableName())?>,
         }
     })
