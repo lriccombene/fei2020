@@ -25,7 +25,6 @@ echo $this->render('/components/ModelGrid2');
 </div>
 
 <script>
-
     var app = new Vue({
         el: "#app",
         components:{
@@ -39,5 +38,12 @@ echo $this->render('/components/ModelGrid2');
             modelname: <?= json_encode($model::tableName())?>,
         }
     })
-
+</script>
+<div class="form-group">
+  <a id ='boton'  onclick="funcdictamentecnico();" type="button" class="btn btn-primary btn-lg btn-block" >Descargar</a>
+</div>
+<script type="text/javascript">
+function funcdictamentecnico(){
+  window.location.href = "/dictamentecnico/pdf";
+}
 </script>

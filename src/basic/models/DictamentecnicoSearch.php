@@ -72,6 +72,7 @@ class DictamentecnicoSearch extends Dictamentecnico
         ]);
 
         $query->andFilterWhere(['like', 'detalle', $this->detalle]);
+        $_SESSION['datos_filtrados'] = $dataProvider;
 
         return $dataProvider;
     }

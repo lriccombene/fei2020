@@ -82,13 +82,16 @@ class DictamentecnicoSearch extends \app\models\Dictamentecnico
 
         $query->andFilterWhere(['like', 'fec', $this->fec])
             ->andFilterWhere(['like', 'nro', $this->nro]);
-        
+
         $query->andFilterWhere(['like','categoria.nombre',$this->categoria]);
         $query->andFilterWhere(['like','area.nombre',$this->area]);
         $query->andFilterWhere(['like','empresa.nombre',$this->empresa]);
         $query->andFilterWhere(['like','tipodictamen.nombre',$this->tipodictamen]);
         $query->andFilterWhere(['like','yacimiento.nombre',$this->yacimiento]);
         $query->andFilterWhere(['like','tipotrabajo.nombre',$this->tipotrabajo]);
+
+        $_SESSION['datos_filtrados'] = $dataProvider;
+
         return $dataProvider;
     }
 }
