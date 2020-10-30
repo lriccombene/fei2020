@@ -25,7 +25,7 @@ use app\assets\AppAsset;
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div> <?php 
+<div> <?php
 
     //aca  armamos los permisos para que se vean o no el menu y la opcion Parametros
     $banderita=FALSE;
@@ -35,12 +35,12 @@ use app\assets\AppAsset;
         {
             $banderita=TRUE;
         }
-    } 
+    }
 
-            
-       
-        
-        
+
+
+
+
     ?></div>
 
 <div class="wrap">
@@ -57,12 +57,13 @@ use app\assets\AppAsset;
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'Actas de Inspección', 'url' => ['/actasinspeccion/index'],'visible'=>!Yii::$app->user->isGuest],
-            ['label' => 'Dictamen Técnico', 'url' => ['/dictamentecnico/index'],'visible'=>!Yii::$app->user->isGuest],
-            ['label' => 'Env. Documentación', 'url' => ['/enviosdocumentacion/index'],'visible'=>!Yii::$app->user->isGuest],
-            ['label' => 'Mesa de Entrada', 'url' => ['/mesaentrada/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Dictamen Téc', 'url' => ['/dictamentecnico/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Env. Documen', 'url' => ['/enviosdocumentacion/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Mesa Entrada', 'url' => ['/mesaentrada/index'],'visible'=>!Yii::$app->user->isGuest],
             ['label' => 'Notas Salida', 'url' => ['/notassalida/index'],'visible'=>!Yii::$app->user->isGuest],
             ['label' => 'Solid. Cáratula', 'url' => ['/solicitudcaratula/index'],'visible'=>!Yii::$app->user->isGuest],
-            ['label' => 'Párametros', 'items' => [
+            ['label' => 'Residuos', 'url' => ['/residuos/index'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Páram', 'items' => [
                 ['label'=> 'Área', 'url' => ['/area/index']],
                 ['label'=> 'Categoría', 'url' => ['/categoria/index']],
                 ['label'=> 'Consultor', 'url' => ['/consultor/index']],
@@ -103,7 +104,7 @@ use app\assets\AppAsset;
     <div class="container">
         <p class="pull-left">&copy; SEPYDS <?= date('Y') ?></p>
 
-        
+
     </div>
 </footer>
 
